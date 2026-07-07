@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NGUYEN VIET LONG - Personal Portfolio</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap&subset=vietnamese"
+    rel="stylesheet">
+</head>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet">
+
+<body>
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./assets/images/my-avatar.png" alt="Nguyễn Việt Long" width="120">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Nguyễn Việt Long">Nguyễn Việt Long</h1>
+
+          <p class="title">Content Marketing</p>
+
+
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="mailto:ngvietlong712002@gmail.com" class="contact-link">ngvietlong712002@gmail.com</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Số điện thoại</p>
+
+              <a href="tel:0859802360" class="contact-link">0859802360</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Năm sinh</p>
+
+              <time datetime="2002-01-07">2002</time>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Địa chỉ</p>
+
+              <address>Vĩnh Hưng, Hoàng Mai, Hà Nội</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="https://www.facebook.com/sadthuvotinh/" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.tiktok.com/@absolutely.vlong" class="social-link">
+              <ion-icon name="logo-tiktok"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.instagram.com/literally.vlong/" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+
+
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link="about">Về tôi</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link="resume">Hồ sơ</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link="portfolio">Portfolio</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link="blog">Nội dung khác</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link="contact">Liên hệ</button>
+          </li>
+          <li class="navbar-item">
+            <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
+              <ion-icon name="moon-outline" id="theme-icon"></ion-icon>
+            </button>
+          </li>
+        </ul>
+
+      </nav>
+
+
+
+
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about  active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">Về bản thân</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            Content Marketer với tư duy chiến lược và thực thi sáng tạo. Làm chủ kỹ thuật Storytelling đa dạng từ định
+            vị thương hiệu đến khai thác Insight khách hàng. Sử dụng AI để tối ưu hiệu suất nội dung đa kênh và đột
+            phá mục tiêu doanh thu. </p>
+
+          <p>
+            Hành trình từ tư duy hệ thống đến những chiến dịch thực chiến. Portfolio này tổng hợp năng lực điều hành nội
+            dung, tối ưu hiệu suất bằng AI và các dự án tiêu biểu tôi đã trực tiếp thực thi.
+          </p>
+        </section>
+
+
+        <!--
+          - service
+        -->
+
+        <section class="service">
+
+          <h3 class="h3 service-title">Tôi làm những gì</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-design.svg
+                " alt="design icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Sản xuất nội dung</h4>
+
+                <p class="service-item-text">
+                  Lập kế hoạch và trực tiếp sản xuất nội dung đa nền tảng </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/presentation.png" alt="P Global icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Phân tích khách hàng</h4>
+
+                <p class="service-item-text">
+                  Phân tích Insight khách hàng và tối ưu, đưa ra kế hoạch truyền thông </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/chatgpt.png" alt="mobile app icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Ứng dụng AI</h4>
+
+                <p class="service-item-text">
+                  Sử dụng các công cụ AI khác nhau để tối ưu hiệu suất công việc
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Quay & Chụp sản phẩm</h4>
+
+                <p class="service-item-text">
+                  Trực tiếp ghi hình và đóng góp vào quá trình quay chụp hình ảnh/video chất lượng cao
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/video-editing.png" alt="camera icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Chỉnh sửa</h4>
+
+                <p class="service-item-text">
+                  Trực tiếp thực thi và chỉnh sửa nội dung bám sát theo lịch đã đề ra
+                </p>
+              </div>
+
+            </li>
+
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/social-media.png" alt="camera icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Đăng tải nội dung</h4>
+
+                <p class="service-item-text">
+                  Đăng tải nội dung và giám sát, báo cáo về nội dung đã đăng </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+
+
+        </section>
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">Kĩ năng</h3>
+
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Lên lịch & thiết kế nội dung</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Sử dụng AI</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Nghiên cứu khách hàng</h5>
+                <data value="70">70%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 70%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Thiết kế hình ảnh</h5>
+                <data value="80">80%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 80%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Chỉnh sửa video</h5>
+                <data value="70">70%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 70%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Viết bài</h5>
+                <data value="70">70%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 70%;"></div>
+              </div>
+
+            </li>
+
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Trực tiếp lên hình</h5>
+                <data value="60">60%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 60%;"></div>
+              </div>
+
+            </li>
+
+
+
+          </ul>
+
+        </section>
+        <!--
+          - testimonials
+        -->
+
+        <!-- <section class="testimonials">
+
+          <h3 class="h3 testimonials-title">Testimonials</h3>
+
+          <ul class="testimonials-list has-scrollbar">
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                    lot of experience
+                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                    consectetur adipiscing
+                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica miller</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                    lot of experience
+                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                    consectetur adipiscing
+                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily evans</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                    lot of experience
+                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                    consectetur adipiscing
+                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry william</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                    lot of experience
+                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                    consectetur adipiscing
+                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </section> -->
+
+
+        <!--
+          - testimonials modal
+        -->
+        <!-- 
+        <div class="modal-container" data-modal-container>
+
+          <div class="overlay" data-overlay></div>
+
+          <section class="testimonials-modal">
+
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <div class="modal-img-wrapper">
+              <figure class="modal-avatar-box">
+                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
+              </figure>
+
+              <img src="./assets/images/icon-quote.svg" alt="quote icon">
+            </div>
+
+            <div class="modal-content">
+
+              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
+
+              <time datetime="2021-06-14">14 June, 2021</time>
+
+              <div data-modal-text>
+                <p>
+                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
+                  lot of experience
+                  and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
+                  consectetur adipiscing
+                  elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                </p>
+              </div>
+
+            </div>
+
+          </section>
+
+        </div> -->
+
+
+        <!--
+          - clients
+        -->
+
+        <section class="clients">
+
+          <h3 class="h3 clients-title" style="margin: 30px 0;">Khách hàng</h3>
+
+          <ul class="clients-list has-scrollbar">
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-1-color.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-2-color.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-3-color.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-4-color.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-5-color.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-6-color.png" alt="client logo">
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Hồ sơ</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Giáo dục</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Đại học Tổng tài - Chuyên ngành CNTT</h4>
+
+              <span>2020 — 2025</span>
+
+              <p class="timeline-text">
+                Tích cực tham gia thị trường truyền thông đa phương tiện với các vai trò đa dạng từ Diễn viên quảng cáo
+                đến thực tập sinh sản xuất. Trực tiếp tham gia vào toàn bộ quy trình từ tiền kỳ, bấm máy đến hậu kỳ,
+                định hình tư duy sản xuất nội dung thương mại thực chiến và linh hoạt
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">THPT Hoàng Văn Thụ</h4>
+
+              <span>2017 — 2020</span>
+
+              <p class="timeline-text">
+                Chủ động xây dựng và quản trị kênh cá nhân từ thời THPT. Tự tay thực hiện 100% quy trình sáng tạo nội
+                dung từ lên ý tưởng, viết bài đến tối ưu tương tác, đặt nền móng vững chắc cho tư duy sáng tạo nội
+                dung từ sớm.
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Kinh nghiệm làm việc</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Marketing Executive tại Highway Menswear
+              </h4>
+
+              <span>T10/2025 - T5/2026</span>
+
+              <p class="timeline-text">
+                Quản lý nội dung đa kênh, lên kế hoạch và sản xuất nội dung mỗi ngày.
+                Tăng 20% tương tác tự nhiên và hỗ trợ sản xuất hình ảnh, nội dung cho các BST mới.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Content Creator tại BeatVN
+              </h4>
+
+              <span>T6/2025 - T9/2025</span>
+
+              <p class="timeline-text">
+                Tìm kiếm, chuyển đổi và sáng tạo nội dung cộng đồng. Đạt hiệu suất trung bình 5.000 tương tác mỗi bài
+                đăng.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Content Marketing tại P Global
+              </h4>
+
+              <span>T10/2024 - T8/2025</span>
+
+              <p class="timeline-text">
+                Tìm nỗi đau khách hàng, xây dựng kịch bản và sản xuất video bán hàng.
+                Duy trì doanh thu ổn định 30 - 50 triệu VNĐ/tháng.
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #PORTFOLIO
+      -->
+
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+
+            <li class="filter-item">
+              <button class="active" data-filter-btn="all">Tất cả</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn="p-global">P Global</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn="beat-vn">BeatVn</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn="highway-menswear">Highway Menswear</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn="minclue-fitness">Minclue Fitness</button>
+            </li>
+
+          </ul>
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+
+              <div class="select-value" data-selecct-value>Chọn dự án</div>
+
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+
+            </button>
+
+            <ul class="select-list">
+
+              <li class="select-item">
+                <button data-select-item="Tất cả">Tất cả</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>P Global</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>BeatVn</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Highway Menswear</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Minclue Fitness</button>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <ul class="project-list">
+
+            <li class="project-item  active" data-filter-item data-category="p-global">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Hỗ trợ quay chụp & ghi hình</h3>
+
+                <p class="project-category">P Global</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="p-global">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Sữa hạt Gumilac Mama</h3>
+
+                <p class="project-category">P Global</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="highway-menswear">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Season of Gifting</h3>
+
+                <p class="project-category">Highway Menswear</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="highway-menswear">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Ảnh bìa Website</h3>
+
+                <p class="project-category">Highway Menswear</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="highway-menswear">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Bài đăng Facebook T11-T2</h3>
+
+                <p class="project-category">Highway Menswear</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="highway-menswear">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Ảnh Blog</h3>
+
+                <p class="project-category">Highway Menswear</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="highway-menswear">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-10.png" alt="metaspark" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Bài đăng Facebook T2-T5</h3>
+
+                <p class="project-category">Highway Menswear</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="p-global">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Bánh dinh dưỡng rong biển</h3>
+
+                <p class="project-category">P Global</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="highway-menswear">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Story mỗi ngày T12-T2</h3>
+
+                <p class="project-category">Highway Menswear</p>
+
+              </a>
+            </li>
+
+
+            <li class="project-item  active" data-filter-item data-category="highway-menswear">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-9.png" alt="task manager" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Story mỗi ngày T12-T4</h3>
+
+                <p class="project-category">Highway Menswear</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="highway-menswear">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-11.png" alt="task manager" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Story nổi bật</h3>
+
+                <p class="project-category">Highway Menswear</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="minclue-fitness">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-12.png" alt="task manager" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Voucher quà tặng</h3>
+
+                <p class="project-category">Minclue Fitness</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="beat-vn">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-15.png" alt="task manager" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Bài đăng Facebook T7</h3>
+
+                <p class="project-category">BeatVn</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="beat-vn">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-16.png" alt="task manager" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Bài đăng Facebook T9</h3>
+
+                <p class="project-category">BeatVn</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="minclue-fitness">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-13.png" alt="task manager" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Story mỗi ngày</h3>
+
+                <p class="project-category">Minclue Fitness</p>
+
+              </a>
+            </li>
+
+
+            <li class="project-item  active" data-filter-item data-category="minclue-fitness">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-14.png" alt="task manager" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Bài đăng Facebook</h3>
+
+                <p class="project-category">Minclue Fitness</p>
+
+              </a>
+            </li>
+
+
+
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #BLOG
+      -->
+
+      <article class="blog" data-page="blog">
+
+        <header>
+          <h2 class="h2 article-title">Video</h2>
+        </header>
+
+        <section class="blog-posts">
+
+          <ul class="blog-posts-list">
+
+            <li class="blog-post-item">
+              <a href="#" data-video-src="./assets/videos/video1.mp4" class="blog-video-btn">
+
+                <figure class="blog-banner-box">
+                  <video src="./assets/videos/video1.mp4" preload="metadata" muted
+                    style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;"></video>
+                </figure>
+
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Diễn xuất</p>
+                    <span class="dot"></span>
+                    <time datetime="2026-07-07">25-8-2025</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Vai ông chồng gia trưởng</h3>
+                  <p class="blog-text">
+                    Ông chồng gia trưởng muốn ép vợ mình mua hàng để không bỏ lỡ deal hời
+                  </p>
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#" data-video-src="./assets/videos/video2.mp4" class="blog-video-btn">
+
+                <figure class="blog-banner-box">
+                  <video src="./assets/videos/video2.mp4" preload="metadata" muted
+                    style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;"></video>
+                </figure>
+
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Diễn xuất</p>
+                    <span class="dot"></span>
+                    <time datetime="2026-07-07">25-8-2025</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Vai bạn nam áo trắng</h3>
+                  <p class="blog-text">
+                    Quay video tình huống quảng cáo cho sữa tắm nước hoa Fanmen
+                  </p>
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#" data-video-src="./assets/videos/video3.mp4" class="blog-video-btn">
+
+                <figure class="blog-banner-box">
+                  <video src="./assets/videos/video3.mp4" preload="metadata" muted
+                    style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;"></video>
+                </figure>
+
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Diễn xuất</p>
+                    <span class="dot"></span>
+                    <time datetime="2026-07-07">25-8-2025</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Vai bạn nam shipper</h3>
+                  <p class="blog-text">
+                    Quay video tình huống quảng cáo cho sữa tắm nước hoa Fanmen
+                  </p>
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#" data-video-src="./assets/videos/video4.mp4" class="blog-video-btn">
+
+                <figure class="blog-banner-box">
+                  <video src="./assets/videos/video4.mp4" preload="metadata" muted
+                    style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;"></video>
+                </figure>
+
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Diễn xuất</p>
+                    <span class="dot"></span>
+                    <time datetime="2026-07-07">25-8-2025</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Vai bạn nam</h3>
+                  <p class="blog-text">
+                    Quay video tình huống quảng cáo cho sữa tắm nước hoa Fanmen
+                  </p>
+                </div>
+
+              </a>
+            </li>
+
+
+            <li class="blog-post-item">
+              <a href="#" data-video-src="./assets/videos/video5.mp4" class="blog-video-btn">
+
+                <figure class="blog-banner-box">
+                  <video src="./assets/videos/video5.mp4" preload="metadata" muted
+                    style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;"></video>
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category">Video Tiktok</p>
+
+                    <span class="dot"></span>
+
+                    <time datetime="2022-02-23">7-12-2024</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Video gắn sản phẩm Tiktok</h3>
+
+                  <p class="blog-text">
+                    Từ kho media của công ty, dùng AI và các công cụ khác để chỉnh sửa, cắt ghép ra 1 video
+                    khác hoàn chỉnh.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#" data-image-target="./assets/images/anh-profile-dien-xuat.jpg" class="blog-image-zoom-btn">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/anh-profile-dien-xuat-2.jpg" alt="Profile Diễn Xuất - Nguyễn Việt Long"
+                    loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Profile</p>
+                    <span class="dot"></span>
+                    <time datetime="2026-07-07">23-2-2025</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Casting Profile 1</h3>
+                  <p class="blog-text">
+                    Thông tin chỉ số hình thể, kinh nghiệm diễn xuất và kết nối công việc. Bấm để xem ảnh chi tiết.
+                  </p>
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#" data-image-target="./assets/images/anh-profile-dien-xuat.jpg" class="blog-image-zoom-btn">
+
+                <figure class="blog-banner-box">
+                  <img src="./assets/images/anh-profile-dien-xuat.jpg" alt="Profile Diễn Xuất - Nguyễn Việt Long"
+                    loading="lazy">
+                </figure>
+
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Profile</p>
+                    <span class="dot"></span>
+                    <time datetime="2026-07-07">14-7-2026</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">Casting Profile 2</h3>
+                  <p class="blog-text">
+                    Thông tin chỉ số hình thể, kinh nghiệm diễn xuất và kết nối công việc. Bấm để xem ảnh chi tiết.
+                  </p>
+                </div>
+
+              </a>
+            </li>
+
+
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Liên hệ</h2>
+        </header>
+
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.0270375635096!2d105.87661107484784!3d20.991553280648468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135aea7c3bae0eb%3A0xdffd100d9a5df4fa!2zUC4gVsSpbmggSMawbmcsIFbEqW5oIEjGsG5nLCBIw6AgTuG7mWksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1783318709491!5m2!1svi!2s"
+              width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          </figure>
+        </section>
+
+        <!-- ==========================================
+     CARD 1 (TRÊN): SHOWCASE PORTFOLIO & MEDIA
+     ========================================== -->
+        <section class="portfolio-showcase-box">
+          <h3 class="h3 card-box-title">Work & Media Showcase</h3>
+
+          <!-- Đã gỡ class clickable-target ở đây để tránh liệt nút -->
+          <div class="digital-showcase-card">
+            <div class="card-header">
+              <h4 class="h4 client-name">Dự Án & Kho Sản Phẩm</h4>
+              <p class="client-subtitle">Portfolio & Kho lưu trữ hình ảnh</p>
+            </div>
+            <p class="card-description">
+              Truy cập trực tiếp vào hệ thống lưu trữ toàn bộ các sản phẩm truyền thông, video tình huống, chiến dịch
+              content marketing và kho media thực chiến tôi từng triển khai.
+            </p>
+            <div class="single-btn-group">
+              <!-- Gán class phát sáng thẳng vào nút tương tác -->
+              <a href="https://mydumbprofile.my.canva.site/viet-long-media-executive-portfolio-2026" target="_blank"
+                class="cta-btn portfolio-link-cta clickable-target text-large">
+                <ion-icon name="folder-open-outline"></ion-icon>
+                <span>Truy Cập Kho Dự Án & Portfolio</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+     CARD 2 (DƯỚI): KẾT NỐI VỚI TÔI (THÔNG TIN LIÊN HỆ)
+     ========================================== -->
+        <section class="contact-card-box">
+          <h3 class="h3 card-box-title">Kết Nối Với Tôi</h3>
+
+          <div class="digital-business-card">
+            <div class="card-header">
+              <h4 class="h4 client-name">Nguyễn Việt Long</h4>
+              <p class="client-subtitle">Content Creator & Digital Marketer</p>
+            </div>
+            <p class="card-description">
+              Tôi luôn sẵn sàng cho các dự án mới hoặc các cơ hội hợp tác sáng tạo. Hãy kết nối trực tiếp với tôi qua
+              các kênh phản hồi nhanh dưới đây.
+            </p>
+
+            <div class="cta-buttons-group">
+
+              <a href="tel:+84859802360" class="cta-btn secondary-cta clickable-target text-large">
+                <ion-icon name="call-outline"></ion-icon>
+                <span>SĐT: 0859802360</span>
+              </a>
+
+
+              <a href="https://zalo.me/0859802360" target="_blank"
+                class="cta-btn secondary-cta clickable-target text-large">
+                <svg class="zalo-icon-svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M19.047 11.5c0 3.59-3.155 6.5-7.047 6.5-1.12 0-2.18-.24-3.13-.67l-3.5 1.17a.5.5 0 0 1-.62-.62l1.17-3.5c-.56-.91-.88-1.95-.88-3.08 0-3.59 3.155-6.5 7.047-6.5s7.047 2.91 7.047 6.5zm-5.46-2.1c-.2-.36-.57-.5-.94-.36l-2.73 1.05v-.74a.92.92 0 0 0-.92-.92H8.08a.92.92 0 0 0-.92.92v4.3c0 .5.41.91.92.91h.92c.5 0 .91-.4.91-.91v-1.48l2.73 1.05c.37.14.74 0 .94-.36l.94-1.74a.93.93 0 0 0 0-.92l-.94-1.74z" />
+                </svg>
+                <span>Nhắn tin qua Zalo</span>
+              </a>
+
+              <a href="mailto:ngvietlong712002@gmail.com" class="cta-btn primary-cta clickable-target text-large">
+                <ion-icon name="mail-open-outline"></ion-icon>
+                <span>Email: ngvietlong712002@gmail.com</span>
+              </a>
+
+            </div>
+          </div>
+        </section>
+
+      </article>
+
+    </div>
+
+  </main>
+
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <video id="global-fullscreen-video" style="display:none; width:100%; height:100%;" controls></video>
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="copyright-info">
+        <p>
+          <span id="current-year">2026</span>
+          <strong>Nguyễn Việt Long</strong>
+        </p>
+      </div>
+      <div class="dynamic-widget">
+        <span class="widget-date" id="live-date">Thứ Ba, 07/07/2026</span>
+        <span class="widget-separator">|</span>
+        <span class="widget-weather" id="live-weather">
+          <span class="weather-icon">🌤️</span>
+          <span class="weather-text">Hà Nội: 32°C, Có mây rải rác</span>
+        </span>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
