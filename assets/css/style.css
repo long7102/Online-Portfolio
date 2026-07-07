@@ -939,6 +939,8 @@ body.light-mode .clients {
   background: var(--text-gradient-yellow);
   height: 100%;
   border-radius: inherit;
+  width: 0%; /* Mặc định là 0 */
+  transition: width 1.5s ease-in-out; /* Chạy trong 1.5 giây, mượt vãi */
 }
 
 /* Portfolio Page */
@@ -1757,6 +1759,19 @@ body.light-mode .cta-btn.outline-cta:hover {
     left: -43px;
   }
 
+
+  /* Trạng thái ẩn ban đầu */
+.timeline-item {
+  opacity: 0;
+  transform: translateY(30px); /* Dịch xuống 30px */
+  transition: all 0.6s ease-out; /* Thời gian chuyển động */
+}
+
+/* Trạng thái hiện ra */
+.timeline-item.active {
+  opacity: 1;
+  transform: translateY(0);
+}
   .skills-item:not(:last-child) {
     margin-bottom: 25px;
   }
@@ -2208,3 +2223,47 @@ body.light-mode .widget-weather {
 body.light-mode .clients {
   display: none !important;
 }
+
+/* Lớp nền mờ (Overlay) */
+.overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 9998;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s;
+}
+.overlay.active { opacity: 1; pointer-events: all; }
+
+/* Lá thư (Modal) */
+.falling-letter {
+  position: fixed;
+  top: -100%; /* Giấu trên đỉnh màn hình */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  background: #fcd36b;
+  padding: 30px;
+  border-radius: 15px;
+  z-index: 9999;
+  text-align: center;
+  transition: top 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Hiệu ứng nảy nhẹ kiểu gravity */
+}
+
+.falling-letter.active {
+  top: 50%; /* Rơi xuống đúng giữa */
+}
+
+.falling-letter {
+  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0);
+  width: 500px; background: #fcd36b; padding: 30px; border-radius: 20px;
+  z-index: 10000; text-align: center; transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.falling-letter.active { transform: translate(-50%, -50%) scale(1); }
+
+/* Hiệu ứng bay ra ngoài khi click ra ngoài */
+.falling-letter.fly-away { transform: translate(-50%, -200%) rotate(45deg); opacity: 0; }
+
+.letter-content h3 { color: #000; font-size: 20px; margin: 15px 0 10px; }
+.letter-content p { color: #1a1a1a; font-size: 14px; font-weight: 500; }
+.letter-img { width: 180px; height: 180px; border-radius: 50%; margin: 0 auto; object-fit: cover; background: transparent}

@@ -756,3 +756,81 @@ document.addEventListener("DOMContentLoaded", function () {
     liveWeatherSpan.innerHTML = `<span class="weather-icon">${icon}</span> <span class="weather-text">Hà Nội: ${temp}°C, ${status}</span>`;
   }
 });
+
+
+let clickCount = 0;
+let inputString = "";
+let eggTriggered = false;
+const targetString = "vietlong";
+
+// 1. Lắng nghe Click vào avatar
+const avatar = document.querySelector('.avatar-box');
+avatar.addEventListener('click', () => {
+  clickCount++;
+  if (clickCount >= 5) showLetter();
+});
+
+// 2. Lắng nghe phím gõ
+window.addEventListener('keydown', (e) => {
+  inputString += e.key.toLowerCase();
+  if (inputString.length > 8) inputString = inputString.slice(-8);
+  if (inputString === targetString) showLetter();
+});
+
+// 3. Hàm hiển thị
+function showLetter() {
+  if (eggTriggered) return;
+  document.getElementById('falling-letter').classList.add('active');
+  document.getElementById('easter-overlay').classList.add('active');
+  eggTriggered = true;
+}
+
+// 4. Hàm đóng
+document.getElementById('easter-overlay').addEventListener('click', () => {
+  const letter = document.getElementById('falling-letter');
+  letter.classList.add('fly-away');
+  document.getElementById('easter-overlay').classList.remove('active');
+  
+  setTimeout(() => {
+    letter.classList.remove('active', 'fly-away');
+  }, 600);
+});
+
+// Chọn tất cả thanh kỹ năng
+const skillFills = document.querySelectorAll('.skill-progress-fill');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Khi đã cuộn đến, lấy width từ data-attribute ra và set lại
+      const targetWidth = entry.target.getAttribute('data-width');
+      entry.target.style.width = targetWidth;
+      // Dừng observer để nó không chạy lại mỗi khi cuộn qua cuộn lại
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 }); // Khi thấy 50% thanh thì chạy
+
+skillFills.forEach(fill => observer.observe(fill));
+
+// Chọn tất cả các mục trong timeline
+const timelineItems = document.querySelectorAll('.timeline-item');
+
+// Cấu hình Observer
+const observerOptions = {
+  threshold: 0.2, // Chạy hiệu ứng khi thấy 20% phần tử
+};
+
+const observer1 = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active'); // Thêm class để hiện hiệu ứng
+      observer1.unobserve(entry.target); // Chỉ chạy 1 lần
+    }
+  });
+}, observerOptions);
+
+// Áp dụng cho từng mục
+timelineItems.forEach((item) => {
+  observer1.observe(item);
+});
