@@ -1,5 +1,11 @@
 'use strict';
-
+document.addEventListener("DOMContentLoaded", function () {
+  // Xóa class light-mode ngay lập tức khi trang vừa load để ép Dark Mode
+  document.body.classList.remove("light-mode");
+  
+  // Tùy chọn: Xóa luôn lưu trữ trạng thái cũ nếu muốn "ép" 100% Dark Mode
+  // localStorage.removeItem('theme'); 
+});
 // 1. HÀM TOGGLE PHẦN TỬ CHUNG
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
