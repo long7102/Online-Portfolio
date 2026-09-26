@@ -513,3 +513,121 @@ body.light-mode .sidebar,
 body.light-mode article { background: rgba(255,253,248,.88); }
 body.light-mode .portfolio-hero { background: radial-gradient(circle at 83% 45%, rgba(217,119,6,.12), transparent 25rem); }
 body.light-mode .hero-btn-primary { color: #fff; background: #b76500; border-color: #b76500; }
+
+/* Accessibility, evidence-led skills and lightweight media previews */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 20000;
+  padding: 11px 16px;
+  color: #171717;
+  background: var(--accent, #fcd36b);
+  border-radius: 10px;
+  font-weight: 700;
+  transform: translateY(-180%);
+  transition: transform .2s ease;
+}
+.skip-link:focus { transform: translateY(0); }
+
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 3px solid var(--accent, #fcd36b);
+  outline-offset: 4px;
+}
+
+.competency-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+.competency-item {
+  position: relative;
+  min-height: 182px;
+  padding: 26px;
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+  border-radius: 20px;
+  background: rgba(255,255,255,.025);
+}
+.competency-number {
+  display: block;
+  margin-bottom: 26px;
+  color: var(--accent, #fcd36b);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .16em;
+}
+.competency-item h4 { margin-bottom: 10px; color: var(--white-2); font-size: 16px; line-height: 1.4; }
+.competency-item p { color: var(--light-gray-70); font-size: 13px; line-height: 1.65; }
+
+.proof-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 18px;
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+  border-radius: 20px;
+  background: var(--line-soft);
+}
+.proof-strip li { padding: 22px; background: var(--surface-1, #1e1e20); }
+.proof-strip strong { display: block; color: var(--accent, #fcd36b); font-size: 24px; }
+.proof-strip span { display: block; margin-top: 8px; color: var(--light-gray-70); font-size: 12px; line-height: 1.5; }
+
+.video-poster {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  overflow: hidden;
+  background: radial-gradient(circle at 72% 28%, rgba(252,211,107,.3), transparent 28%), linear-gradient(135deg, #29262c, #111114);
+}
+.video-poster::after {
+  content: "VIDEO CASE";
+  position: absolute;
+  left: 22px;
+  bottom: 18px;
+  color: rgba(255,255,255,.64);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .18em;
+}
+.video-poster > span { position: absolute; top: 16px; right: 20px; color: rgba(255,255,255,.18); font-size: 54px; font-weight: 700; }
+.video-poster ion-icon { width: 28px; height: 28px; padding: 17px; color: #111; background: #fcd36b; border-radius: 50%; box-shadow: 0 12px 35px rgba(0,0,0,.35); }
+.video-poster--two { background: radial-gradient(circle at 25% 75%, rgba(92,114,255,.32), transparent 30%), linear-gradient(135deg, #272932, #111114); }
+.video-poster--three { background: radial-gradient(circle at 75% 75%, rgba(215,108,74,.3), transparent 30%), linear-gradient(135deg, #30251f, #111114); }
+.video-poster--four { background: radial-gradient(circle at 25% 25%, rgba(94,183,147,.3), transparent 30%), linear-gradient(135deg, #20302b, #111114); }
+.video-poster--five { background: radial-gradient(circle at 72% 30%, rgba(209,98,175,.28), transparent 30%), linear-gradient(135deg, #30202e, #111114); }
+
+.mobile-contact-cta { display: none; }
+
+@media (max-width: 767px) {
+  .competency-grid, .proof-strip { grid-template-columns: 1fr; }
+  .competency-item { min-height: auto; padding: 22px; }
+  .competency-number { margin-bottom: 18px; }
+  .video-poster { min-height: 190px; }
+  .mobile-contact-cta {
+    position: fixed;
+    right: 16px;
+    bottom: 84px;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    color: #171717;
+    background: #fcd36b;
+    border: 0;
+    border-radius: 999px;
+    box-shadow: 0 12px 32px rgba(0,0,0,.35);
+    font-size: 12px;
+    font-weight: 700;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link { transition: none; }
+}

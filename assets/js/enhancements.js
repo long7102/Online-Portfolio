@@ -28,7 +28,7 @@
   });
 
   const revealItems = document.querySelectorAll(
-    '.service-item, .skills-item, .project-item, .blog-post-item, .timeline-item, .clients-item'
+    '.service-item, .competency-item, .proof-strip li, .project-item, .blog-post-item, .timeline-item, .clients-item'
   );
 
   if (reducedMotion || !('IntersectionObserver' in window)) {
@@ -60,7 +60,8 @@
     navLinks.forEach((link) => {
       const active = normalized(link.getAttribute('data-nav-link') || '') === target;
       link.classList.toggle('active', active);
-      link.setAttribute('aria-current', active ? 'page' : 'false');
+      if (active) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
     });
     if (!found) return;
     window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });

@@ -7,11 +7,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#121214">
   <meta name="color-scheme" content="dark light">
-  <meta name="description" content="Portfolio Content Marketing của Nguyễn Việt Long — chiến lược nội dung, AI, hình ảnh và video.">
+  <meta name="description" content="Portfolio Nguyễn Việt Long — Content Marketer giàu kinh nghiệm về chiến lược nội dung, storytelling, AI, sản xuất hình ảnh và video đa nền tảng.">
+  <meta name="author" content="Nguyễn Việt Long">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="keywords" content="Nguyễn Việt Long, Content Marketing, Content Creator, Marketing Executive, Portfolio Content Marketing, Hà Nội">
   <meta property="og:title" content="Portfolio của Nguyễn Việt Long | Content Marketing">
-  <meta property="og:description" content="Sáng tạo nội dung thực chiến. Khám phá portfolio của tôi tại đây.">
-  <meta property="og:image" content="./assets/images/cover.webp">
-  <title>NGUYEN VIET LONG - Personal Portfolio</title>
+  <meta property="og:description" content="Từ insight đến nội dung tạo chuyển đổi — khám phá kinh nghiệm, dự án và năng lực Content Marketing của Nguyễn Việt Long.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:site_name" content="Nguyễn Việt Long Portfolio">
+  <meta property="og:url" content="https://vlong-online-portfolio.vercel.app/">
+  <meta property="og:image" content="https://vlong-online-portfolio.vercel.app/assets/images/cover.webp">
+  <meta property="og:image:alt" content="Portfolio Content Marketing của Nguyễn Việt Long">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nguyễn Việt Long | Content Marketing Portfolio">
+  <meta name="twitter:description" content="Chiến lược nội dung, storytelling, AI và các dự án truyền thông thực chiến.">
+  <meta name="twitter:image" content="https://vlong-online-portfolio.vercel.app/assets/images/cover.webp">
+  <link rel="canonical" href="https://vlong-online-portfolio.vercel.app/">
+  <title>Nguyễn Việt Long | Content Marketing Portfolio</title>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Nguyễn Việt Long",
+      "jobTitle": "Content Marketer",
+      "url": "https://vlong-online-portfolio.vercel.app/",
+      "image": "https://vlong-online-portfolio.vercel.app/assets/images/my-avatar.png",
+      "email": "mailto:ngvietlong712002@gmail.com",
+      "telephone": "+84859802360",
+      "address": {"@type": "PostalAddress", "addressLocality": "Hà Nội", "addressCountry": "VN"},
+      "sameAs": [
+        "https://www.facebook.com/sadthuvotinh/",
+        "https://www.tiktok.com/@absolutely.vlong",
+        "https://www.instagram.com/literally.vlong/"
+      ],
+      "knowsAbout": ["Content Marketing", "Storytelling", "Content Strategy", "AI Content", "Video Production", "Social Media"]
+    }
+  </script>
 
   <!--
     - favicon
@@ -21,8 +53,8 @@
   <!--
     - custom css link
   -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <link rel="stylesheet" href="./assets/css/enhancements.css">
+  <link rel="stylesheet" href="./assets/css/style.css?v=20260927">
+  <link rel="stylesheet" href="./assets/css/enhancements.css?v=20260927">
 
   <!--
     - google font link
@@ -44,6 +76,7 @@
 </script>
 
 <body>
+  <a class="skip-link" href="#main-content">Chuyển tới nội dung chính</a>
   <div class="page-loader" aria-hidden="true">
     <div class="page-loader__mark">VL</div>
     <span class="page-loader__bar"></span>
@@ -61,7 +94,7 @@
     - #MAIN
   -->
 
-  <main>
+  <main id="main-content">
 
     <!--
       - #SIDEBAR
@@ -84,7 +117,7 @@
 
         </div>
 
-        <button class="info_more-btn" data-sidebar-btn>
+        <button class="info_more-btn" type="button" data-sidebar-btn aria-expanded="false" aria-controls="sidebar-contact-details">
           <span>Show Contacts</span>
 
           <ion-icon name="chevron-down"></ion-icon>
@@ -92,7 +125,7 @@
 
       </div>
 
-      <div class="sidebar-info_more">
+      <div class="sidebar-info_more" id="sidebar-contact-details">
 
         <div class="separator"></div>
 
@@ -161,19 +194,19 @@
         <ul class="social-list">
 
           <li class="social-item">
-            <a href="https://www.facebook.com/sadthuvotinh/" class="social-link">
+            <a href="https://www.facebook.com/sadthuvotinh/" class="social-link" aria-label="Facebook của Nguyễn Việt Long">
               <ion-icon name="logo-facebook"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
-            <a href="https://www.tiktok.com/@absolutely.vlong" class="social-link">
+            <a href="https://www.tiktok.com/@absolutely.vlong" class="social-link" aria-label="TikTok của Nguyễn Việt Long">
               <ion-icon name="logo-tiktok"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
-            <a href="https://www.instagram.com/literally.vlong/" class="social-link">
+            <a href="https://www.instagram.com/literally.vlong/" class="social-link" aria-label="Instagram của Nguyễn Việt Long">
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
           </li>
@@ -198,30 +231,30 @@
         - #NAVBAR
       -->
 
-      <nav class="navbar">
+      <nav class="navbar" aria-label="Điều hướng chính">
 
         <ul class="navbar-list">
 
           <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link="about">Về tôi</button>
+            <button class="navbar-link  active" type="button" data-nav-link="about">Về tôi</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link="resume">Hồ sơ</button>
+            <button class="navbar-link" type="button" data-nav-link="resume">Hồ sơ</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link="portfolio">Portfolio</button>
+            <button class="navbar-link" type="button" data-nav-link="portfolio">Portfolio</button>
           </li>
 
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link="blog">Nội dung khác</button>
+            <button class="navbar-link" type="button" data-nav-link="blog">Nội dung khác</button>
           </li>
           <li class="navbar-item">
-            <button class="navbar-link" data-nav-link="contact">Liên hệ</button>
+            <button class="navbar-link" type="button" data-nav-link="contact">Liên hệ</button>
           </li>
           <li class="navbar-item">
-            <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme">
+            <button class="theme-toggle-btn" type="button" id="theme-toggle" aria-label="Chuyển chế độ sáng tối">
               <ion-icon name="moon-outline" id="theme-icon"></ion-icon>
             </button>
           </li>
@@ -254,6 +287,10 @@
               <button class="hero-btn hero-btn-secondary" type="button" data-jump-page="contact">
                 Trao đổi công việc
               </button>
+              <a class="hero-btn hero-btn-secondary" href="./assets/cv/nguyen-viet-long-content-marketing.pdf"
+                download="Nguyen-Viet-Long-CV-Content-Marketing.pdf">
+                Tải CV <ion-icon name="download-outline"></ion-icon>
+              </a>
             </div>
           </div>
           <div class="hero-visual" aria-hidden="true">
@@ -296,8 +333,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg
-                " alt="design icon" width="40">
+                <img src="./assets/images/icon-design.svg" alt="" width="40" aria-hidden="true">
               </div>
 
               <div class="service-content-box">
@@ -312,7 +348,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/presentation.png" alt="P Global icon" width="40">
+                <img src="./assets/images/presentation.png" alt="" width="40" aria-hidden="true">
               </div>
 
               <div class="service-content-box">
@@ -327,7 +363,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/chatgpt.png" alt="mobile app icon" width="40">
+                <img src="./assets/images/chatgpt.png" alt="" width="40" aria-hidden="true">
               </div>
 
               <div class="service-content-box">
@@ -343,7 +379,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
+                <img src="./assets/images/icon-photo.svg" alt="" width="40" aria-hidden="true">
               </div>
 
               <div class="service-content-box">
@@ -359,7 +395,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/video-editing.png" alt="camera icon" width="40">
+                <img src="./assets/images/video-editing.png" alt="" width="40" aria-hidden="true">
               </div>
 
               <div class="service-content-box">
@@ -376,7 +412,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/social-media.png" alt="camera icon" width="40">
+                <img src="./assets/images/social-media.png" alt="" width="40" aria-hidden="true">
               </div>
 
               <div class="service-content-box">
@@ -398,102 +434,43 @@
 
           <h3 class="h3 skills-title">Kĩ năng</h3>
 
-          <ul class="skills-list content-card">
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Lên lịch & thiết kế nội dung</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" data-width="90%"></div>
-              </div>
-
+          <ul class="competency-grid">
+            <li class="competency-item">
+              <span class="competency-number">01</span>
+              <h4>Lập kế hoạch nội dung đa nền tảng</h4>
+              <p>Xây dựng lịch nội dung, thông điệp và kế hoạch triển khai phù hợp từng kênh.</p>
             </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Sử dụng AI</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" data-width="90%"></div>
-              </div>
-
+            <li class="competency-item">
+              <span class="competency-number">02</span>
+              <h4>Storytelling & nội dung theo trend</h4>
+              <p>Biến insight khách hàng và xu hướng thành nội dung đúng giọng thương hiệu.</p>
             </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Nghiên cứu khách hàng</h5>
-                <data value="70">70%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" data-width="70%"></div>
-              </div>
-
+            <li class="competency-item">
+              <span class="competency-number">03</span>
+              <h4>AI trong nghiên cứu và sản xuất</h4>
+              <p>Ứng dụng công cụ AI để tăng tốc nghiên cứu, phát triển ý tưởng và tối ưu đầu ra.</p>
             </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Thiết kế hình ảnh</h5>
-                <data value="80">80%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" data-width="80%"></div>
-              </div>
-
+            <li class="competency-item">
+              <span class="competency-number">04</span>
+              <h4>Sản xuất video & trực tiếp lên hình</h4>
+              <p>Xây dựng kịch bản, quay dựng video ngắn và dẫn dắt tương tác với khán giả.</p>
             </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Chỉnh sửa video</h5>
-                <data value="70">70%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" data-width="70%"></div>
-              </div>
-
+            <li class="competency-item">
+              <span class="competency-number">05</span>
+              <h4>Quản lý quy trình nội dung</h4>
+              <p>Tổ chức tiến độ sản xuất, phối hợp tài nguyên và duy trì nội dung hằng ngày.</p>
             </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Viết bài</h5>
-                <data value="70">70%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" data-width="70%"></div>
-              </div>
-
+            <li class="competency-item">
+              <span class="competency-number">06</span>
+              <h4>Đo lường và tối ưu hiệu suất</h4>
+              <p>Phân tích chỉ số tương tác để rút kinh nghiệm và cải thiện chiến dịch tiếp theo.</p>
             </li>
+          </ul>
 
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Trực tiếp lên hình</h5>
-                <data value="60">60%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" data-width="60%"></div>
-              </div>
-
-            </li>
-
-
-
+          <ul class="proof-strip" aria-label="Kết quả nổi bật">
+            <li><strong>+20%</strong><span>Tương tác tự nhiên tại Highway Menswear</span></li>
+            <li><strong>5.000</strong><span>Tương tác trung bình mỗi bài tại BeatVN</span></li>
+            <li><strong>30–50M</strong><span>Doanh thu duy trì mỗi tháng tại P Global</span></li>
           </ul>
 
         </section>
@@ -657,37 +634,37 @@
 
             <li class="clients-item">
               <a href="https://www.facebook.com/highway.vn">
-                <img src="./assets/images/logo-1-color.png" alt="client logo">
+                <img src="./assets/images/logo-1-color.png" alt="Highway Menswear">
               </a>
             </li>
 
             <li class="clients-item">
               <a href="https://www.facebook.com/mincluevietnam">
-                <img src="./assets/images/logo-2-color.webp" alt="client logo">
+                <img src="./assets/images/logo-2-color.webp" alt="Minclue Fitness">
               </a>
             </li>
 
             <li class="clients-item">
               <a href="https://www.facebook.com/beatvn.network">
-                <img src="./assets/images/logo-3-color.webp" alt="client logo">
+                <img src="./assets/images/logo-3-color.webp" alt="BeatVN">
               </a>
             </li>
 
             <li class="clients-item">
               <a href="#">
-                <img src="./assets/images/logo-4-color.webp" alt="client logo">
+                <img src="./assets/images/logo-4-color.webp" alt="P Global">
               </a>
             </li>
 
             <li class="clients-item">
               <a href="https://www.facebook.com/LemonadeCosmetics">
-                <img src="./assets/images/logo-5-color.webp" alt="client logo">
+                <img src="./assets/images/logo-5-color.webp" alt="Lemonade Cosmetics">
               </a>
             </li>
 
             <li class="clients-item">
               <a href="https://www.facebook.com/FanmenVN.Cosmetic">
-                <img src="./assets/images/logo-6-color.webp" alt="client logo">
+                <img src="./assets/images/logo-6-color.webp" alt="Fanmen">
               </a>
             </li>
 
@@ -972,7 +949,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-1.webp" alt="P Global" loading="lazy">
+                  <img src="./assets/images/project-1.webp" alt="Hậu trường quay chụp nội dung cho P Global" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Hỗ trợ quay chụp & ghi hình</h3>
@@ -990,7 +967,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-1.1.webp" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-1.1.webp" alt="Hậu trường quay chụp bộ sưu tập Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Hỗ trợ quay chụp & ghi hình</h3>
@@ -1008,7 +985,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-2.webp" alt="P Global" loading="lazy">
+                  <img src="./assets/images/project-2.webp" alt="Thiết kế nội dung sản phẩm sữa hạt Gumilac Mama" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Sữa hạt Gumilac Mama</h3>
@@ -1026,7 +1003,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-3.webp" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-3.webp" alt="Chiến dịch Season of Gifting của Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Season of Gifting</h3>
@@ -1044,7 +1021,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-4.webp" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-4.webp" alt="Ảnh bìa website Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Ảnh bìa Website</h3>
@@ -1062,7 +1039,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-5.webp" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-5.webp" alt="Bộ bài đăng Facebook tháng 11 đến tháng 2 của Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Bài đăng Facebook T11-T2</h3>
@@ -1080,7 +1057,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-6.webp" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-6.webp" alt="Ảnh blog thời trang Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Ảnh Blog</h3>
@@ -1098,7 +1075,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-10.webp" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-10.webp" alt="Bộ bài đăng Facebook tháng 2 đến tháng 5 của Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Bài đăng Facebook T2-T5</h3>
@@ -1116,7 +1093,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-7.webp" alt="P Global" loading="lazy">
+                  <img src="./assets/images/project-7.webp" alt="Nội dung sản phẩm bánh dinh dưỡng rong biển P Global" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Bánh dinh dưỡng rong biển</h3>
@@ -1134,7 +1111,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-8.webp" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-8.webp" alt="Bộ Story hằng ngày tháng 12 đến tháng 2 của Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Story mỗi ngày T12-T2</h3>
@@ -1153,7 +1130,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-9.webp" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-9.webp" alt="Bộ Story hằng ngày tháng 12 đến tháng 4 của Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Story mỗi ngày T12-T4</h3>
@@ -1171,7 +1148,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-11.webp" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-11.webp" alt="Bộ Story nổi bật của Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Story nổi bật</h3>
@@ -1189,7 +1166,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-12.webp" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-12.webp" alt="Thiết kế voucher quà tặng Minclue Fitness" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Voucher quà tặng</h3>
@@ -1207,7 +1184,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-15.webp" alt="BeatVn" loading="lazy">
+                  <img src="./assets/images/project-15.webp" alt="Bộ bài đăng Facebook tháng 7 của BeatVN" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Bài đăng Facebook T7</h3>
@@ -1225,7 +1202,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-16.webp" alt="BeatVn" loading="lazy">
+                  <img src="./assets/images/project-16.webp" alt="Bộ bài đăng Facebook tháng 9 của BeatVN" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Bài đăng Facebook T9</h3>
@@ -1243,7 +1220,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-13.webp" alt="Minclue Fitness" loading="lazy">
+                  <img src="./assets/images/project-13.webp" alt="Bộ Story hằng ngày của Minclue Fitness" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Story mỗi ngày</h3>
@@ -1262,7 +1239,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-14.webp" alt="Minclue Fitness" loading="lazy">
+                  <img src="./assets/images/project-14.webp" alt="Bộ bài đăng Facebook của Minclue Fitness" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Bài đăng Facebook</h3>
@@ -1300,11 +1277,10 @@
           <ul class="blog-posts-list">
 
             <li class="blog-post-item">
-              <a href="#" data-video-src="./assets/videos/video1.mp4" class="blog-video-btn">
+              <a href="#" data-video-src="./assets/videos/video1.mp4" class="blog-video-btn" aria-label="Phát video: Vai ông chồng gia trưởng">
 
                 <figure class="blog-banner-box">
-                  <video src="./assets/videos/video1.mp4" preload="none" muted playsinline
-                    style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;"></video>
+                  <div class="video-poster video-poster--one" aria-hidden="true"><span>01</span><ion-icon name="play"></ion-icon></div>
                 </figure>
 
                 <div class="blog-content">
@@ -1324,11 +1300,10 @@
             </li>
 
             <li class="blog-post-item">
-              <a href="#" data-video-src="./assets/videos/video2.mp4" class="blog-video-btn">
+              <a href="#" data-video-src="./assets/videos/video2.mp4" class="blog-video-btn" aria-label="Phát video: Vai bạn nam áo trắng">
 
                 <figure class="blog-banner-box">
-                  <video src="./assets/videos/video2.mp4" preload="none" muted playsinline
-                    style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;"></video>
+                  <div class="video-poster video-poster--two" aria-hidden="true"><span>02</span><ion-icon name="play"></ion-icon></div>
                 </figure>
 
                 <div class="blog-content">
@@ -1348,11 +1323,10 @@
             </li>
 
             <li class="blog-post-item">
-              <a href="#" data-video-src="./assets/videos/video3.mp4" class="blog-video-btn">
+              <a href="#" data-video-src="./assets/videos/video3.mp4" class="blog-video-btn" aria-label="Phát video: Vai bạn nam shipper">
 
                 <figure class="blog-banner-box">
-                  <video src="./assets/videos/video3.mp4" preload="none" muted playsinline
-                    style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;"></video>
+                  <div class="video-poster video-poster--three" aria-hidden="true"><span>03</span><ion-icon name="play"></ion-icon></div>
                 </figure>
 
                 <div class="blog-content">
@@ -1372,11 +1346,10 @@
             </li>
 
             <li class="blog-post-item">
-              <a href="#" data-video-src="./assets/videos/video4.mp4" class="blog-video-btn">
+              <a href="#" data-video-src="./assets/videos/video4.mp4" class="blog-video-btn" aria-label="Phát video: Vai bạn nam">
 
                 <figure class="blog-banner-box">
-                  <video src="./assets/videos/video4.mp4" preload="none" muted playsinline
-                    style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;"></video>
+                  <div class="video-poster video-poster--four" aria-hidden="true"><span>04</span><ion-icon name="play"></ion-icon></div>
                 </figure>
 
                 <div class="blog-content">
@@ -1397,11 +1370,10 @@
 
 
             <li class="blog-post-item">
-              <a href="#" data-video-src="./assets/videos/video5.mp4" class="blog-video-btn">
+              <a href="#" data-video-src="./assets/videos/video5.mp4" class="blog-video-btn" aria-label="Phát video: Video gắn sản phẩm TikTok">
 
                 <figure class="blog-banner-box">
-                  <video src="./assets/videos/video5.mp4" preload="none" muted playsinline
-                    style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;"></video>
+                  <div class="video-poster video-poster--five" aria-hidden="true"><span>05</span><ion-icon name="play"></ion-icon></div>
                 </figure>
 
                 <div class="blog-content">
@@ -1548,6 +1520,20 @@
 
             <div class="cta-buttons-group">
 
+              <a href="./assets/cv/nguyen-viet-long-content-marketing.pdf"
+                download="Nguyen-Viet-Long-CV-Content-Marketing.pdf"
+                class="cta-btn secondary-cta clickable-target text-large">
+                <ion-icon name="download-outline"></ion-icon>
+                <span>Tải CV Content Marketing</span>
+              </a>
+
+              <a href="./assets/cv/nguyen-viet-long-marketing-executive.pdf"
+                download="Nguyen-Viet-Long-CV-Marketing-Executive.pdf"
+                class="cta-btn secondary-cta clickable-target text-large">
+                <ion-icon name="download-outline"></ion-icon>
+                <span>Tải CV Marketing Executive</span>
+              </a>
+
               <a href="tel:+84859802360" class="cta-btn secondary-cta clickable-target text-large">
                 <ion-icon name="call-outline"></ion-icon>
                 <span>SĐT: 0859802360</span>
@@ -1579,6 +1565,11 @@
 
   </main>
 
+  <button class="mobile-contact-cta" type="button" data-jump-page="contact">
+    <ion-icon name="chatbubble-ellipses-outline" aria-hidden="true"></ion-icon>
+    Trao đổi công việc
+  </button>
+
 
 
 
@@ -1587,8 +1578,8 @@
   <!--
     - custom js link
   -->
-  <script src="./assets/js/script.js" defer></script>
-  <script src="./assets/js/enhancements.js" defer></script>
+  <script src="./assets/js/script.js?v=20260927" defer></script>
+  <script src="./assets/js/enhancements.js?v=20260927" defer></script>
 
   <!--
     - ionicon link

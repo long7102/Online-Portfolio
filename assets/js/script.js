@@ -13,7 +13,10 @@ const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
 if (sidebarBtn && sidebar) {
-  sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
+  sidebarBtn.addEventListener("click", function () {
+    elementToggleFunc(sidebar);
+    this.setAttribute("aria-expanded", String(sidebar.classList.contains("active")));
+  });
 }
 
 
@@ -155,6 +158,9 @@ const projectItems = document.querySelectorAll(".project-item a");
 
 const lightboxContainer = document.createElement("div");
 lightboxContainer.id = "project-lightbox";
+lightboxContainer.setAttribute("role", "dialog");
+lightboxContainer.setAttribute("aria-modal", "true");
+lightboxContainer.setAttribute("aria-label", "Xem ảnh dự án");
 lightboxContainer.setAttribute("style", `
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   background: rgba(10, 10, 10, 0.93); z-index: 9999;
@@ -164,6 +170,7 @@ lightboxContainer.setAttribute("style", `
 `);
 
 const lightboxImg = document.createElement("img");
+lightboxImg.alt = "Ảnh dự án phóng to";
 lightboxImg.setAttribute("style", `
   max-width: 90%; max-height: 85%; border-radius: 12px;
   transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -217,6 +224,9 @@ const createCustomVideoModal = () => {
   // 1. Tạo lớp nền mờ kính (Overlay)
   const overlay = document.createElement("div");
   overlay.id = "video-modal-overlay";
+  overlay.setAttribute("role", "dialog");
+  overlay.setAttribute("aria-modal", "true");
+  overlay.setAttribute("aria-label", "Trình phát video dự án");
   overlay.setAttribute("style", `
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(10, 10, 10, 0.8); z-index: 10000;
@@ -239,7 +249,8 @@ const createCustomVideoModal = () => {
   // Thẻ video gốc
   const video = document.createElement("video");
   video.id = "main-custom-video";
-  video.setAttribute("preload", "metadata");
+  video.setAttribute("preload", "none");
+  video.setAttribute("playsinline", "");
   video.setAttribute("style", "width: 100%; height: 100%; object-fit: contain; display: block; cursor: pointer;");
 
   // 3. THANH ĐIỀU KHIỂN CUSTOM (CONTROLS BAR)
@@ -271,6 +282,7 @@ const createCustomVideoModal = () => {
 
   const playBtn = document.createElement("button");
   playBtn.innerHTML = "▶";
+  playBtn.setAttribute("aria-label", "Phát hoặc tạm dừng video");
   playBtn.setAttribute("style", "background: none; border: none; color: #fff; font-size: 18px; cursor: pointer; width: 25px; text-align: left; transition: color 0.2s;");
 
   const timeDisplay = document.createElement("span");
@@ -283,6 +295,7 @@ const createCustomVideoModal = () => {
 
   const volumeBtn = document.createElement("button");
   volumeBtn.innerHTML = "🔊"; // Icon loa
+  volumeBtn.setAttribute("aria-label", "Tắt hoặc bật âm thanh");
   volumeBtn.setAttribute("style", "background: none; border: none; color: #fff; font-size: 16px; cursor: pointer; padding: 0;");
 
   const volumeSlider = document.createElement("input");
@@ -291,6 +304,7 @@ const createCustomVideoModal = () => {
   volumeSlider.setAttribute("max", "1");
   volumeSlider.setAttribute("step", "0.05");
   volumeSlider.setAttribute("value", "1");
+  volumeSlider.setAttribute("aria-label", "Âm lượng video");
   volumeSlider.setAttribute("style", `
     width: 0px; opacity: 0; visibility: hidden; transition: all 0.3s ease;
     height: 4px; cursor: pointer; accent-color: #FFD36B;
@@ -314,6 +328,7 @@ const createCustomVideoModal = () => {
   // Nút chỉnh tốc độ phát (Playback Speed Button)
   const speedBtn = document.createElement("button");
   speedBtn.innerHTML = "1.0x";
+  speedBtn.setAttribute("aria-label", "Thay đổi tốc độ phát");
   speedBtn.setAttribute("style", `
     background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.1);
     color: #FFD36B; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 6px;
@@ -322,10 +337,12 @@ const createCustomVideoModal = () => {
 
   const fullscreenBtn = document.createElement("button");
   fullscreenBtn.innerHTML = "⛶";
+  fullscreenBtn.setAttribute("aria-label", "Xem toàn màn hình");
   fullscreenBtn.setAttribute("style", "background: none; border: none; color: #fff; font-size: 18px; cursor: pointer; transition: color 0.2s;");
 
   const closeBtn = document.createElement("button");
   closeBtn.innerHTML = "✕ Đóng";
+  closeBtn.setAttribute("aria-label", "Đóng trình phát video");
   closeBtn.setAttribute("style", "background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 6px 14px; border-radius: 8px; font-size: 12px; cursor: pointer; font-weight: 600; transition: all 0.2s;");
 
   rightControls.appendChild(speedBtn);
@@ -431,7 +448,8 @@ const createCustomVideoModal = () => {
   // Tắt và Reset trình phát
   const shutdownVideo = () => {
     video.pause();
-    video.src = "";
+    video.removeAttribute("src");
+    video.load();
     video.playbackRate = 1; // Trả tốc độ về mặc định khi đóng
     speedBtn.innerHTML = "1.0x";
     currentSpeedIndex = 0;
@@ -479,6 +497,9 @@ const createImageModal = () => {
   // 1. Tạo lớp nền mờ kính phía sau (Overlay)
   const overlay = document.createElement("div");
   overlay.id = "image-modal-overlay";
+  overlay.setAttribute("role", "dialog");
+  overlay.setAttribute("aria-modal", "true");
+  overlay.setAttribute("aria-label", "Xem ảnh hồ sơ diễn xuất");
   overlay.setAttribute("style", `
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(10, 10, 10, 0.75); z-index: 10005;
@@ -497,6 +518,7 @@ const createImageModal = () => {
 
   const bigImg = document.createElement("img");
   bigImg.id = "modal-image-target";
+  bigImg.alt = "Hồ sơ diễn xuất của Nguyễn Việt Long";
   bigImg.setAttribute("style", `
     max-width: 100%; max-height: 85vh; border-radius: 16px; object-fit: contain;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
@@ -532,7 +554,7 @@ document.body.addEventListener("click", function (e) {
 
     if (imageUrl && overlay && bigImg) {
       bigImg.src = imageUrl;
-      bigImg.alt = imageBtn.querySelector("img") ? imageBtn.querySelector("img").alt : "Profile Image";
+      bigImg.alt = imageBtn.querySelector("img") ? imageBtn.querySelector("img").alt : "Hồ sơ diễn xuất của Nguyễn Việt Long";
       
       // Kích hoạt hiệu ứng zoom và mờ nền
       overlay.style.opacity = "1";

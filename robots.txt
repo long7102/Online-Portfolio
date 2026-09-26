@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vlong-online-portfolio.vercel.app/sitemap.xml
