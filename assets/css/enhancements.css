@@ -464,9 +464,14 @@ article { border-radius: 28px; overflow: hidden; }
   }
   .navbar-link { padding-block: 16px; }
   .navbar-link::after { bottom: 7px; }
+  .portfolio-hero { padding-top: 128px; }
   .project-list { grid-template-columns: repeat(3, 1fr); }
   .project-item:first-child { grid-column: span 2; }
   .project-item:first-child .project-img { aspect-ratio: 2 / 1; }
+}
+
+@media (min-width: 1024px) and (max-width: 1249px) {
+  .portfolio-hero { padding-top: 118px; }
 }
 
 @media (max-width: 1023px) {
