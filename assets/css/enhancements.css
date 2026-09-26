@@ -514,6 +514,62 @@ body.light-mode article { background: rgba(255,253,248,.88); }
 body.light-mode .portfolio-hero { background: radial-gradient(circle at 83% 45%, rgba(217,119,6,.12), transparent 25rem); }
 body.light-mode .hero-btn-primary { color: #fff; background: #b76500; border-color: #b76500; }
 
+/* Light mode: muted contrast for long viewing sessions */
+body.light-mode {
+  --surface-0: #dededb;
+  --surface-1: #f3f2ef;
+  --surface-2: #e9e8e4;
+  --surface-3: #deddd8;
+  --line-soft: rgba(31, 32, 35, .14);
+  --accent: #a95700;
+  --accent-warm: #c46b0a;
+  --orange-yellow-crayola: #a95700;
+  --light-gray: #333438;
+  --light-gray-70: rgba(45, 46, 50, .78);
+  background: #dededb;
+}
+body.light-mode::before { opacity: .035; }
+body.light-mode .sidebar,
+body.light-mode article {
+  background: rgba(243, 242, 239, .96);
+  box-shadow: 0 18px 50px rgba(27, 29, 32, .14);
+  backdrop-filter: blur(12px);
+}
+body.light-mode .navbar {
+  background: rgba(243, 242, 239, .94);
+  border-color: rgba(31, 32, 35, .13);
+  box-shadow: 0 8px 24px rgba(27, 29, 32, .1);
+}
+body.light-mode .portfolio-hero {
+  background:
+    radial-gradient(circle at 83% 45%, rgba(169, 87, 0, .055), transparent 20rem),
+    linear-gradient(145deg, rgba(255,255,255,.3), rgba(222,221,216,.18));
+}
+body.light-mode .portfolio-hero::after { opacity: .22; }
+body.light-mode .portfolio-hero h2 em {
+  background: linear-gradient(100deg, #9a4e00, #c46b0a);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+body.light-mode .hero-monogram {
+  color: #a95700;
+  text-shadow: none;
+}
+body.light-mode .hero-orbit { border-color: rgba(169, 87, 0, .18); }
+body.light-mode .hero-orbit-two { border-color: rgba(31, 32, 35, .1); }
+body.light-mode .hero-visual p { color: rgba(31, 32, 35, .46); }
+body.light-mode .hero-btn-secondary,
+body.light-mode .impact-grid li,
+body.light-mode .service-item,
+body.light-mode .competency-item {
+  background: rgba(255,255,255,.34);
+}
+body.light-mode .hero-btn-primary {
+  color: #fff;
+  background: #9a4e00;
+  border-color: #9a4e00;
+}
+
 /* Accessibility, evidence-led skills and lightweight media previews */
 .skip-link {
   position: fixed;
