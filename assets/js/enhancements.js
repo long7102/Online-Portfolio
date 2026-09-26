@@ -71,6 +71,10 @@
     link.addEventListener('click', () => openPage(link.getAttribute('data-nav-link') || ''));
   });
 
+  document.querySelectorAll('[data-jump-page]').forEach((button) => {
+    button.addEventListener('click', () => openPage(button.getAttribute('data-jump-page') || ''));
+  });
+
   const initialPage = decodeURIComponent(location.hash.slice(1));
   if (initialPage) openPage(initialPage, false);
 
