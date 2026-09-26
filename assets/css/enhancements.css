@@ -687,3 +687,60 @@ body.light-mode .hero-btn-primary {
 @media (prefers-reduced-motion: reduce) {
   .skip-link { transition: none; }
 }
+
+/* Portfolio discovery, compact capabilities and conversion tools */
+.service-item { min-height: 128px; padding: 22px; align-items: flex-start; }
+.service-item-text { max-width: 58ch; }
+.brief-form :is(input, select, textarea) {
+  width: 100%;
+  color: var(--white-2);
+  background: rgba(255,255,255,.035);
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+}
+.project-item[hidden] { display: none !important; }
+
+.case-study-modal {
+  position: fixed; inset: 0; z-index: 12000; display: grid; place-items: center;
+  padding: 24px; background: rgba(8,8,10,.86); backdrop-filter: blur(14px);
+}
+.case-study-modal[hidden] { display: none; }
+.case-study-dialog {
+  position: relative; width: min(880px, 94vw); max-height: 88vh; overflow: auto;
+  padding: clamp(24px, 5vw, 48px); color: var(--white-2); background: var(--surface-1, #18181b);
+  border: 1px solid var(--line-soft); border-radius: 26px; box-shadow: 0 30px 90px rgba(0,0,0,.45);
+}
+.case-study-close { position: absolute; top: 18px; right: 18px; width: 42px; height: 42px; color: var(--white-2); background: transparent; border: 1px solid var(--line-soft); border-radius: 50%; }
+.case-study-kicker { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.case-study-dialog h2 { max-width: 680px; margin: 14px 0 24px; font-size: clamp(28px, 5vw, 48px); line-height: 1.12; }
+.case-study-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+.case-study-grid div { padding: 18px; background: rgba(255,255,255,.035); border: 1px solid var(--line-soft); border-radius: 16px; }
+.case-study-grid strong { display: block; margin-bottom: 7px; color: var(--accent); font-size: 13px; }
+.case-study-dialog p { color: var(--light-gray-70); line-height: 1.75; }
+.case-study-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+
+.video-transcript { margin: 0 20px 20px; padding-top: 12px; border-top: 1px solid var(--line-soft); }
+.video-transcript summary { color: var(--accent); font-size: 12px; font-weight: 600; cursor: pointer; }
+.video-transcript p { margin-top: 10px; color: var(--light-gray-70); font-size: 12px; line-height: 1.6; }
+
+.contact-form-box {
+  display: grid; grid-template-columns: .8fr 1.2fr; gap: 36px; margin-top: 28px; padding: clamp(24px, 4vw, 38px);
+  border: 1px solid var(--line-soft); border-radius: 22px; background: rgba(255,255,255,.025);
+}
+.brief-intro h3 { margin: 10px 0 14px; }
+.brief-intro > p:last-child { color: var(--light-gray-70); font-size: 13px; line-height: 1.7; }
+.brief-form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.brief-form label { display: grid; gap: 8px; color: var(--light-gray); font-size: 12px; font-weight: 600; }
+.brief-form :is(input, select, textarea) { padding: 13px 14px; font: inherit; resize: vertical; }
+.brief-form-wide, .brief-submit { grid-column: 1 / -1; }
+.brief-submit { justify-self: start; border: 0; }
+body.light-mode .brief-form :is(input, select, textarea),
+body.light-mode .contact-form-box,
+body.light-mode .case-study-grid div { background: rgba(255,255,255,.5); }
+
+@media (max-width: 767px) {
+  .service-item { padding: 18px; }
+  .contact-form-box { grid-template-columns: 1fr; }
+  .case-study-grid, .brief-form { grid-template-columns: 1fr; }
+  .contact-form-box { gap: 24px; }
+}

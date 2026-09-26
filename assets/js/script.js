@@ -195,6 +195,7 @@ const resizeLightboxForDesktop = () => {
 if (projectItems.length > 0) {
   projectItems.forEach(item => {
     item.addEventListener("click", function (e) {
+      if (this.hasAttribute("data-case-study")) return;
       e.preventDefault(); 
       const targetImg = this.querySelector(".project-img img");
       if (targetImg) {

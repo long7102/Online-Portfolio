@@ -17,12 +17,14 @@
   <meta property="og:locale" content="vi_VN">
   <meta property="og:site_name" content="Nguyễn Việt Long Portfolio">
   <meta property="og:url" content="https://vlong-online-portfolio.vercel.app/">
-  <meta property="og:image" content="https://vlong-online-portfolio.vercel.app/assets/images/cover.webp">
+  <meta property="og:image" content="https://vlong-online-portfolio.vercel.app/assets/images/og-portfolio.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Portfolio Content Marketing của Nguyễn Việt Long">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Nguyễn Việt Long | Content Marketing Portfolio">
   <meta name="twitter:description" content="Chiến lược nội dung, storytelling, AI và các dự án truyền thông thực chiến.">
-  <meta name="twitter:image" content="https://vlong-online-portfolio.vercel.app/assets/images/cover.webp">
+  <meta name="twitter:image" content="https://vlong-online-portfolio.vercel.app/assets/images/og-portfolio.png">
   <link rel="canonical" href="https://vlong-online-portfolio.vercel.app/">
   <title>Nguyễn Việt Long | Content Marketing Portfolio</title>
   <script type="application/ld+json">
@@ -336,7 +338,7 @@
                 <h4 class="h4 service-item-title">Sản xuất nội dung</h4>
 
                 <p class="service-item-text">
-                  Lập kế hoạch và trực tiếp sản xuất nội dung đa nền tảng </p>
+                  Lập kế hoạch theo mục tiêu, xây dựng lịch nội dung và trực tiếp sản xuất bài viết, hình ảnh, video ngắn cho từng nền tảng.</p>
               </div>
 
             </li>
@@ -351,7 +353,7 @@
                 <h4 class="h4 service-item-title">Phân tích khách hàng</h4>
 
                 <p class="service-item-text">
-                  Phân tích Insight khách hàng và tối ưu, đưa ra kế hoạch truyền thông </p>
+                  Nghiên cứu hành vi, pain point và phản hồi của khách hàng để xác định thông điệp, góc tiếp cận và kế hoạch truyền thông.</p>
               </div>
 
             </li>
@@ -366,7 +368,7 @@
                 <h4 class="h4 service-item-title">Ứng dụng AI</h4>
 
                 <p class="service-item-text">
-                  Sử dụng các công cụ AI khác nhau để tối ưu hiệu suất công việc
+                  Ứng dụng AI cho nghiên cứu, phát triển ý tưởng, xây dựng outline và rút ngắn thời gian sản xuất nhưng vẫn kiểm soát chất lượng.
                 </p>
               </div>
 
@@ -382,7 +384,7 @@
                 <h4 class="h4 service-item-title">Quay & Chụp sản phẩm</h4>
 
                 <p class="service-item-text">
-                  Trực tiếp ghi hình và đóng góp vào quá trình quay chụp hình ảnh/video chất lượng cao
+                  Lên shot list, hỗ trợ bối cảnh, trực tiếp ghi hình và lên hình trong các video tình huống, quảng cáo sản phẩm.
                 </p>
               </div>
 
@@ -398,7 +400,7 @@
                 <h4 class="h4 service-item-title">Chỉnh sửa</h4>
 
                 <p class="service-item-text">
-                  Trực tiếp thực thi và chỉnh sửa nội dung bám sát theo lịch đã đề ra
+                  Chỉnh sửa nội dung, hình ảnh và video theo nhận diện thương hiệu; bảo đảm đầu ra đúng thông điệp và tiến độ.
                 </p>
               </div>
 
@@ -415,7 +417,7 @@
                 <h4 class="h4 service-item-title">Đăng tải nội dung</h4>
 
                 <p class="service-item-text">
-                  Đăng tải nội dung và giám sát, báo cáo về nội dung đã đăng </p>
+                  Vận hành lịch đăng, theo dõi chỉ số tương tác, tổng hợp báo cáo và đề xuất hướng tối ưu cho chu kỳ tiếp theo.</p>
               </div>
 
             </li>
@@ -1555,6 +1557,21 @@
           </div>
         </section>
 
+        <section class="contact-form-box" aria-labelledby="brief-title">
+          <div class="brief-intro">
+            <p class="section-kicker">Project brief</p>
+            <h3 class="h3" id="brief-title">Gửi nhanh yêu cầu hợp tác</h3>
+            <p>Điền vài thông tin cơ bản; website sẽ tạo sẵn một email để bạn kiểm tra trước khi gửi.</p>
+          </div>
+          <form class="brief-form" id="brief-form">
+            <label>Họ tên<input name="name" required autocomplete="name" placeholder="Tên của bạn"></label>
+            <label>Email<input name="email" type="email" required autocomplete="email" placeholder="email@company.com"></label>
+            <label class="brief-form-wide">Loại dự án<select name="project"><option>Content Marketing</option><option>Social Media</option><option>Video ngắn</option><option>Creative Campaign</option><option>Khác</option></select></label>
+            <label class="brief-form-wide">Mô tả<textarea name="message" required rows="4" placeholder="Mục tiêu, phạm vi và thời gian dự kiến…"></textarea></label>
+            <button class="cta-btn primary-cta brief-submit" type="submit"><ion-icon name="mail-outline"></ion-icon>Tạo email liên hệ</button>
+          </form>
+        </section>
+
       </article>
 
     </div>
@@ -1576,6 +1593,7 @@
   -->
   <script src="./assets/js/script.js?v=20260927-2" defer></script>
   <script src="./assets/js/enhancements.js?v=20260927-2" defer></script>
+  <script src="./assets/js/features.js?v=20260927-3" defer></script>
 
   <!--
     - ionicon link

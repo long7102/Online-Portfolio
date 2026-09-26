@@ -5,4 +5,8 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url><loc>https://vlong-online-portfolio.vercel.app/case-studies/highway-menswear.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://vlong-online-portfolio.vercel.app/case-studies/beatvn.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://vlong-online-portfolio.vercel.app/case-studies/p-global.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://vlong-online-portfolio.vercel.app/case-studies/minclue-fitness.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
