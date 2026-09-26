@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#121214">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="Portfolio Content Marketing của Nguyễn Việt Long — chiến lược nội dung, AI, hình ảnh và video.">
   <meta property="og:title" content="Portfolio của Nguyễn Việt Long | Content Marketing">
   <meta property="og:description" content="Sáng tạo nội dung thực chiến. Khám phá portfolio của tôi tại đây.">
-  <meta property="og:image" content="./assets/images/cover.jpg">
+  <meta property="og:image" content="./assets/images/cover.webp">
   <title>NGUYEN VIET LONG - Personal Portfolio</title>
 
   <!--
@@ -19,13 +22,15 @@
     - custom css link
   -->
   <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/enhancements.css">
 
   <!--
     - google font link
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap&subset=vietnamese"
+  <link rel="preload" as="image" href="./assets/images/my-avatar.png" fetchpriority="high">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
 </head>
 <!-- Google tag (gtag.js) -->
@@ -38,10 +43,11 @@
   gtag('config', 'G-Z6F8L7M4TS');
 </script>
 
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap"
-  rel="stylesheet">
-
 <body>
+  <div class="page-loader" aria-hidden="true">
+    <div class="page-loader__mark">VL</div>
+    <span class="page-loader__bar"></span>
+  </div>
   <div id="falling-letter" class="falling-letter">
     <div class="letter-content">
       <img src="./assets/images/thank-you.gif" alt="Cảm ơn" class="letter-img">
@@ -67,7 +73,7 @@
       <div class="sidebar-info">
 
         <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.png" alt="Nguyễn Việt Long" width="120">
+          <img src="./assets/images/my-avatar.png" alt="Nguyễn Việt Long" width="120" height="120" fetchpriority="high" decoding="async">
         </figure>
 
         <div class="info-content">
@@ -478,7 +484,7 @@
               <div class="content-card" data-testimonials-item>
 
                 <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
+                  <img src="./assets/images/avatar-2.png" alt="Daniel lewis" width="60" height="60" data-testimonials-avatar>
                 </figure>
 
                 <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
@@ -583,7 +589,7 @@
 
             <div class="modal-img-wrapper">
               <figure class="modal-avatar-box">
-                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
+                <img src="./assets/images/avatar-2.png" alt="Daniel lewis" width="80" height="80" data-modal-img>
               </figure>
 
               <img src="./assets/images/icon-quote.svg" alt="quote icon">
@@ -630,31 +636,31 @@
 
             <li class="clients-item">
               <a href="https://www.facebook.com/mincluevietnam">
-                <img src="./assets/images/logo-2-color.png" alt="client logo">
+                <img src="./assets/images/logo-2-color.webp" alt="client logo">
               </a>
             </li>
 
             <li class="clients-item">
               <a href="https://www.facebook.com/beatvn.network">
-                <img src="./assets/images/logo-3-color.png" alt="client logo">
+                <img src="./assets/images/logo-3-color.webp" alt="client logo">
               </a>
             </li>
 
             <li class="clients-item">
               <a href="#">
-                <img src="./assets/images/logo-4-color.png" alt="client logo">
+                <img src="./assets/images/logo-4-color.webp" alt="client logo">
               </a>
             </li>
 
             <li class="clients-item">
               <a href="https://www.facebook.com/LemonadeCosmetics">
-                <img src="./assets/images/logo-5-color.png" alt="client logo">
+                <img src="./assets/images/logo-5-color.webp" alt="client logo">
               </a>
             </li>
 
             <li class="clients-item">
               <a href="https://www.facebook.com/FanmenVN.Cosmetic">
-                <img src="./assets/images/logo-6-color.png" alt="client logo">
+                <img src="./assets/images/logo-6-color.webp" alt="client logo">
               </a>
             </li>
 
@@ -939,7 +945,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-1.jpg" alt="P Global" loading="lazy">
+                  <img src="./assets/images/project-1.webp" alt="P Global" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Hỗ trợ quay chụp & ghi hình</h3>
@@ -957,7 +963,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-1.1.png" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-1.1.webp" alt="Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Hỗ trợ quay chụp & ghi hình</h3>
@@ -975,7 +981,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-2.png" alt="P Global" loading="lazy">
+                  <img src="./assets/images/project-2.webp" alt="P Global" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Sữa hạt Gumilac Mama</h3>
@@ -993,7 +999,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-3.jpg" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-3.webp" alt="Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Season of Gifting</h3>
@@ -1011,7 +1017,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-4.png" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-4.webp" alt="Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Ảnh bìa Website</h3>
@@ -1029,7 +1035,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-5.png" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-5.webp" alt="Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Bài đăng Facebook T11-T2</h3>
@@ -1047,7 +1053,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-6.png" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-6.webp" alt="Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Ảnh Blog</h3>
@@ -1065,7 +1071,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-10.png" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-10.webp" alt="Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Bài đăng Facebook T2-T5</h3>
@@ -1083,7 +1089,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-7.png" alt="P Global" loading="lazy">
+                  <img src="./assets/images/project-7.webp" alt="P Global" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Bánh dinh dưỡng rong biển</h3>
@@ -1101,7 +1107,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-8.jpg" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-8.webp" alt="Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Story mỗi ngày T12-T2</h3>
@@ -1120,7 +1126,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-9.png" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-9.webp" alt="Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Story mỗi ngày T12-T4</h3>
@@ -1138,7 +1144,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-11.png" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-11.webp" alt="Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Story nổi bật</h3>
@@ -1156,7 +1162,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-12.png" alt="Highway Menswear" loading="lazy">
+                  <img src="./assets/images/project-12.webp" alt="Highway Menswear" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Voucher quà tặng</h3>
@@ -1174,7 +1180,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-15.png" alt="BeatVn" loading="lazy">
+                  <img src="./assets/images/project-15.webp" alt="BeatVn" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Bài đăng Facebook T7</h3>
@@ -1192,7 +1198,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-16.png" alt="BeatVn" loading="lazy">
+                  <img src="./assets/images/project-16.webp" alt="BeatVn" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Bài đăng Facebook T9</h3>
@@ -1210,7 +1216,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-13.png" alt="Minclue Fitness" loading="lazy">
+                  <img src="./assets/images/project-13.webp" alt="Minclue Fitness" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Story mỗi ngày</h3>
@@ -1229,7 +1235,7 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-14.png" alt="Minclue Fitness" loading="lazy">
+                  <img src="./assets/images/project-14.webp" alt="Minclue Fitness" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">Bài đăng Facebook</h3>
@@ -1270,7 +1276,7 @@
               <a href="#" data-video-src="./assets/videos/video1.mp4" class="blog-video-btn">
 
                 <figure class="blog-banner-box">
-                  <video src="./assets/videos/video1.mp4" preload="metadata" muted
+                  <video src="./assets/videos/video1.mp4" preload="none" muted playsinline
                     style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;"></video>
                 </figure>
 
@@ -1294,7 +1300,7 @@
               <a href="#" data-video-src="./assets/videos/video2.mp4" class="blog-video-btn">
 
                 <figure class="blog-banner-box">
-                  <video src="./assets/videos/video2.mp4" preload="metadata" muted
+                  <video src="./assets/videos/video2.mp4" preload="none" muted playsinline
                     style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;"></video>
                 </figure>
 
@@ -1318,7 +1324,7 @@
               <a href="#" data-video-src="./assets/videos/video3.mp4" class="blog-video-btn">
 
                 <figure class="blog-banner-box">
-                  <video src="./assets/videos/video3.mp4" preload="metadata" muted
+                  <video src="./assets/videos/video3.mp4" preload="none" muted playsinline
                     style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;"></video>
                 </figure>
 
@@ -1342,7 +1348,7 @@
               <a href="#" data-video-src="./assets/videos/video4.mp4" class="blog-video-btn">
 
                 <figure class="blog-banner-box">
-                  <video src="./assets/videos/video4.mp4" preload="metadata" muted
+                  <video src="./assets/videos/video4.mp4" preload="none" muted playsinline
                     style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;"></video>
                 </figure>
 
@@ -1367,7 +1373,7 @@
               <a href="#" data-video-src="./assets/videos/video5.mp4" class="blog-video-btn">
 
                 <figure class="blog-banner-box">
-                  <video src="./assets/videos/video5.mp4" preload="metadata" muted
+                  <video src="./assets/videos/video5.mp4" preload="none" muted playsinline
                     style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;"></video>
                 </figure>
 
@@ -1394,10 +1400,10 @@
             </li>
 
             <li class="blog-post-item">
-              <a href="#" data-image-target="./assets/images/anh-profile-dien-xuat-2.jpg" class="blog-image-zoom-btn">
+              <a href="#" data-image-target="./assets/images/anh-profile-dien-xuat-2.webp" class="blog-image-zoom-btn">
 
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/anh-profile-dien-xuat-2.jpg" alt="Profile Diễn Xuất - Nguyễn Việt Long"
+                  <img src="./assets/images/anh-profile-dien-xuat-2.webp" alt="Profile Diễn Xuất - Nguyễn Việt Long"
                     loading="lazy">
                 </figure>
 
@@ -1419,10 +1425,10 @@
             </li>
 
             <li class="blog-post-item">
-              <a href="#" data-image-target="./assets/images/anh-profile-dien-xuat.jpg" class="blog-image-zoom-btn">
+              <a href="#" data-image-target="./assets/images/anh-profile-dien-xuat.webp" class="blog-image-zoom-btn">
 
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/anh-profile-dien-xuat.jpg" alt="Profile Diễn Xuất - Nguyễn Việt Long"
+                  <img src="./assets/images/anh-profile-dien-xuat.webp" alt="Profile Diễn Xuất - Nguyễn Việt Long"
                     loading="lazy">
                 </figure>
 
@@ -1554,13 +1560,14 @@
   <!--
     - custom js link
   -->
-  <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/script.js" defer></script>
+  <script src="./assets/js/enhancements.js" defer></script>
 
   <!--
     - ionicon link
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script nomodule defer src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <video id="global-fullscreen-video" style="display:none; width:100%; height:100%;" controls></video>
   <footer class="main-footer">
     <div class="footer-container">

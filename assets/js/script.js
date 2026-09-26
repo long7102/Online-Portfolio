@@ -1,10 +1,8 @@
 'use strict';
 document.addEventListener("DOMContentLoaded", function () {
-  // Xóa class light-mode ngay lập tức khi trang vừa load để ép Dark Mode
-  document.body.classList.remove("light-mode");
-  
-  // Tùy chọn: Xóa luôn lưu trữ trạng thái cũ nếu muốn "ép" 100% Dark Mode
-  // localStorage.removeItem('theme'); 
+  const savedTheme = localStorage.getItem("portfolio-theme");
+  const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+  document.body.classList.toggle("light-mode", savedTheme ? savedTheme === "light" : prefersLight);
 });
 // 1. HÀM TOGGLE PHẦN TỬ CHUNG
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
@@ -132,7 +130,7 @@ for (let i = 0; i < navigationLinks.length; i++) {
       if (targetPage === pageData) {
         pages[j].classList.add("active");
         navigationLinks[j].classList.add("active");
-        window.scrollTo(0, 0);
+        window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
 
         // Hiệu ứng mượt Web Animations API
         pages[j].animate([
@@ -156,6 +154,7 @@ for (let i = 0; i < navigationLinks.length; i++) {
 const projectItems = document.querySelectorAll(".project-item a");
 
 const lightboxContainer = document.createElement("div");
+lightboxContainer.id = "project-lightbox";
 lightboxContainer.setAttribute("style", `
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   background: rgba(10, 10, 10, 0.93); z-index: 9999;
@@ -198,6 +197,7 @@ if (projectItems.length > 0) {
         lightboxContainer.style.opacity = "1";
         lightboxContainer.style.pointerEvents = "all";
         lightboxImg.style.transform = "scale(1)";
+        document.body.classList.add("modal-open");
       }
     });
   });
@@ -207,6 +207,7 @@ lightboxContainer.addEventListener("click", function () {
   lightboxContainer.style.opacity = "0";
   lightboxContainer.style.pointerEvents = "none";
   lightboxImg.style.transform = "scale(0.9)";
+  document.body.classList.remove("modal-open");
 });
 
 window.addEventListener("resize", resizeLightboxForDesktop);
@@ -643,11 +644,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Kiểm tra trạng thái hiện tại sau khi click để lưu cấu hình và đổi icon
       if (body.classList.contains("light-mode")) {
-        localStorage.setItem("portfolio-theme", "dark");
-        if (themeIcon) themeIcon.setAttribute("name", "sunny-outline"); // Chuyển sang icon mặt trời nếu là nền sáng
-      } else {
         localStorage.setItem("portfolio-theme", "light");
-        if (themeIcon) themeIcon.setAttribute("name", "moon-outline");  // Quay về icon mặt trăng nếu là nền tối
+        if (themeIcon) themeIcon.setAttribute("name", "moon-outline");
+      } else {
+        localStorage.setItem("portfolio-theme", "dark");
+        if (themeIcon) themeIcon.setAttribute("name", "sunny-outline");
       }
     });
   }
@@ -765,7 +766,7 @@ const targetString = "vietlong";
 
 // 1. Lắng nghe Click vào avatar
 const avatar = document.querySelector('.avatar-box');
-avatar.addEventListener('click', () => {
+if (avatar) avatar.addEventListener('click', () => {
   clickCount++;
   if (clickCount >= 5) showLetter();
 });
@@ -786,7 +787,7 @@ function showLetter() {
 }
 
 // 4. Hàm đóng
-document.getElementById('easter-overlay').addEventListener('click', () => {
+document.getElementById('easter-overlay')?.addEventListener('click', () => {
   const letter = document.getElementById('falling-letter');
   letter.classList.add('fly-away');
   document.getElementById('easter-overlay').classList.remove('active');
