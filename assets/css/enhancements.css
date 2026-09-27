@@ -441,6 +441,17 @@ article { border-radius: 28px; overflow: hidden; }
 .clients { margin-top: 58px; }
 .clients-list { border: 1px solid var(--line-soft); border-radius: 20px; background: rgba(255,255,255,.02); }
 
+@media (min-width: 768px) {
+  .clients-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); overflow: visible; gap: 16px; padding: 24px; }
+  .clients-item { min-width: 0 !important; }
+}
+.clients-item a { display: grid; place-items: center; min-height: 160px; border-radius: 18px; background: rgba(255,255,255,.018); }
+.clients-item img { max-width: 180px; max-height: 120px; object-fit: contain; filter: grayscale(100%) opacity(.68); }
+.clients-list { scrollbar-width: none; }
+.clients-list::-webkit-scrollbar { display: none; }
+body.light-mode .clients { display: block !important; }
+body.light-mode .clients-item a { background: rgba(255,255,255,.42); }
+
 .project-list { gap: 26px 18px; }
 .project-img { border-radius: 20px; margin-bottom: 16px; }
 .project-title { font-weight: 600; letter-spacing: -.015em; }
@@ -698,6 +709,10 @@ body.light-mode .hero-btn-primary {
   border: 1px solid var(--line-soft);
   border-radius: 14px;
 }
+.brief-form select { color-scheme: dark; cursor: pointer; }
+.brief-form select option { color: #f4f4f5; background: #202024; }
+body.light-mode .brief-form select { color-scheme: light; }
+body.light-mode .brief-form select option { color: #202124; background: #f5f4f0; }
 .project-item[hidden] { display: none !important; }
 
 .case-study-modal {
@@ -738,9 +753,23 @@ body.light-mode .brief-form :is(input, select, textarea),
 body.light-mode .contact-form-box,
 body.light-mode .case-study-grid div { background: rgba(255,255,255,.5); }
 
+.featured-case-banner {
+  position: relative; min-height: 330px; margin: 56px 0; overflow: hidden;
+  border: 1px solid var(--line-soft); border-radius: 24px;
+  background: linear-gradient(90deg, rgba(10,10,12,.08), rgba(10,10,12,.1)), url('../images/og-portfolio.png') center/cover no-repeat;
+}
+.featured-case-banner::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,10,12,.98) 0%, rgba(10,10,12,.78) 45%, rgba(10,10,12,.06) 78%); }
+.featured-case-content { position: relative; z-index: 1; width: min(560px, 72%); padding: clamp(28px, 5vw, 54px); }
+.featured-case-content h3 { margin: 12px 0 16px; color: #fff; font-size: clamp(26px, 4vw, 42px); line-height: 1.16; letter-spacing: -.035em; }
+.featured-case-content > p:not(.section-kicker) { margin-bottom: 24px; color: rgba(255,255,255,.72); font-size: 13px; line-height: 1.75; }
+.featured-case-content .hero-btn-primary { color: #111; background: #f2bd57; border-color: #f2bd57; }
+
 @media (max-width: 767px) {
   .service-item { padding: 18px; }
   .contact-form-box { grid-template-columns: 1fr; }
   .case-study-grid, .brief-form { grid-template-columns: 1fr; }
   .contact-form-box { gap: 24px; }
+  .featured-case-banner { min-height: 420px; background-position: 68% center; }
+  .featured-case-banner::after { background: linear-gradient(180deg, rgba(10,10,12,.86), rgba(10,10,12,.98)); }
+  .featured-case-content { width: 100%; }
 }
