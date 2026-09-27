@@ -43,6 +43,8 @@
         const bounds = heroVisual.getBoundingClientRect();
         const x = (event.clientX - bounds.left) / bounds.width - .5;
         const y = (event.clientY - bounds.top) / bounds.height - .5;
+        heroVisual.style.setProperty('--pointer-x', `${((x + .5) * 100).toFixed(1)}%`);
+        heroVisual.style.setProperty('--pointer-y', `${((y + .5) * 100).toFixed(1)}%`);
         heroVisual.style.setProperty('--tilt-x', `${(-y * 8).toFixed(2)}deg`);
         heroVisual.style.setProperty('--tilt-y', `${(x * 10).toFixed(2)}deg`);
         heroVisual.classList.add('is-interacting');
@@ -52,8 +54,25 @@
       setOrbitSpeed(1);
       heroVisual.style.setProperty('--tilt-x', '0deg');
       heroVisual.style.setProperty('--tilt-y', '0deg');
+      heroVisual.style.setProperty('--pointer-x', '50%');
+      heroVisual.style.setProperty('--pointer-y', '50%');
       heroVisual.classList.remove('is-interacting');
     });
+  }
+
+  const tiktokShowcase = document.querySelector('.tiktok-showcase');
+  if (tiktokShowcase && finePointer) {
+    let spotlightFrame;
+    tiktokShowcase.addEventListener('pointermove', (event) => {
+      cancelAnimationFrame(spotlightFrame);
+      spotlightFrame = requestAnimationFrame(() => {
+        const bounds = tiktokShowcase.getBoundingClientRect();
+        const x = ((event.clientX - bounds.left) / bounds.width) * 100;
+        const y = ((event.clientY - bounds.top) / bounds.height) * 100;
+        tiktokShowcase.style.setProperty('--spot-x', `${x.toFixed(1)}%`);
+        tiktokShowcase.style.setProperty('--spot-y', `${y.toFixed(1)}%`);
+      });
+    }, { passive: true });
   }
 
   const revealItems = document.querySelectorAll(

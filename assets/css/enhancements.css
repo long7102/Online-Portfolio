@@ -254,7 +254,7 @@ body::before {
   inset: 0;
   pointer-events: none;
   opacity: .16;
-  z-index: -1;
+  z-index: 1;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");
   animation: ambient-grain 10s steps(2) infinite;
 }
@@ -263,15 +263,20 @@ body::after {
   content: "";
   position: fixed;
   inset: -30vmax;
-  z-index: -2;
+  z-index: 0;
   pointer-events: none;
-  opacity: .34;
+  opacity: .48;
   background:
     radial-gradient(circle at 30% 35%, rgba(255,211,107,.12), transparent 18%),
-    radial-gradient(circle at 72% 62%, rgba(89,68,210,.11), transparent 20%);
+    radial-gradient(circle at 72% 62%, rgba(89,68,210,.11), transparent 20%),
+    radial-gradient(circle, rgba(255,255,255,.15) 0 1px, transparent 1.6px) 0 0 / 92px 92px,
+    radial-gradient(circle, rgba(255,211,107,.12) 0 1px, transparent 1.8px) 35px 52px / 138px 138px;
   filter: blur(34px);
   animation: ambient-aurora 26s ease-in-out infinite alternate;
 }
+
+main,
+.main-footer { position: relative; z-index: 2; }
 
 @keyframes ambient-background {
   from { background-position: 100% 0%, 0% 100%, 0 0; }
@@ -298,6 +303,22 @@ article {
 
 .sidebar { border-radius: 28px; }
 article { border-radius: 28px; overflow: hidden; }
+
+article[data-page="about"] {
+  background-image: radial-gradient(circle at 78% 12%, rgba(255,211,107,.055), transparent 28rem);
+}
+article[data-page="resume"] {
+  background-image: radial-gradient(circle at 12% 16%, rgba(255,173,91,.06), transparent 25rem), radial-gradient(circle at 88% 70%, rgba(82,70,170,.055), transparent 30rem);
+}
+article[data-page="portfolio"] {
+  background-image: radial-gradient(circle at 82% 10%, rgba(255,211,107,.065), transparent 26rem), linear-gradient(145deg, rgba(255,255,255,.014), transparent 60%);
+}
+article[data-page="blog"] {
+  background-image: radial-gradient(circle at 88% 14%, rgba(37,244,238,.045), transparent 24rem), radial-gradient(circle at 8% 82%, rgba(254,44,85,.035), transparent 27rem);
+}
+article[data-page="contact"] {
+  background-image: radial-gradient(circle at 15% 18%, rgba(255,211,107,.06), transparent 23rem), radial-gradient(circle at 86% 78%, rgba(105,81,205,.055), transparent 28rem);
+}
 
 .portfolio-hero {
   position: relative;
@@ -386,6 +407,8 @@ article { border-radius: 28px; overflow: hidden; }
 .hero-visual {
   --tilt-x: 0deg;
   --tilt-y: 0deg;
+  --pointer-x: 50%;
+  --pointer-y: 50%;
   position: relative;
   display: grid;
   place-items: center;
@@ -398,6 +421,19 @@ article { border-radius: 28px; overflow: hidden; }
   transform-style: preserve-3d;
   transition: transform .22s var(--ease-out), filter .35s ease;
 }
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: -18%;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0;
+  background: radial-gradient(circle 72px at var(--pointer-x) var(--pointer-y), rgba(255,211,107,.55), rgba(255,190,64,.16) 42%, transparent 76%);
+  transition: opacity .22s ease;
+}
+.hero-visual:hover::after,
+.hero-visual.is-interacting::after { opacity: 1; }
 .hero-visual::before {
   content: "";
   position: absolute;
@@ -465,7 +501,7 @@ article { border-radius: 28px; overflow: hidden; }
 }
 .hero-orbit-two::before { top: 8%; left: 76%; width: 6px; height: 6px; background: var(--white-2); }
 .hero-orbit-two { inset: 21%; animation-duration: 9s; animation-direction: reverse; border-color: rgba(255,255,255,.1); }
-.hero-planet { position: absolute; z-index: 3; width: var(--planet-size); height: var(--planet-size); border-radius: 50%; pointer-events: none; background: var(--planet-color); box-shadow: 0 0 calc(var(--planet-size) * 1.5) color-mix(in srgb, var(--planet-color) 70%, transparent); animation: planet-orbit var(--planet-speed) linear infinite; animation-delay: var(--planet-delay); }
+.hero-planet { position: absolute; left: 50%; top: 50%; z-index: 3; width: var(--planet-size); height: var(--planet-size); margin: calc(var(--planet-size) / -2) 0 0 calc(var(--planet-size) / -2); border-radius: 50%; pointer-events: none; background: var(--planet-color); box-shadow: 0 0 calc(var(--planet-size) * 1.5) color-mix(in srgb, var(--planet-color) 70%, transparent); transform-origin: center; animation: planet-orbit var(--planet-speed) linear infinite; animation-delay: var(--planet-delay); }
 .hero-planet-one { --planet-size: 12px; --planet-radius: 128px; --planet-speed: 12s; --planet-delay: -2s; --planet-color: var(--accent); }
 .hero-planet-two { --planet-size: 7px; --planet-radius: 76px; --planet-speed: 7s; --planet-delay: -5s; --planet-color: var(--white-2); opacity: .7; }
 .hero-planet-three { --planet-size: 5px; --planet-radius: 108px; --planet-speed: 15s; --planet-delay: -9s; --planet-color: var(--accent-warm); }
@@ -575,6 +611,10 @@ body.light-mode .clients-item .client-logo-card img { filter: brightness(0) opac
 .project-category { margin-top: 4px; color: var(--accent); font-size: 12px; }
 
 .tiktok-showcase {
+  --spot-x: 88%;
+  --spot-y: 12%;
+  position: relative;
+  isolation: isolate;
   margin-top: 56px;
   padding: clamp(24px, 4vw, 40px);
   overflow: hidden;
@@ -585,6 +625,18 @@ body.light-mode .clients-item .client-logo-card img { filter: brightness(0) opac
     radial-gradient(circle at 86% 24%, rgba(254,44,85,.12), transparent 16rem),
     rgba(255,255,255,.02);
 }
+.tiktok-showcase::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .28;
+  background: radial-gradient(circle 190px at var(--spot-x) var(--spot-y), rgba(255,211,107,.26), rgba(37,244,238,.08) 44%, transparent 76%);
+  transition: opacity .24s ease;
+}
+.tiktok-showcase:hover::before { opacity: .78; }
+.tiktok-showcase > * { position: relative; z-index: 1; }
 .tiktok-showcase-head { display: flex; align-items: end; justify-content: space-between; gap: 28px; }
 .tiktok-showcase-head > div { max-width: 650px; }
 .tiktok-showcase h3 { margin: 10px 0 14px; color: var(--white-2); font-size: clamp(25px, 3.3vw, 39px); line-height: 1.18; letter-spacing: -.035em; }
