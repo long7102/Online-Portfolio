@@ -29,6 +29,24 @@
 
   const heroVisual = document.querySelector('.hero-visual');
   const finePointer = window.matchMedia('(pointer: fine)').matches;
+  const portfolioHero = document.querySelector('.portfolio-hero');
+  if (portfolioHero && finePointer) {
+    let heroSpotFrame;
+    portfolioHero.addEventListener('pointermove', (event) => {
+      cancelAnimationFrame(heroSpotFrame);
+      heroSpotFrame = requestAnimationFrame(() => {
+        const bounds = portfolioHero.getBoundingClientRect();
+        const x = ((event.clientX - bounds.left) / bounds.width) * 100;
+        const y = ((event.clientY - bounds.top) / bounds.height) * 100;
+        portfolioHero.style.setProperty('--hero-spot-x', `${x.toFixed(1)}%`);
+        portfolioHero.style.setProperty('--hero-spot-y', `${y.toFixed(1)}%`);
+      });
+    }, { passive: true });
+    if (heroVisual) {
+      heroVisual.addEventListener('pointerenter', () => portfolioHero.classList.add('is-over-visual'));
+      heroVisual.addEventListener('pointerleave', () => portfolioHero.classList.remove('is-over-visual'));
+    }
+  }
   if (heroVisual && finePointer && !reducedMotion) {
     let heroFrame;
     const setOrbitSpeed = (rate) => {
