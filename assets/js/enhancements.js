@@ -50,13 +50,16 @@
   }
 
   const revealItems = document.querySelectorAll(
-    '.service-item, .competency-item, .proof-strip li, .project-item, .blog-post-item, .timeline-item, .clients-item'
+    '.impact-grid li, .about-intro > *, .value-process li, .service-item, .competency-item, .proof-strip li, .project-item, .blog-post-item, .timeline-item, .clients-item, .tiktok-showcase-head, .tiktok-format-grid li, .tiktok-viral-grid > li'
   );
 
   if (reducedMotion || !('IntersectionObserver' in window)) {
     revealItems.forEach((item) => item.classList.add('is-revealed'));
   } else {
-    revealItems.forEach((item) => item.classList.add('reveal-ready'));
+    revealItems.forEach((item, index) => {
+      item.classList.add('reveal-ready');
+      item.style.setProperty('--reveal-delay', `${(index % 6) * 65}ms`);
+    });
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;

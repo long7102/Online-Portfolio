@@ -101,6 +101,7 @@ article.active { animation: page-enter .48s var(--ease-out) both; }
   opacity: 0;
   transform: translateY(18px);
   transition: opacity .55s var(--ease-out), transform .55s var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
 }
 .reveal-ready.is-revealed { opacity: 1; transform: none; }
 
@@ -430,11 +431,21 @@ article { border-radius: 28px; overflow: hidden; }
 }
 .hero-orbit-two::before { top: 8%; left: 76%; width: 6px; height: 6px; background: var(--white-2); }
 .hero-orbit-two { inset: 21%; animation-duration: 9s; animation-direction: reverse; border-color: rgba(255,255,255,.1); }
+.hero-planet { position: absolute; z-index: 3; border-radius: 50%; pointer-events: none; box-shadow: 0 0 16px rgba(255,211,107,.5); }
+.hero-planet-one { width: 12px; height: 12px; background: var(--accent); animation: planet-one 8s linear infinite; }
+.hero-planet-two { width: 7px; height: 7px; background: var(--white-2); opacity: .7; animation: planet-two 5.5s linear infinite reverse; }
+.hero-planet-three { width: 5px; height: 5px; background: var(--accent-warm); animation: planet-three 11s linear infinite; }
+.hero-visual:hover .hero-planet-one, .hero-visual.is-interacting .hero-planet-one { animation-duration: 3.2s; }
+.hero-visual:hover .hero-planet-two, .hero-visual.is-interacting .hero-planet-two { animation-duration: 2.2s; }
+.hero-visual:hover .hero-planet-three, .hero-visual.is-interacting .hero-planet-three { animation-duration: 4.1s; }
 .hero-visual:hover .hero-orbit,
 .hero-visual.is-interacting .hero-orbit { border-color: rgba(255, 211, 107, .62); animation-duration: 5s; }
 .hero-visual:hover .hero-orbit-two,
 .hero-visual.is-interacting .hero-orbit-two { border-color: rgba(255,255,255,.26); animation-duration: 3.5s; }
 @keyframes orbit { to { transform: rotate(360deg); } }
+@keyframes planet-one { from { transform: rotate(0) translateX(128px) rotate(0); } to { transform: rotate(360deg) translateX(128px) rotate(-360deg); } }
+@keyframes planet-two { from { transform: rotate(0) translateX(76px) rotate(0); } to { transform: rotate(360deg) translateX(76px) rotate(-360deg); } }
+@keyframes planet-three { from { transform: rotate(90deg) translateX(108px) rotate(-90deg); } to { transform: rotate(450deg) translateX(108px) rotate(-450deg); } }
 
 .impact-grid {
   display: grid;
@@ -464,6 +475,11 @@ article { border-radius: 28px; overflow: hidden; }
 .about-intro .section-kicker { grid-row: span 2; padding-top: 7px; }
 .about-intro h3 { color: var(--white-2); font-size: clamp(24px, 3vw, 38px); line-height: 1.18; letter-spacing: -.035em; }
 .about-intro > p:last-child { color: var(--light-gray-70); font-size: 14px; line-height: 1.8; }
+.value-process { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 18px; }
+.value-process li { min-height: 168px; padding: 20px; border: 1px solid var(--line-soft); border-radius: 18px; background: rgba(255,255,255,.025); }
+.value-process span { display: block; margin-bottom: 24px; color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .14em; }
+.value-process strong { display: block; margin-bottom: 8px; color: var(--white-2); font-size: 15px; }
+.value-process p { color: var(--light-gray-70); font-size: 12px; line-height: 1.65; }
 
 .section-heading { margin-bottom: 24px; }
 .section-heading .section-kicker { margin-bottom: 10px; }
@@ -499,7 +515,8 @@ article { border-radius: 28px; overflow: hidden; }
   .clients-item { min-width: 0 !important; }
 }
 .clients-item :is(a, .client-logo-card) { display: grid; place-items: center; min-height: 160px; border-radius: 18px; background: rgba(255,255,255,.018); }
-.clients-item img { max-width: 180px; max-height: 120px; object-fit: contain; filter: grayscale(100%) opacity(.68); }
+.clients-item img { max-width: 180px; max-height: 120px; object-fit: contain; filter: opacity(.76); }
+body.light-mode .clients-item img { filter: brightness(0) opacity(.62); }
 .clients-item .client-logo-card img { max-width: 132px; filter: opacity(.74); }
 .clients-list { scrollbar-width: none; }
 .clients-list::-webkit-scrollbar { display: none; }
@@ -536,15 +553,33 @@ body.light-mode .clients-item .client-logo-card img { filter: brightness(0) opac
 .tiktok-showcase-head > div { max-width: 650px; }
 .tiktok-showcase h3 { margin: 10px 0 14px; color: var(--white-2); font-size: clamp(25px, 3.3vw, 39px); line-height: 1.18; letter-spacing: -.035em; }
 .tiktok-showcase-head p:not(.section-kicker),
-.tiktok-format-grid p,
-.tiktok-research-note { color: var(--light-gray-70); font-size: 13px; line-height: 1.7; }
-.tiktok-format-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 28px; }
+.tiktok-format-grid p { color: var(--light-gray-70); font-size: 13px; line-height: 1.7; }
+.tiktok-format-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 28px; }
 .tiktok-format-grid li { min-height: 180px; padding: 22px; border: 1px solid var(--line-soft); border-radius: 18px; background: rgba(255,255,255,.025); }
+.tiktok-format-grid li { grid-column: span 2; }
+.tiktok-format-grid li:nth-child(n+4) { grid-column: span 3; }
 .tiktok-format-grid span { display: block; margin-bottom: 28px; color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .14em; }
 .tiktok-format-grid strong { display: block; margin-bottom: 9px; color: var(--white-2); font-size: 16px; }
-.tiktok-research-note { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line-soft); font-size: 11px; }
+.tiktok-viral-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin: 40px 0 18px; padding-top: 30px; border-top: 1px solid var(--line-soft); }
+.tiktok-viral-head h4 { margin-top: 7px; color: var(--white-2); font-size: 22px; }
+.tiktok-viral-head > p { color: var(--light-gray-70); font-size: 11px; }
+.tiktok-viral-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.tiktok-viral-grid > li { min-width: 0; overflow: hidden; border: 1px solid var(--line-soft); border-radius: 20px; background: rgba(255,255,255,.025); transition: transform .28s var(--ease-out), border-color .28s ease; }
+.tiktok-viral-grid > li:hover { transform: translateY(-5px); border-color: rgba(255,211,107,.42); }
+.tiktok-viral-grid figure { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #0d0d0f; }
+.tiktok-viral-grid figure img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease-out); }
+.tiktok-viral-grid a:hover figure img { transform: scale(1.04); }
+.tiktok-viral-grid figure span { position: absolute; inset: 50% auto auto 50%; display: grid; place-items: center; width: 48px; height: 48px; color: #111; background: rgba(255,211,107,.92); border-radius: 50%; transform: translate(-50%,-50%); box-shadow: 0 10px 30px rgba(0,0,0,.34); }
+.tiktok-card-copy { padding: 18px; }
+.tiktok-card-copy > strong { display: block; min-height: 42px; color: var(--white-2); font-size: 14px; line-height: 1.5; }
+.tiktok-card-copy dl { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 16px; }
+.tiktok-card-copy dl div { padding: 10px; border-radius: 12px; background: rgba(255,255,255,.035); }
+.tiktok-card-copy dt { color: var(--light-gray-70); font-size: 9px; text-transform: uppercase; letter-spacing: .08em; }
+.tiktok-card-copy dd { margin-top: 3px; color: var(--white-2); font-size: 13px; font-weight: 700; }
 body.light-mode .tiktok-showcase,
-body.light-mode .tiktok-format-grid li { background-color: rgba(255,255,255,.38); }
+body.light-mode .tiktok-format-grid li,
+body.light-mode .tiktok-viral-grid > li,
+body.light-mode .value-process li { background-color: rgba(255,255,255,.38); }
 
 .blog-post-item > a { overflow: hidden; border: 1px solid var(--line-soft); background: rgba(255,255,255,.025); }
 .blog-post-item > a::before { background: transparent; }
@@ -597,18 +632,24 @@ body.light-mode .tiktok-format-grid li { background-color: rgba(255,255,255,.38)
   .impact-grid span { margin-top: 0; }
   .about-intro { grid-template-columns: 1fr; gap: 16px; margin-bottom: 48px; padding-bottom: 44px; }
   .about-intro .section-kicker { grid-row: auto; }
+  .value-process { grid-template-columns: 1fr; }
   .service-item { min-height: auto; padding: 22px; }
   .skill { margin-top: 48px; }
   .tiktok-showcase-head { align-items: stretch; flex-direction: column; }
   .tiktok-showcase-head .hero-btn { width: 100%; }
   .tiktok-format-grid { grid-template-columns: 1fr; }
+  .tiktok-format-grid li,
+  .tiktok-format-grid li:nth-child(n+4) { grid-column: auto; }
   .tiktok-format-grid li { min-height: auto; }
+  .tiktok-viral-head { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .tiktok-viral-grid { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-visual,
   .hero-monogram,
   .hero-visual::before { transition: none; transform: none; }
+  .hero-planet { animation: none !important; }
   .hero-visual:hover .hero-orbit,
   .hero-visual.is-interacting .hero-orbit { animation-duration: 14s; }
   .hero-visual:hover .hero-orbit-two,
