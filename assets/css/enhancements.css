@@ -355,7 +355,7 @@ article[data-page="contact"] {
   z-index: 0;
   pointer-events: none;
   opacity: .42;
-  background: radial-gradient(circle 330px at var(--hero-spot-x) var(--hero-spot-y), rgba(255,211,107,.28), rgba(255,174,68,.09) 48%, transparent 76%);
+  background: radial-gradient(circle 230px at var(--hero-spot-x) var(--hero-spot-y), rgba(255,211,107,.28), rgba(255,174,68,.09) 48%, transparent 76%);
   transition: opacity .22s ease;
 }
 .portfolio-hero:hover::before { opacity: .92; }
