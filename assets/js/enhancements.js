@@ -31,6 +31,12 @@
   const finePointer = window.matchMedia('(pointer: fine)').matches;
   if (heroVisual && finePointer && !reducedMotion) {
     let heroFrame;
+    const setOrbitSpeed = (rate) => {
+      heroVisual.querySelectorAll('.hero-planet, .hero-orbit').forEach((element) => {
+        element.getAnimations().forEach((animation) => animation.updatePlaybackRate(rate));
+      });
+    };
+    heroVisual.addEventListener('pointerenter', () => setOrbitSpeed(2.35));
     heroVisual.addEventListener('pointermove', (event) => {
       cancelAnimationFrame(heroFrame);
       heroFrame = requestAnimationFrame(() => {
@@ -43,6 +49,7 @@
       });
     }, { passive: true });
     heroVisual.addEventListener('pointerleave', () => {
+      setOrbitSpeed(1);
       heroVisual.style.setProperty('--tilt-x', '0deg');
       heroVisual.style.setProperty('--tilt-y', '0deg');
       heroVisual.classList.remove('is-interacting');

@@ -163,7 +163,7 @@ lightboxContainer.setAttribute("aria-modal", "true");
 lightboxContainer.setAttribute("aria-label", "Xem ảnh dự án");
 lightboxContainer.setAttribute("style", `
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(10, 10, 10, 0.93); z-index: 9999;
+  background: rgba(10, 10, 10, 0.93); z-index: 2147483000; isolation: isolate;
   display: flex; align-items: center; justify-content: center;
   opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(8px); cursor: zoom-out;
@@ -192,6 +192,17 @@ const resizeLightboxForDesktop = () => {
   }
 };
 
+window.openProjectLightbox = (src, alt = "Ảnh dự án phóng to") => {
+  if (!src) return;
+  lightboxImg.src = src;
+  lightboxImg.alt = alt;
+  resizeLightboxForDesktop();
+  lightboxContainer.style.opacity = "1";
+  lightboxContainer.style.pointerEvents = "all";
+  lightboxImg.style.transform = "scale(1)";
+  document.body.classList.add("modal-open");
+};
+
 if (projectItems.length > 0) {
   projectItems.forEach(item => {
     item.addEventListener("click", function (e) {
@@ -199,13 +210,7 @@ if (projectItems.length > 0) {
       e.preventDefault(); 
       const targetImg = this.querySelector(".project-img img");
       if (targetImg) {
-        lightboxImg.src = targetImg.src;
-        lightboxImg.alt = targetImg.alt;
-        resizeLightboxForDesktop();
-        lightboxContainer.style.opacity = "1";
-        lightboxContainer.style.pointerEvents = "all";
-        lightboxImg.style.transform = "scale(1)";
-        document.body.classList.add("modal-open");
+        window.openProjectLightbox(targetImg.currentSrc || targetImg.src, targetImg.alt);
       }
     });
   });
@@ -503,7 +508,7 @@ const createImageModal = () => {
   overlay.setAttribute("aria-label", "Xem ảnh hồ sơ diễn xuất");
   overlay.setAttribute("style", `
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(10, 10, 10, 0.75); z-index: 10005;
+    background: rgba(10, 10, 10, 0.82); z-index: 2147483000; isolation: isolate;
     display: flex; align-items: center; justify-content: center;
     opacity: 0; pointer-events: none; transition: all 0.4s ease;
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
