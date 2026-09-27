@@ -27,6 +27,28 @@
     video.playsInline = true;
   });
 
+  const heroVisual = document.querySelector('.hero-visual');
+  const finePointer = window.matchMedia('(pointer: fine)').matches;
+  if (heroVisual && finePointer && !reducedMotion) {
+    let heroFrame;
+    heroVisual.addEventListener('pointermove', (event) => {
+      cancelAnimationFrame(heroFrame);
+      heroFrame = requestAnimationFrame(() => {
+        const bounds = heroVisual.getBoundingClientRect();
+        const x = (event.clientX - bounds.left) / bounds.width - .5;
+        const y = (event.clientY - bounds.top) / bounds.height - .5;
+        heroVisual.style.setProperty('--tilt-x', `${(-y * 8).toFixed(2)}deg`);
+        heroVisual.style.setProperty('--tilt-y', `${(x * 10).toFixed(2)}deg`);
+        heroVisual.classList.add('is-interacting');
+      });
+    }, { passive: true });
+    heroVisual.addEventListener('pointerleave', () => {
+      heroVisual.style.setProperty('--tilt-x', '0deg');
+      heroVisual.style.setProperty('--tilt-y', '0deg');
+      heroVisual.classList.remove('is-interacting');
+    });
+  }
+
   const revealItems = document.querySelectorAll(
     '.service-item, .competency-item, .proof-strip li, .project-item, .blog-post-item, .timeline-item, .clients-item'
   );
@@ -106,3 +128,4 @@
     resizeFrame = requestAnimationFrame(() => document.documentElement.style.setProperty('--viewport-width', `${innerWidth}px`));
   }, { passive: true });
 })();
+

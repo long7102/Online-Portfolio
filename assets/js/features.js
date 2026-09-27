@@ -12,24 +12,28 @@
       brand: 'Highway Menswear', role: 'Media Executive', period: '10/2025 – 05/2026', result: '+20% tương tác tự nhiên',
       challenge: 'Duy trì nhịp nội dung hằng ngày, hỗ trợ các bộ sưu tập mới và giữ hình ảnh thời trang nam nhất quán trên nhiều điểm chạm.',
       approach: 'Lập lịch nội dung, phát triển góc kể chuyện theo mùa, phối hợp quay chụp và theo dõi phản hồi để điều chỉnh định dạng.',
+      responsibilities: ['Lên kế hoạch và lịch nội dung theo chiến dịch', 'Viết nội dung social, story và bài blog', 'Phối hợp ekip quay chụp, chọn và bàn giao tư liệu'],
       page: './case-studies/highway-menswear.html'
     },
     'beat-vn': {
       brand: 'BeatVN', role: 'Content Creator', period: '06/2025 – 09/2025', result: '5.000 tương tác/bài',
       challenge: 'Tạo nội dung cộng đồng có tốc độ nhanh, bắt đúng mối quan tâm và vẫn đủ rõ ràng để khuyến khích thảo luận.',
       approach: 'Theo dõi xu hướng, chọn góc tiếp cận gần gũi, tối ưu tiêu đề và cấu trúc bài dựa trên phản hồi thực tế.',
+      responsibilities: ['Theo dõi xu hướng và chọn chủ đề phù hợp cộng đồng', 'Viết tiêu đề, nội dung và tối ưu cách kể', 'Theo dõi phản hồi để điều chỉnh định dạng bài'],
       page: './case-studies/beatvn.html'
     },
     'p-global': {
       brand: 'P Global', role: 'Content Marketing', period: '11/2024 – 08/2025', result: '30–50M doanh thu/tháng',
       challenge: 'Chuyển thông tin sản phẩm thành nội dung dễ hiểu và tạo động lực mua hàng trong môi trường social commerce.',
       approach: 'Xây dựng kịch bản, sản xuất video, tái sử dụng media và kết nối lợi ích sản phẩm với tình huống sử dụng cụ thể.',
+      responsibilities: ['Lên ý tưởng và viết kịch bản nội dung bán hàng', 'Hỗ trợ quay chụp, ghi hình và phối hợp sản xuất', 'Biên tập, tái sử dụng tư liệu cho nhiều điểm chạm'],
       page: './case-studies/p-global.html'
     },
     'minclue-fitness': {
       brand: 'Minclue Fitness', role: 'Content & Social', period: 'Dự án thực chiến', result: 'Nội dung đa định dạng',
       challenge: 'Tạo hệ thống nội dung đều đặn cho một thương hiệu fitness với nhiều định dạng từ bài đăng đến story và ưu đãi.',
       approach: 'Chuẩn hóa bố cục, nhóm chủ đề theo mục tiêu và triển khai các định dạng có thể tái sử dụng theo tuần/tháng.',
+      responsibilities: ['Xây dựng nhóm chủ đề và lịch đăng định kỳ', 'Viết nội dung social theo mục tiêu từng định dạng', 'Phối hợp thiết kế và chuẩn hóa tài sản truyền thông'],
       page: './case-studies/minclue-fitness.html'
     }
   };
@@ -37,7 +41,7 @@
   const modal = document.createElement('div');
   modal.className = 'case-study-modal';
   modal.hidden = true;
-  modal.innerHTML = '<section class="case-study-dialog" role="dialog" aria-modal="true" aria-labelledby="case-study-title"><button class="case-study-close" type="button" aria-label="Đóng case study">✕</button><p class="case-study-kicker"></p><h2 id="case-study-title"></h2><p class="case-study-challenge"></p><div class="case-study-grid"><div><strong>Vai trò</strong><span data-case-role></span></div><div><strong>Thời gian</strong><span data-case-period></span></div><div><strong>Kết quả</strong><span data-case-result></span></div></div><p class="case-study-approach"></p><div class="case-study-actions"><a class="hero-btn hero-btn-primary" data-case-page>Đọc case study đầy đủ</a><button class="hero-btn hero-btn-secondary" type="button" data-jump-contact>Trao đổi dự án</button></div></section>';
+  modal.innerHTML = '<section class="case-study-dialog" role="dialog" aria-modal="true" aria-labelledby="case-study-title"><button class="case-study-close" type="button" aria-label="Đóng case study">✕</button><div class="case-study-intro"><div><p class="case-study-kicker"></p><h2 id="case-study-title"></h2><p class="case-study-challenge"></p></div><figure class="case-study-media"><button type="button" data-case-preview aria-label="Mở ảnh dự án ở kích thước lớn"><img data-case-image alt=""></button></figure></div><div class="case-study-grid"><div><strong>Vai trò</strong><span data-case-role></span></div><div><strong>Thời gian</strong><span data-case-period></span></div><div><strong>Kết quả</strong><span data-case-result></span></div></div><section class="case-study-work" aria-labelledby="case-work-title"><h3 id="case-work-title">Tôi đã làm gì?</h3><ul data-case-work></ul></section><p class="case-study-approach"></p><div class="case-study-actions"><a class="hero-btn hero-btn-primary" data-case-page>Đọc case study đầy đủ</a><button class="hero-btn hero-btn-secondary" type="button" data-jump-contact>Trao đổi dự án</button></div></section>';
   document.body.appendChild(modal);
 
   let lastFocus;
@@ -52,13 +56,19 @@
     const category = item?.dataset.category || 'highway-menswear';
     const data = brandCases[category] || brandCases['highway-menswear'];
     const title = item?.querySelector('.project-title')?.textContent.trim() || data.brand;
+    const sourceImage = item?.querySelector('.project-img img');
     lastFocus = anchor;
-    modal.querySelector('.case-study-kicker').textContent = `${data.brand} · ${category.replace('-', ' ')}`;
+    modal.querySelector('.case-study-kicker').textContent = `${data.brand} · Case study`;
     modal.querySelector('h2').textContent = title;
     modal.querySelector('.case-study-challenge').textContent = `Bài toán: ${data.challenge}`;
     modal.querySelector('[data-case-role]').textContent = data.role;
     modal.querySelector('[data-case-period]').textContent = data.period;
     modal.querySelector('[data-case-result]').textContent = data.result;
+    const caseImage = modal.querySelector('[data-case-image]');
+    caseImage.src = sourceImage?.currentSrc || sourceImage?.src || '';
+    caseImage.alt = `Hình ảnh dự án ${title} — ${data.brand}`;
+    modal.querySelector('[data-case-preview]').setAttribute('data-image-target', caseImage.src);
+    modal.querySelector('[data-case-work]').innerHTML = data.responsibilities.map((task) => `<li>${task}</li>`).join('');
     modal.querySelector('.case-study-approach').textContent = `Cách triển khai: ${data.approach}`;
     modal.querySelector('[data-case-page]').href = data.page;
     modal.hidden = false;
@@ -117,3 +127,4 @@
     if (target) openCase(target, false);
   }
 })();
+

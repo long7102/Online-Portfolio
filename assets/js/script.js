@@ -556,6 +556,7 @@ document.body.addEventListener("click", function (e) {
     if (imageUrl && overlay && bigImg) {
       bigImg.src = imageUrl;
       bigImg.alt = imageBtn.querySelector("img") ? imageBtn.querySelector("img").alt : "Hồ sơ diễn xuất của Nguyễn Việt Long";
+      overlay.setAttribute("aria-label", bigImg.alt);
       
       // Kích hoạt hiệu ứng zoom và mờ nền
       overlay.style.opacity = "1";
@@ -858,3 +859,4 @@ const observer1 = new IntersectionObserver((entries) => {
 timelineItems.forEach((item) => {
   observer1.observe(item);
 });
+
