@@ -521,6 +521,31 @@ body.light-mode .clients-item .client-logo-card img { filter: brightness(0) opac
 .project-title { font-weight: 600; letter-spacing: -.015em; }
 .project-category { margin-top: 4px; color: var(--accent); font-size: 12px; }
 
+.tiktok-showcase {
+  margin-top: 56px;
+  padding: clamp(24px, 4vw, 40px);
+  overflow: hidden;
+  border: 1px solid var(--line-soft);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(37,244,238,.13), transparent 15rem),
+    radial-gradient(circle at 86% 24%, rgba(254,44,85,.12), transparent 16rem),
+    rgba(255,255,255,.02);
+}
+.tiktok-showcase-head { display: flex; align-items: end; justify-content: space-between; gap: 28px; }
+.tiktok-showcase-head > div { max-width: 650px; }
+.tiktok-showcase h3 { margin: 10px 0 14px; color: var(--white-2); font-size: clamp(25px, 3.3vw, 39px); line-height: 1.18; letter-spacing: -.035em; }
+.tiktok-showcase-head p:not(.section-kicker),
+.tiktok-format-grid p,
+.tiktok-research-note { color: var(--light-gray-70); font-size: 13px; line-height: 1.7; }
+.tiktok-format-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 28px; }
+.tiktok-format-grid li { min-height: 180px; padding: 22px; border: 1px solid var(--line-soft); border-radius: 18px; background: rgba(255,255,255,.025); }
+.tiktok-format-grid span { display: block; margin-bottom: 28px; color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .14em; }
+.tiktok-format-grid strong { display: block; margin-bottom: 9px; color: var(--white-2); font-size: 16px; }
+.tiktok-research-note { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line-soft); font-size: 11px; }
+body.light-mode .tiktok-showcase,
+body.light-mode .tiktok-format-grid li { background-color: rgba(255,255,255,.38); }
+
 .blog-post-item > a { overflow: hidden; border: 1px solid var(--line-soft); background: rgba(255,255,255,.025); }
 .blog-post-item > a::before { background: transparent; }
 
@@ -574,6 +599,10 @@ body.light-mode .clients-item .client-logo-card img { filter: brightness(0) opac
   .about-intro .section-kicker { grid-row: auto; }
   .service-item { min-height: auto; padding: 22px; }
   .skill { margin-top: 48px; }
+  .tiktok-showcase-head { align-items: stretch; flex-direction: column; }
+  .tiktok-showcase-head .hero-btn { width: 100%; }
+  .tiktok-format-grid { grid-template-columns: 1fr; }
+  .tiktok-format-grid li { min-height: auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {
