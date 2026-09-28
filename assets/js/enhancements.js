@@ -159,18 +159,29 @@
   });
 
   document.querySelectorAll('.impact-grid strong, .proof-strip strong').forEach((counter) => {
-    const match = counter.textContent.trim().match(/^([+]?)(\d{1,3}(?:\.\d{3})*)([+°%]?)$/);
+    const original = counter.textContent.trim();
+    const match = original.match(/^([+]?)(\d{1,3}(?:\.\d{3})*)(?:\s*[–-]\s*(\d{1,3}(?:\.\d{3})*))?([A-Za-z+°%]*)$/);
     if (!match || reducedMotion) return;
-    const [, prefix, rawValue, suffix] = match;
+    const [, prefix, rawValue, rawRangeEnd, suffix] = match;
     const target = Number(rawValue.replaceAll('.', ''));
+    const rangeTarget = rawRangeEnd ? Number(rawRangeEnd.replaceAll('.', '')) : null;
+    const rangeSeparator = original.includes('–') ? '–' : '-';
     const formatValue = (value) => rawValue.includes('.') ? value.toLocaleString('vi-VN') : String(value);
-    counter.textContent = `${prefix}0${suffix}`;
+    const formatRangeValue = (value) => rawRangeEnd?.includes('.') ? value.toLocaleString('vi-VN') : String(value);
+    const renderValue = (progress) => {
+      const first = formatValue(Math.round(target * progress));
+      const second = rangeTarget === null ? '' : `${rangeSeparator}${formatRangeValue(Math.round(rangeTarget * progress))}`;
+      counter.textContent = `${prefix}${first}${second}${suffix}`;
+    };
+    renderValue(0);
     const animateCounter = () => {
       const startedAt = performance.now();
+      const largestTarget = Math.max(target, rangeTarget || 0);
+      const duration = Math.min(3200, 1800 + Math.log10(largestTarget + 1) * 430);
       const tick = (now) => {
-        const progress = Math.min(1, (now - startedAt) / 650);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        counter.textContent = `${prefix}${formatValue(Math.round(target * eased))}${suffix}`;
+        const progress = Math.min(1, (now - startedAt) / duration);
+        const eased = 1 - Math.pow(1 - progress, 2.35);
+        renderValue(eased);
         if (progress < 1) requestAnimationFrame(tick);
       };
       requestAnimationFrame(tick);
