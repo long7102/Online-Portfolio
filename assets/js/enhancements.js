@@ -100,18 +100,36 @@
   if (reducedMotion || !('IntersectionObserver' in window)) {
     revealItems.forEach((item) => item.classList.add('is-revealed'));
   } else {
-    revealItems.forEach((item, index) => {
+    const groupOrder = new Map();
+    revealItems.forEach((item) => {
+      const group = item.parentElement;
+      const index = groupOrder.get(group) || 0;
+      groupOrder.set(group, index + 1);
       item.classList.add('reveal-ready');
-      item.style.setProperty('--reveal-delay', `${(index % 6) * 65}ms`);
+      item.style.setProperty('--reveal-delay', `${Math.min(index, 3) * 28}ms`);
     });
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
+        entry.target.style.willChange = 'opacity, transform';
         entry.target.classList.add('is-revealed');
+        window.setTimeout(() => {
+          entry.target.style.willChange = 'auto';
+          entry.target.style.removeProperty('--reveal-delay');
+        }, 520);
         observer.unobserve(entry.target);
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    }, { rootMargin: '0px 0px 14% 0px', threshold: 0.01 });
     revealItems.forEach((item) => revealObserver.observe(item));
+  }
+
+  if (!reducedMotion) {
+    let scrollEndTimer;
+    window.addEventListener('scroll', () => {
+      document.body.classList.add('is-scrolling');
+      window.clearTimeout(scrollEndTimer);
+      scrollEndTimer = window.setTimeout(() => document.body.classList.remove('is-scrolling'), 140);
+    }, { passive: true });
   }
 
   const navLinks = [...document.querySelectorAll('[data-nav-link]')];
