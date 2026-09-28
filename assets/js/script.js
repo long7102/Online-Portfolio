@@ -119,38 +119,7 @@ if (form && formInputs.length > 0 && formBtn) {
 }
 
 
-// 6. FIX CHUẨN ĐIỀU HƯỚNG TRANG + ANIMATION CHUYỂN TRANG MƯỢT MÀ
-const navigationLinks = document.querySelectorAll("[data-nav-link]");
-const pages = document.querySelectorAll("[data-page]");
-
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
-    const targetPage = this.getAttribute("data-nav-link").toLowerCase().trim();
-
-    for (let j = 0; j < pages.length; j++) {
-      const pageData = pages[j].dataset.page.toLowerCase().trim();
-
-      if (targetPage === pageData) {
-        pages[j].classList.add("active");
-        navigationLinks[j].classList.add("active");
-        window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-
-        // Hiệu ứng mượt Web Animations API
-        pages[j].animate([
-          { opacity: 0, transform: 'translateY(15px)' },
-          { opacity: 1, transform: 'translateY(0)' }
-        ], {
-          duration: 400,
-          easing: 'ease-out'
-        });
-
-      } else {
-        pages[j].classList.remove("active");
-        navigationLinks[j].classList.remove("active");
-      }
-    }
-  });
-}
+// 6. Điều hướng và chuyển cảnh được quản lý tập trung trong enhancements.js.
 
 
 // 7. TÍNH NĂNG: BẤM VÀO DỰ ÁN PHÓNG TO ẢNH TOÀN MÀN HÌNH (LIGHTBOX CHI TIẾT CHO HR)

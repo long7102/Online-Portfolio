@@ -66,7 +66,7 @@
     modal.querySelector('[data-case-result]').textContent = data.result;
     const caseImage = modal.querySelector('[data-case-image]');
     caseImage.src = sourceImage?.currentSrc || sourceImage?.src || '';
-    caseImage.alt = `Hình ảnh dự án ${title} — ${data.brand}`;
+    caseImage.alt = `Hình ảnh dự án ${title} - ${data.brand}`;
     modal.querySelector('[data-case-preview]').setAttribute('data-image-target', caseImage.src);
     modal.querySelector('[data-case-work]').innerHTML = data.responsibilities.map((task) => `<li>${task}</li>`).join('');
     modal.querySelector('.case-study-approach').textContent = `Cách triển khai: ${data.approach}`;
@@ -115,7 +115,7 @@
   document.querySelector('#brief-form')?.addEventListener('submit', (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const subject = encodeURIComponent(`[Portfolio] ${data.get('project')} — ${data.get('name')}`);
+    const subject = encodeURIComponent(`[Portfolio] ${data.get('project')} - ${data.get('name')}`);
     const body = encodeURIComponent(`Họ tên: ${data.get('name')}\nEmail: ${data.get('email')}\nLoại dự án: ${data.get('project')}\n\nMô tả:\n${data.get('message')}`);
     track('generate_project_email', { project_type: data.get('project') });
     location.href = `mailto:ngvietlong712002@gmail.com?subject=${subject}&body=${body}`;
