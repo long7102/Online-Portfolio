@@ -177,7 +177,7 @@
     const animateCounter = () => {
       const startedAt = performance.now();
       const largestTarget = Math.max(target, rangeTarget || 0);
-      const duration = Math.min(3200, 1800 + Math.log10(largestTarget + 1) * 430);
+      const duration = Math.min(1600, 900 + Math.log10(largestTarget + 1) * 215);
       const tick = (now) => {
         const progress = Math.min(1, (now - startedAt) / duration);
         const eased = 1 - Math.pow(1 - progress, 2.35);
@@ -195,6 +195,45 @@
       observer.observe(counter);
     } else animateCounter();
   });
+
+  const tiktokMetrics = [...document.querySelectorAll('.tiktok-card-copy dd')].filter((metric) => metric.textContent.trim() !== '-');
+  const animateTiktokMetrics = () => {
+    tiktokMetrics.forEach((metric) => {
+      const original = metric.textContent.trim();
+      const match = original.match(/^(\d+(?:[.,]\d+)?)([KMB]?)$/i);
+      if (!match) return;
+      const [, rawValue, suffix] = match;
+      const isThousands = !suffix && /^\d{1,3}\.\d{3}$/.test(rawValue);
+      const decimals = rawValue.includes(',') ? rawValue.split(',')[1].length : 0;
+      const target = Number(isThousands ? rawValue.replace('.', '') : rawValue.replace(',', '.'));
+      const formatValue = (value) => {
+        if (decimals) return value.toFixed(decimals).replace('.', ',');
+        return Math.round(value).toLocaleString('vi-VN');
+      };
+      metric.textContent = `0${suffix}`;
+      const startedAt = performance.now();
+      const duration = Math.min(1600, 900 + Math.log10(target + 1) * 215);
+      const tick = (now) => {
+        const progress = Math.min(1, (now - startedAt) / duration);
+        const eased = 1 - Math.pow(1 - progress, 2.35);
+        metric.textContent = `${formatValue(target * eased)}${suffix}`;
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  };
+
+  if (tiktokMetrics.length && !reducedMotion) {
+    const tiktokGrid = document.querySelector('.tiktok-viral-grid');
+    if ('IntersectionObserver' in window && tiktokGrid) {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        animateTiktokMetrics();
+        observer.disconnect();
+      }, { threshold: .15 });
+      observer.observe(tiktokGrid);
+    } else animateTiktokMetrics();
+  }
 
   document.querySelectorAll('.value-process').forEach((process) => {
     if (!('IntersectionObserver' in window) || reducedMotion) {
