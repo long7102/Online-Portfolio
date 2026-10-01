@@ -228,6 +228,12 @@ const createCustomVideoModal = () => {
   video.setAttribute("playsinline", "");
   video.setAttribute("style", "width: 100%; height: 100%; object-fit: contain; display: block; cursor: pointer;");
 
+  const loadingState = document.createElement("div");
+  loadingState.className = "video-loading-state";
+  loadingState.setAttribute("role", "status");
+  loadingState.setAttribute("aria-live", "polite");
+  loadingState.innerHTML = '<span aria-hidden="true"></span><p>Đang tải video…</p>';
+
   // 3. THANH ĐIỀU KHIỂN CUSTOM (CONTROLS BAR)
   const controlsBar = document.createElement("div");
   controlsBar.id = "video-controls-bar";
@@ -331,6 +337,7 @@ const createCustomVideoModal = () => {
   controlsBar.appendChild(controlButtonsRow);
 
   playerContainer.appendChild(video);
+  playerContainer.appendChild(loadingState);
   playerContainer.appendChild(controlsBar);
   overlay.appendChild(playerContainer);
   document.body.appendChild(overlay);
@@ -353,6 +360,17 @@ const createCustomVideoModal = () => {
   };
   playBtn.onclick = togglePlay;
   video.onclick = togglePlay;
+  const showLoading = () => loadingState.classList.add("is-visible");
+  const hideLoading = () => loadingState.classList.remove("is-visible");
+  video.addEventListener("loadstart", showLoading);
+  video.addEventListener("waiting", showLoading);
+  video.addEventListener("seeking", showLoading);
+  video.addEventListener("canplay", hideLoading);
+  video.addEventListener("playing", hideLoading);
+  video.addEventListener("error", () => {
+    loadingState.classList.add("is-visible", "has-error");
+    loadingState.querySelector("p").textContent = "Không thể tải video. Vui lòng thử lại.";
+  });
 
   // Xử lý Âm lượng (Volume)
   volumeSlider.oninput = (e) => {
@@ -425,6 +443,10 @@ const createCustomVideoModal = () => {
     video.pause();
     video.removeAttribute("src");
     video.load();
+    video.preload = "none";
+    hideLoading();
+    loadingState.classList.remove("has-error");
+    loadingState.querySelector("p").textContent = "Đang tải video…";
     video.playbackRate = 1; // Trả tốc độ về mặc định khi đóng
     speedBtn.innerHTML = "1.0x";
     currentSpeedIndex = 0;
@@ -454,7 +476,8 @@ document.body.addEventListener("click", function (e) {
     const videoUrl = videoBtn.getAttribute("data-video-src");
 
     if (videoUrl && overlay && video) {
-      video.src = videoUrl;
+      if (!video.currentSrc.endsWith(videoUrl.replace("./", "/"))) video.src = videoUrl;
+      video.preload = "auto";
       overlay.style.opacity = "1";
       overlay.style.pointerEvents = "all";
       playerContainer.style.transform = "scale(1)";
@@ -481,34 +504,132 @@ const createImageModal = () => {
     display: flex; align-items: center; justify-content: center;
     opacity: 0; pointer-events: none; transition: all 0.4s ease;
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    cursor: zoom-out;
+    cursor: default; touch-action: none;
   `);
 
   // 2. Tạo thẻ chứa ảnh phóng to
   const imgContainer = document.createElement("div");
   imgContainer.setAttribute("style", `
-    max-width: 85vw; max-height: 85vh; display: flex; align-items: center; justify-content: center;
-    transform: scale(0.85); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative; width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center;
+    transform: scale(0.85); transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden; touch-action: none;
   `);
 
   const bigImg = document.createElement("img");
   bigImg.id = "modal-image-target";
   bigImg.alt = "Hồ sơ diễn xuất của Nguyễn Việt Long";
   bigImg.setAttribute("style", `
-    max-width: 100%; max-height: 85vh; border-radius: 16px; object-fit: contain;
+    max-width: 88vw; max-height: 86vh; border-radius: 16px; object-fit: contain;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.15);
+    transform: translate3d(0, 0, 0) scale(1); transform-origin: center;
+    transition: transform 0.18s ease; user-select: none; -webkit-user-drag: none;
   `);
 
+  const closeBtn = document.createElement("button");
+  closeBtn.type = "button";
+  closeBtn.className = "image-modal-close";
+  closeBtn.setAttribute("aria-label", "Đóng ảnh");
+  closeBtn.innerHTML = "✕";
+
+  const helpText = document.createElement("p");
+  helpText.className = "image-modal-help";
+  helpText.textContent = "Chụm để phóng to · Kéo để xem · Vuốt xuống để đóng";
+
   imgContainer.appendChild(bigImg);
+  overlay.appendChild(closeBtn);
+  overlay.appendChild(helpText);
   overlay.appendChild(imgContainer);
   document.body.appendChild(overlay);
 
-  // Bấm vào vùng mờ hoặc chính tấm ảnh để đóng lại
-  overlay.addEventListener("click", function () {
+  let scale = 1;
+  let translateX = 0;
+  let translateY = 0;
+  let startX = 0;
+  let startY = 0;
+  let startTranslateX = 0;
+  let startTranslateY = 0;
+  let pinchDistance = 0;
+  let pinchScale = 1;
+  const pointers = new Map();
+
+  const renderImage = () => {
+    bigImg.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${scale})`;
+  };
+
+  const resetImage = () => {
+    scale = 1;
+    translateX = 0;
+    translateY = 0;
+    pointers.clear();
+    renderImage();
+  };
+
+  const closeImage = () => {
     overlay.style.opacity = "0";
     overlay.style.pointerEvents = "none";
     imgContainer.style.transform = "scale(0.85)";
+    document.body.classList.remove("modal-open");
+    resetImage();
+  };
+
+  overlay.closeImage = closeImage;
+  closeBtn.addEventListener("click", closeImage);
+  overlay.addEventListener("click", (event) => {
+    if (event.target === overlay || event.target === imgContainer) closeImage();
+  });
+
+  imgContainer.addEventListener("wheel", (event) => {
+    event.preventDefault();
+    scale = Math.min(4, Math.max(1, scale + (event.deltaY < 0 ? 0.25 : -0.25)));
+    if (scale === 1) { translateX = 0; translateY = 0; }
+    renderImage();
+  }, { passive: false });
+
+  imgContainer.addEventListener("pointerdown", (event) => {
+    pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    imgContainer.setPointerCapture(event.pointerId);
+    startX = event.clientX;
+    startY = event.clientY;
+    startTranslateX = translateX;
+    startTranslateY = translateY;
+    if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      pinchDistance = Math.hypot(a.x - b.x, a.y - b.y);
+      pinchScale = scale;
+    }
+    bigImg.style.transition = "none";
+  });
+
+  imgContainer.addEventListener("pointermove", (event) => {
+    if (!pointers.has(event.pointerId)) return;
+    pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      const nextDistance = Math.hypot(a.x - b.x, a.y - b.y);
+      scale = Math.min(4, Math.max(1, pinchScale * (nextDistance / Math.max(pinchDistance, 1))));
+    } else if (scale > 1) {
+      translateX = startTranslateX + event.clientX - startX;
+      translateY = startTranslateY + event.clientY - startY;
+    } else {
+      translateY = Math.max(0, event.clientY - startY);
+    }
+    renderImage();
+  });
+
+  const endPointer = (event) => {
+    const swipeDistance = scale === 1 ? translateY : 0;
+    pointers.delete(event.pointerId);
+    bigImg.style.transition = "transform 0.18s ease";
+    if (swipeDistance > 110) closeImage();
+    else if (scale === 1) { translateX = 0; translateY = 0; renderImage(); }
+  };
+  imgContainer.addEventListener("pointerup", endPointer);
+  imgContainer.addEventListener("pointercancel", endPointer);
+  bigImg.addEventListener("dblclick", () => {
+    scale = scale > 1 ? 1 : 2;
+    if (scale === 1) { translateX = 0; translateY = 0; }
+    renderImage();
   });
 };
 
@@ -536,6 +657,7 @@ document.body.addEventListener("click", function (e) {
       overlay.style.opacity = "1";
       overlay.style.pointerEvents = "all";
       imgContainer.style.transform = "scale(1)";
+      document.body.classList.add("modal-open");
     }
   }
 });
@@ -833,4 +955,5 @@ const observer1 = new IntersectionObserver((entries) => {
 timelineItems.forEach((item) => {
   observer1.observe(item);
 });
+
 
