@@ -346,6 +346,7 @@
     const category = item.querySelector('.blog-category')?.textContent.toLowerCase() || '';
     if (category.includes('kỹ năng')) return 'personal';
     if (category.includes('tiktok')) return 'tiktok';
+    if (category.includes('facebook ads')) return 'ads';
     if (category.includes('profile')) return 'casting';
     return 'acting';
   };
@@ -401,5 +402,4 @@
     resizeFrame = requestAnimationFrame(() => document.documentElement.style.setProperty('--viewport-width', `${innerWidth}px`));
   }, { passive: true });
 })();
-
 
