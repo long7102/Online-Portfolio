@@ -339,6 +339,38 @@
     button.addEventListener('click', () => openPage(button.getAttribute('data-jump-page') || ''));
   });
 
+  const filterButtons = [...document.querySelectorAll('[data-content-filter]')];
+  const contentItems = [...document.querySelectorAll('article[data-page="blog"] .blog-post-item')];
+  const groupHeadings = [...document.querySelectorAll('article[data-page="blog"] .content-group-heading')];
+  const contentCategory = (item) => {
+    const category = item.querySelector('.blog-category')?.textContent.toLowerCase() || '';
+    if (category.includes('kỹ năng')) return 'personal';
+    if (category.includes('tiktok')) return 'tiktok';
+    if (category.includes('profile')) return 'casting';
+    return 'acting';
+  };
+  contentItems.forEach((item) => item.dataset.contentCategory = contentCategory(item));
+  const applyContentFilter = (filter) => {
+    filterButtons.forEach((button) => {
+      const active = button.dataset.contentFilter === filter;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+    contentItems.forEach((item) => {
+      item.hidden = filter !== 'all' && item.dataset.contentCategory !== filter;
+    });
+    groupHeadings.forEach((heading) => {
+      const nextItems = [];
+      let sibling = heading.nextElementSibling;
+      while (sibling && !sibling.classList.contains('content-group-heading')) {
+        if (sibling.classList.contains('blog-post-item')) nextItems.push(sibling);
+        sibling = sibling.nextElementSibling;
+      }
+      heading.hidden = filter !== 'all' && !nextItems.some((item) => !item.hidden);
+    });
+  };
+  filterButtons.forEach((button) => button.addEventListener('click', () => applyContentFilter(button.dataset.contentFilter || 'all')));
+
   const initialPage = decodeURIComponent(location.hash.slice(1));
   if (initialPage) openPage(initialPage, false, false);
 
@@ -369,4 +401,5 @@
     resizeFrame = requestAnimationFrame(() => document.documentElement.style.setProperty('--viewport-width', `${innerWidth}px`));
   }, { passive: true });
 })();
+
 
