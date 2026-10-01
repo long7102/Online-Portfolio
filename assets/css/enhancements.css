@@ -754,7 +754,7 @@ body.light-mode .clients-item .client-logo-card img { filter: brightness(0) opac
 .fanpage-poster ion-icon { margin-inline: auto; font-size: 46px; }
 .fanpage-poster span { font-size: 18px; font-weight: 700; line-height: 1.25; letter-spacing: .08em; }
 .casting-profile-latest { background: #0b0b0d; }
-.casting-profile-latest img { object-fit: contain; object-position: center top; }
+.casting-profile-latest img { object-fit: cover; object-position: center 42%; }
 .blog-post-item > a:hover .casting-profile-latest img { transform: scale(1.025); }
 body.light-mode .tiktok-showcase,
 body.light-mode .tiktok-format-grid li,
