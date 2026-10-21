@@ -78,6 +78,8 @@ body.light-mode .about .portfolio-hero { background:var(--editorial-ink); }
 body.light-mode .about .portfolio-hero h2, body.light-mode .about .hero-proof strong { color:var(--editorial-cream); }
 body.light-mode .about .hero-summary { color:#c8c8c8; }
 body.light-mode .about .hero-btn-secondary { color:var(--editorial-cream); }
+body.light-mode .sidebar .role-tags span { color:#444; }
+body.light-mode .sidebar .sidebar-roles-toggle { color:#806000; }
 
 /* Selected case studies are the primary portfolio experience. */
 .portfolio[data-page="portfolio"] > header { position:relative; margin:0 0 34px; padding:24px 0 30px; border-bottom:1px solid rgba(255,255,255,.17); }
@@ -119,6 +121,10 @@ body.light-mode .about .hero-btn-secondary { color:var(--editorial-cream); }
 .portfolio[data-page="portfolio"] .project-category { color:var(--editorial-accent); }
 .portfolio[data-page="portfolio"] .project-story-trigger:hover { color:var(--editorial-accent); }
 body.light-mode .portfolio[data-page="portfolio"] .article-title, body.light-mode .project-library-heading h3 { color:#202020; }
+body.light-mode .portfolio[data-page="portfolio"] .article-title em,
+body.light-mode .portfolio[data-page="portfolio"] .portfolio-edition,
+body.light-mode .project-library-heading p,
+body.light-mode .portfolio[data-page="portfolio"] .project-category { color:#806000; }
 body.light-mode .portfolio[data-page="portfolio"] .portfolio-intro, body.light-mode .project-library-heading > span { color:#666666; }
 body.light-mode .project-library-heading { border-color:rgba(0,0,0,.16); }
 
