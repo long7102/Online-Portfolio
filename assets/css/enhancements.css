@@ -298,8 +298,12 @@ body.is-scrolling,
 body.is-scrolling::before,
 body.is-scrolling::after { animation-play-state: paused; }
 
-main,
-.main-footer { position: relative; z-index: 2; }
+main { position: relative; z-index: 3; }
+.main-footer { position: relative; z-index: 1; }
+
+@media (max-width: 1023px) {
+  .main-footer { padding-bottom: calc(118px + env(safe-area-inset-bottom)) !important; }
+}
 
 @keyframes ambient-background {
   from { background-position: 100% 0%, 0% 100%, 0 0, 0 0; }
@@ -1240,6 +1244,7 @@ body.light-mode .case-study-work { background: rgba(255,255,255,.5); }
   .featured-case-orbits { right: -20%; width: 84%; opacity: .55; }
   .portfolio-view-hint { align-items: flex-start; border-radius: 16px; line-height: 1.5; }
 }
+
 
 
 

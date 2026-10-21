@@ -6,9 +6,11 @@
   <title>Highway Menswear Case Study | Nguyễn Việt Long</title>
   <meta name="description" content="Case study Content Marketing và Media Executive tại Highway Menswear của Nguyễn Việt Long, giúp tăng 20% tương tác tự nhiên.">
   <link rel="canonical" href="https://vlong-online-portfolio.vercel.app/case-studies/highway-menswear.html">
-  <link rel="stylesheet" href="../assets/css/case-study.css?v=20261021-4">
+  <link rel="stylesheet" href="../assets/css/case-study.css?v=20261021-5">
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet">
   <script src="../assets/js/highway-showcase.js?v=20261021-1" defer></script>
+  <script src="../assets/js/highway-gallery-data.js?v=20261021-1" defer></script>
+  <script src="../assets/js/highway-gallery.js?v=20261021-1" defer></script>
 </head>
 <body>
   <nav class="case-nav"><a href="../index.html#portfolio">← Portfolio</a><span>Nguyễn Việt Long</span></nav>
@@ -38,6 +40,14 @@
       </div>
       <p class="showcase-hint">Vuốt để khám phá <span aria-hidden="true">↗</span></p>
     </section>
+    <section class="gallery-collections" aria-labelledby="gallery-title">
+      <div class="gallery-intro">
+        <p class="eyebrow">Highway / Project archive</p>
+        <h2 id="gallery-title">Khám phá từng dự án<span class="showcase-period">.</span></h2>
+        <p>Chọn một bộ ảnh để xem trọn vẹn từng thiết kế. Dùng nút mũi tên, phím mũi tên hoặc vuốt để chuyển ảnh.</p>
+      </div>
+      <div class="gallery-groups" id="gallery-groups"></div>
+    </section>
     <section class="content">
       <div><h2>Bài toán</h2><p>Tạo nhịp nội dung ổn định nhưng vẫn giữ được tính thời trang và sự mới mẻ theo từng mùa.</p></div>
       <div><h2>Vai trò</h2><p>Lập kế hoạch, sản xuất nội dung, hỗ trợ quay chụp, đăng tải và theo dõi phản hồi.</p></div>
@@ -45,6 +55,23 @@
     </section>
     <a class="cta" href="../index.html#contact">Trao đổi dự án tương tự</a>
   </main>
+  <dialog class="gallery-dialog" id="gallery-dialog" aria-label="Bộ ảnh Highway Menswear">
+    <div class="gallery-dialog-inner">
+      <header class="gallery-dialog-header">
+        <div><span class="gallery-dialog-kicker">Highway Menswear / Project archive</span><h2 id="gallery-dialog-title"></h2></div>
+        <button class="gallery-close" type="button" aria-label="Đóng bộ ảnh">×</button>
+      </header>
+      <div class="gallery-stage">
+        <button class="gallery-prev" type="button" aria-label="Ảnh trước">←</button>
+        <img class="gallery-full-image" src="" alt="">
+        <button class="gallery-next" type="button" aria-label="Ảnh tiếp theo">→</button>
+      </div>
+      <footer class="gallery-dialog-footer">
+        <span class="gallery-position" aria-live="polite"></span>
+        <a class="gallery-open-image" href="#" target="_blank" rel="noopener">Mở ảnh kích thước lớn ↗</a>
+      </footer>
+    </div>
+  </dialog>
 </body>
 </html>
 
