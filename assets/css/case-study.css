@@ -42,7 +42,7 @@ h1 { max-width:1050px; margin:0; font-size:clamp(48px,7.1vw,105px); font-weight:
 .showcase-track { display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding-inline:0; scrollbar-width:none; overscroll-behavior-inline:contain; }
 .showcase-track::-webkit-scrollbar { display:none; }
 .showcase-slide { flex:0 0 min(47%,480px); min-width:0; margin:0; scroll-snap-align:start; }
-.showcase-art { display:grid; place-items:center; height:clamp(420px,52vw,610px); overflow:hidden; background:#212121; }
+.showcase-art { height:clamp(420px,52vw,610px); overflow:hidden; background:#212121; }
 .showcase-art img { display:block; width:100%; height:100%; object-fit:contain; }
 .showcase-slide figcaption { display:flex; justify-content:space-between; align-items:baseline; gap:12px; min-height:65px; padding:17px 2px 0; border-top:1px solid var(--line); }
 .showcase-slide figcaption span { flex:none; color:var(--accent); font-size:10px; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
