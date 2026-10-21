@@ -61,3 +61,57 @@ body.light-mode { --premium-edge: rgba(25,22,17,.12); --premium-glow: rgba(205,1
  .premium-hero-enter .hero-eyebrow,.premium-hero-enter #hero-title,.premium-hero-enter .hero-summary,.premium-hero-enter .hero-actions,.premium-hero-enter .hero-visual {animation:none!important;opacity:1!important;filter:none!important;transform:none!important}
  .hero-btn,.navbar {transition:none!important}
 }
+
+/* The visual direction is deliberately stronger than the former glow-only layer. */
+.about .portfolio-hero {
+  min-height: 610px;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+  gap: clamp(18px, 3vw, 46px);
+  margin-bottom: 48px;
+  padding: clamp(58px, 6vw, 88px) clamp(28px, 5vw, 70px) 58px;
+  border: 1px solid rgba(255, 211, 107, .24);
+  border-radius: 28px;
+  background: radial-gradient(circle at 83% 17%, rgba(215, 165, 68, .19), transparent 36%), linear-gradient(125deg, #171819, #121315 62%, #222018);
+}
+.about .portfolio-hero::before { opacity: .28; }
+.about .portfolio-hero::after { display: none; }
+.about .hero-copy { max-width: 700px; }
+.about .hero-eyebrow { margin-bottom: 30px; font-size: 11px; }
+.about .portfolio-hero h2 { max-width: 680px; font-size: clamp(48px, 5.5vw, 82px); line-height: 1.01; font-weight: 700; letter-spacing: -.065em; }
+.about .portfolio-hero h2 em { margin-top: .08em; background-image: linear-gradient(110deg, #f6d575, #dba85c 70%, #ffedbb); }
+.about .hero-summary { max-width: 55ch; margin-top: 32px; font-size: clamp(15px, 1.35vw, 18px); line-height: 1.7; }
+.about .hero-actions { margin-top: 38px; }
+.about .hero-btn { min-height: 52px; padding-inline: 24px; }
+.about .hero-btn-primary { box-shadow: 0 13px 38px rgba(225, 174, 73, .18); }
+.about .hero-visual {
+  width: 100%; height: min(480px, 39vw); min-height: 360px; aspect-ratio: auto;
+  align-self: center; justify-self: stretch; overflow: hidden; border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: #363839;
+  transform: none; box-shadow: 22px 22px 0 rgba(255, 211, 107, .08), 0 28px 70px rgba(0,0,0,.26);
+}
+.about .hero-visual::before, .about .hero-visual::after,
+.about .hero-orbit, .about .hero-planet, .about .hero-monogram, .about .hero-visual > p { display: none; }
+.hero-portrait { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 36%; filter: saturate(.7) contrast(1.08) brightness(.8); transition: transform .8s var(--premium-ease), filter .8s ease; }
+.about .hero-visual:hover .hero-portrait { transform: scale(1.045); filter: saturate(.87) contrast(1.06) brightness(.87); }
+.hero-portrait-label { position: absolute; z-index: 2; left: 20px; right: 20px; bottom: 18px; padding: 13px 15px; border: 1px solid rgba(255,255,255,.23); border-radius: 11px; color: #fff; background: rgba(12,14,15,.7); backdrop-filter: blur(15px); font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.hero-portrait-label i { color: #e6c274; font-style: normal; padding-inline: 3px; }
+body.light-mode .about .portfolio-hero { background: radial-gradient(circle at 80% 14%, rgba(219, 167, 82, .22), transparent 38%), linear-gradient(125deg,#f6f2e9,#ede5d7); border-color: rgba(140,99,31,.3); }
+body.light-mode .about .hero-portrait-label { background: rgba(20,20,20,.75); }
+@media (max-width: 1023px) {
+  .about .portfolio-hero { grid-template-columns: minmax(0,1fr) minmax(220px,.65fr); min-height: 530px; }
+  .about .hero-visual { position: relative; right: auto; bottom: auto; opacity: 1; min-height: 330px; height: 390px; }
+}
+@media (max-width: 767px) {
+  .about .portfolio-hero { grid-template-columns: 1fr; gap: 30px; min-height: 0; margin: -18px -18px 30px; padding: 42px 24px 28px; border-radius: 21px; }
+  .about .hero-eyebrow { margin-bottom: 22px; }
+  .about .portfolio-hero h2 { font-size: clamp(40px, 11vw, 58px); letter-spacing: -.055em; }
+  .about .hero-summary { margin-top: 22px; font-size: 14px; }
+  .about .hero-actions { gap: 10px; margin-top: 25px; }
+  .about .hero-btn { width: 100%; }
+  .about .hero-visual { width: 100%; height: 280px; min-height: 0; opacity: 1; box-shadow: 10px 10px 0 rgba(255,211,107,.1); }
+  .hero-portrait { object-position: 50% 35%; }
+  .hero-portrait-label { font-size: 10px; left: 12px; right: 12px; bottom: 12px; }
+  body:has(.about.active) .mobile-contact-cta { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .hero-portrait { transition: none; } }
