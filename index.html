@@ -59,6 +59,7 @@
   <link rel="stylesheet" href="./assets/css/enhancements.css?v=20261001-4">
   <link rel="stylesheet" href="./assets/css/premium-motion.css?v=20261021-2">
   <link rel="stylesheet" href="./assets/css/premium-portfolio.css?v=20261021-3">
+  <link rel="stylesheet" href="./assets/css/editorial-redesign.css?v=20261021-1">
 
   <!--
     - google font link
@@ -66,7 +67,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="./assets/images/my-avatar.png" fetchpriority="high">
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 </head>
 <!-- Google tag (gtag.js) -->
@@ -127,6 +128,7 @@
             <span>Insights Analysis</span>
             <span>Competitor Research</span>
             <span>Workflow Automation</span>
+            <button class="sidebar-roles-toggle" type="button" aria-expanded="false">+8 vai trò khác</button>
           </div>
 
 
@@ -267,24 +269,28 @@
 
         <section class="portfolio-hero" aria-labelledby="hero-title">
           <div class="hero-copy">
-            <p class="hero-eyebrow"><span></span> Content Marketing · Creative Strategy</p>
-            <h2 id="hero-title"><span>Biến insight thành</span> <em>nội dung tạo chuyển đổi.</em></h2>
+            <p class="hero-eyebrow"><span></span> Nguyễn Việt Long / Content Marketer</p>
+            <h2 id="hero-title"><span>Nội dung có</span><em>chiến lược.</em><span>Kể chuyện có</span><em>kết quả.</em></h2>
             <p class="hero-summary">
               Tôi là Nguyễn Việt Long - Content Marketer kết hợp tư duy chiến lược, storytelling và AI để xây dựng
               nội dung đa nền tảng vừa đúng thương hiệu, vừa hướng tới kết quả kinh doanh.
             </p>
             <div class="hero-actions">
               <button class="hero-btn hero-btn-primary" type="button" data-jump-page="portfolio">
-                Xem dự án nổi bật <ion-icon name="arrow-forward-outline"></ion-icon>
+                Khám phá dự án <ion-icon name="arrow-forward-outline"></ion-icon>
               </button>
               <button class="hero-btn hero-btn-secondary" type="button" data-jump-page="contact">
                 Trao đổi công việc
               </button>
             </div>
+            <div class="hero-proof" aria-label="Kinh nghiệm nổi bật">
+              <span><strong>07+</strong> Thương hiệu</span>
+              <span><strong>2024—26</strong> Dự án thực chiến</span>
+            </div>
           </div>
           <div class="hero-visual" aria-hidden="true">
             <img class="hero-portrait" src="./assets/images/my-avatar.png" alt="" fetchpriority="high">
-            <span class="hero-portrait-label">Nguyễn Việt Long <i>·</i> Content & Creative</span>
+            <span class="hero-portrait-label"><b>VL / 01</b><i>Content & Creative</i></span>
             <span class="hero-orbit hero-orbit-one"></span>
             <span class="hero-orbit hero-orbit-two"></span>
             <i class="hero-planet hero-planet-one"></i>
@@ -961,12 +967,42 @@
       <article class="portfolio" data-page="portfolio">
 
         <header>
-          <p class="portfolio-edition">Selected work <span> / 2024—2026</span></p>
-          <h2 class="h2 article-title">Portfolio</h2>
-          <p class="portfolio-intro">Từ insight đến hình ảnh, câu chuyện và nội dung thật. Khám phá các dự án tôi đã trực tiếp tham gia sản xuất.</p>
+          <p class="portfolio-edition">01 / Selected work <span> 2024—2026</span></p>
+          <h2 class="h2 article-title">Dự án <em>tiêu biểu.</em></h2>
+          <p class="portfolio-intro">Từ insight đến sản xuất và đo lường. Bốn câu chuyện dưới đây cho thấy cách tôi biến ý tưởng thành nội dung có mục tiêu.</p>
         </header>
 
+        <section class="featured-work" aria-label="Case study nổi bật">
+          <div class="featured-work-grid">
+            <a class="featured-work-card featured-work-card--lead" href="./case-studies/highway-menswear.html">
+              <img src="./assets/images/project-3.webp" alt="Chiến dịch Season of Gifting của Highway Menswear" loading="lazy">
+              <span class="featured-work-shade"></span>
+              <span class="featured-work-top"><span>01 / FASHION</span><span>2025—2026</span></span>
+              <span class="featured-work-copy"><small>Media Executive · Highway Menswear</small><strong>Nội dung thời trang nam gắn với mùa bán hàng.</strong><span>Định hướng, quay chụp và vận hành nội dung đa kênh. <b>+20% tương tác tự nhiên</b></span><span class="featured-work-link">Xem case study <ion-icon name="arrow-up-outline" aria-hidden="true"></ion-icon></span></span>
+            </a>
+            <a class="featured-work-card featured-work-card--secondary" href="./case-studies/p-global.html">
+              <img src="./assets/images/project-1.webp" alt="Hậu trường sản xuất nội dung P Global" loading="lazy">
+              <span class="featured-work-shade"></span>
+              <span class="featured-work-top"><span>02 / COMMERCE</span><span>2024—2025</span></span>
+              <span class="featured-work-copy"><small>Content Marketing · P Global</small><strong>Biến lợi ích sản phẩm thành nội dung dễ mua.</strong><span>Video-first · Doanh thu duy trì 30–50M/tháng</span><span class="featured-work-link">Xem case study <ion-icon name="arrow-up-outline" aria-hidden="true"></ion-icon></span></span>
+            </a>
+            <a class="featured-work-card featured-work-card--secondary" href="./case-studies/beatvn.html">
+              <img src="./assets/images/project-15.webp" alt="Bộ bài đăng Facebook của BeatVN" loading="lazy">
+              <span class="featured-work-shade"></span>
+              <span class="featured-work-top"><span>03 / COMMUNITY</span><span>2025</span></span>
+              <span class="featured-work-copy"><small>Content Creator · BeatVN</small><strong>Nội dung cộng đồng bắt đúng mối quan tâm.</strong><span>Trung bình 5.000 tương tác mỗi bài</span><span class="featured-work-link">Xem case study <ion-icon name="arrow-up-outline" aria-hidden="true"></ion-icon></span></span>
+            </a>
+            <a class="featured-work-card featured-work-card--wide" href="./case-studies/minclue-fitness.html">
+              <img src="./assets/images/project-12.webp" alt="Thiết kế voucher quà tặng Minclue Fitness" loading="lazy">
+              <span class="featured-work-shade"></span>
+              <span class="featured-work-top"><span>04 / FITNESS</span><span>2024—2025</span></span>
+              <span class="featured-work-copy"><small>Content & Social · Minclue Fitness</small><strong>Một hệ thống nội dung có thể vận hành đều đặn.</strong><span>Post, Story và Voucher cùng một tiếng nói thương hiệu</span><span class="featured-work-link">Xem case study <ion-icon name="arrow-up-outline" aria-hidden="true"></ion-icon></span></span>
+            </a>
+          </div>
+        </section>
+
         <section class="projects">
+          <div class="project-library-heading"><p>02 / THE ARCHIVE</p><h3>Khám phá toàn bộ dự án</h3><span>Lọc theo thương hiệu hoặc mở ảnh để xem chi tiết.</span></div>
 
           <ul class="filter-list">
 
@@ -1890,6 +1926,7 @@
   <script src="./assets/js/enhancements.js?v=20261001-5" defer></script>
   <script src="./assets/js/premium-motion.js?v=20261021-1" defer></script>
   <script src="./assets/js/premium-portfolio.js?v=20261021-1" defer></script>
+  <script src="./assets/js/editorial-redesign.js?v=20261021-1" defer></script>
   <script src="./assets/js/features.js?v=20260928-2" defer></script>
 
   <!--
