@@ -94,4 +94,11 @@ body.light-mode .portfolio[data-page="portfolio"] .filter-item button { border-c
   .portfolio[data-page="portfolio"] .project-title { padding: 17px 18px 2px; }
   .portfolio[data-page="portfolio"] .project-category { padding-inline: 18px; padding-bottom: 17px; }
   .portfolio[data-page="portfolio"] .project-story-trigger { margin-inline: 18px; margin-bottom: 19px; }
+  body:has(.portfolio.active) .mobile-contact-cta { display: none; }
+}
+@media (hover: none) {
+  .portfolio[data-page="portfolio"] .project-hover-copy,
+  .portfolio[data-page="portfolio"] .project-item-icon-box { display: none; }
+  .portfolio[data-page="portfolio"] .project-item > a:hover .project-img::after { opacity: 0; }
+  .portfolio[data-page="portfolio"] .project-item > a:hover .project-img::before { background: transparent; }
 }
