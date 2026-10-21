@@ -30,7 +30,7 @@
       page: './case-studies/p-global.html'
     },
     'minclue-fitness': {
-      brand: 'Minclue Fitness', role: 'Content & Social', period: 'Dự án thực chiến', result: 'Nội dung đa định dạng',
+      brand: 'Minclue Fitness', role: 'Content & Social', period: '2026', result: 'Nội dung đa định dạng',
       challenge: 'Tạo hệ thống nội dung đều đặn cho một thương hiệu fitness với nhiều định dạng từ bài đăng đến story và ưu đãi.',
       approach: 'Chuẩn hóa bố cục, nhóm chủ đề theo mục tiêu và triển khai các định dạng có thể tái sử dụng theo tuần/tháng.',
       responsibilities: ['Xây dựng nhóm chủ đề và lịch đăng định kỳ', 'Viết nội dung social theo mục tiêu từng định dạng', 'Phối hợp thiết kế và chuẩn hóa tài sản truyền thông'],

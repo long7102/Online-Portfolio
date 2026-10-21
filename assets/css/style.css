@@ -22,7 +22,7 @@
   --vegas-gold: hsl(45, 54%, 58%);
   --light-gray: hsl(0, 0%, 84%);
   --light-gray-70: hsla(0, 0%, 84%, 0.7);
-  --bittersweet-shimmer: hsl(0, 43%, 51%);
+  --bittersweet-shimmer: hsl(45, 100%, 72%);
 
   /* Typography */
   --ff-poppins: 'Be Vietnam Pro', sans-serif;
@@ -53,22 +53,22 @@
 
 body.light-mode {
   /* Gradients - Light Mode */
-  --bg-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 100%) 3%, hsl(45, 30%, 96%) 97%);
-  --bg-gradient-jet: linear-gradient(to bottom right, hsla(0, 0%, 100%, 0.8) 0%, hsla(45, 20%, 98%, 0.5) 100%), hsl(0, 0%, 98%);
+  --bg-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 100%) 3%, hsl(0, 0%, 96%) 97%);
+  --bg-gradient-jet: linear-gradient(to bottom right, hsla(0, 0%, 100%, 0.8) 0%, hsla(0, 0%, 98%, 0.5) 100%), hsl(0, 0%, 98%);
   --bg-gradient-yellow-2: linear-gradient(135deg, hsla(45, 100%, 71%, 0.251) 0%, hsla(35, 100%, 68%, 0) 59.86%), hsl(0, 0%, 98%);
   --border-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 88%) 0%, hsla(0, 0%, 88%, 0) 50%);
-  --text-gradient-yellow: linear-gradient(to right, hsl(40, 90%, 55%), hsl(30, 90%, 50%));
+  --text-gradient-yellow: linear-gradient(to right, hsl(45, 100%, 55%), hsl(45, 100%, 66%));
 
   /* Solid Colors - Light Mode */
   --jet: hsl(0, 0%, 88%);
-  --onyx: hsl(45, 20%, 95%);
+  --onyx: hsl(0, 0%, 95%);
   --eerie-black-1: hsl(0, 0%, 98%);
   --eerie-black-2: hsl(0, 0%, 100%);
-  --smoky-black: hsl(45, 40%, 97%);
+  --smoky-black: hsl(0, 0%, 97%);
   --white-1: hsl(0, 0%, 15%);
   --white-2: hsl(0, 0%, 10%);
-  --orange-yellow-crayola: hsl(40, 95%, 50%);
-  --vegas-gold: hsl(35, 70%, 45%);
+  --orange-yellow-crayola: hsl(45, 100%, 45%);
+  --vegas-gold: hsl(45, 75%, 40%);
   --light-gray: hsl(0, 0%, 25%);
   --light-gray-70: hsla(0, 0%, 35%, 0.8);
 
@@ -1427,20 +1427,20 @@ textarea.form-input::-webkit-resizer {
 
 /* Các nhóm nút phụ liên kết */
 .cta-btn.secondary-cta {
-  background: #22252a;
+  background: #222222;
   color: #ffffff;
-  border: 1px solid #383c44;
+  border: 1px solid #383838;
 }
 
 .cta-btn.secondary-cta:hover {
-  background: #383c44;
+  background: #383838;
   color: #fcd36b;
 }
 
 .cta-btn.outline-cta {
   background: transparent;
   color: #dddddd;
-  border: 1px solid #383c44;
+  border: 1px solid #383838;
 }
 
 .cta-btn.outline-cta:hover {
@@ -1481,42 +1481,42 @@ body.light-mode :is(.digital-showcase-card, .digital-business-card) .card-header
 }
 
 body.light-mode :is(.digital-showcase-card, .digital-business-card) .client-name {
-  color: #1e293b;
+  color: #202020;
 }
 
 body.light-mode :is(.digital-showcase-card, .digital-business-card) .client-subtitle {
-  color: #d97706;
+  color: #8c6900;
 }
 
 body.light-mode :is(.digital-showcase-card, .digital-business-card) .card-description {
-  color: #475569;
+  color: #555555;
 }
 
 body.light-mode .cta-btn.portfolio-link-cta,
 body.light-mode .cta-btn.primary-cta {
-  color: #0f172a;
+  color: #111111;
   box-shadow: 0 4px 12px rgba(252, 211, 107, 0.3);
 }
 
 body.light-mode .cta-btn.secondary-cta {
-  background: #f1f5f9;
-  color: #334155;
-  border-color: #e2e8f0;
+  background: #f1f1f1;
+  color: #333333;
+  border-color: #e2e2e2;
 }
 
 body.light-mode .cta-btn.secondary-cta:hover {
-  background: #e2e8f0;
-  color: #d97706;
+  background: #e2e2e2;
+  color: #8c6900;
 }
 
 body.light-mode .cta-btn.outline-cta {
-  color: #475569;
-  border-color: #e2e8f0;
+  color: #555555;
+  border-color: #e2e2e2;
 }
 
 body.light-mode .cta-btn.outline-cta:hover {
   border-color: #fcd36b;
-  color: #d97706;
+  color: #8c6900;
 }
 
 /* =========================================================================
@@ -2191,33 +2191,33 @@ body.light-mode .cta-btn.outline-cta:hover {
 
 /* CHẾ ĐỘ LIGHT MODE (NỀN SÁNG) */
 body.light-mode .main-footer {
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid #e2e2e2;
 }
 
 body.light-mode .copyright-info p {
-  color: #64748b;
+  color: #666666;
 }
 
 body.light-mode .copyright-info strong {
-  color: #d97706;
+  color: #8c6900;
 }
 
 body.light-mode .dynamic-widget {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: #f8f8f8;
+  border: 1px solid #e2e2e2;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 body.light-mode .dynamic-widget:hover {
-  border-color: #d97706;
+  border-color: #8c6900;
 }
 
 body.light-mode .widget-date {
-  color: #334155;
+  color: #333333;
 }
 
 body.light-mode .widget-weather {
-  color: #d97706;
+  color: #8c6900;
 }
 
 body.light-mode .clients {
