@@ -139,7 +139,7 @@
     if (it.caption) { const s = document.createElement('strong'); s.textContent = it.label || ''; els.caption.append(...(it.label ? [s] : []), it.caption); }
     els.orig.href = it.full || it.src;
     els.prev.disabled = state.i === 0; els.next.disabled = state.i === n - 1;
-    els.thumbs.querySelectorAll('.mpv-thumb').forEach((t, k) => { if (k === state.i) { t.setAttribute('aria-current', 'true'); t.scrollIntoView({ inline: 'center', block: 'nearest', behavior: reduced ? 'auto' : 'smooth' }); } else t.removeAttribute('aria-current'); });
+    els.thumbs.querySelectorAll('.mpv-thumb').forEach((t, k) => { if (k === state.i) { t.setAttribute('aria-current', 'true'); t.scrollIntoView({ inline: 'center', block: 'center', behavior: reduced ? 'auto' : 'smooth' }); } else t.removeAttribute('aria-current'); });
     root.classList.add('is-loading');
     view.s = 1; view.x = 0; view.y = 0;
     const token = ++state.token, img = els.img;
