@@ -1,0 +1,91 @@
+/* Modern polish layer (2026-11): scroll reveal, glass cards, animated timeline, richer hover. */
+:root { --mp-ease: cubic-bezier(.22,1,.36,1); --mp-gold: hsl(45,100%,72%); --mp-gold-soft: hsla(45,100%,72%,.14); }
+
+/* Ambient background glow */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(600px 400px at 85% -5%, hsla(45,100%,72%,.08), transparent 70%),
+    radial-gradient(500px 420px at 0% 100%, hsla(210,80%,60%,.06), transparent 70%);
+}
+body.light-mode::before {
+  background:
+    radial-gradient(600px 400px at 85% -5%, hsla(40,90%,60%,.12), transparent 70%),
+    radial-gradient(500px 420px at 0% 100%, hsla(210,80%,60%,.07), transparent 70%);
+}
+html { scroll-behavior: smooth; }
+::selection { background: var(--mp-gold); color: #111; }
+
+/* Scroll reveal (only active when JS adds .mp-js) */
+.mp-js .mp-reveal { opacity: 0; transform: translate3d(0,26px,0) scale(.985); filter: blur(4px);
+  transition: opacity .8s var(--mp-ease), transform .8s var(--mp-ease), filter .8s var(--mp-ease);
+  transition-delay: var(--mp-delay, 0ms); will-change: transform, opacity; }
+.mp-js .mp-reveal.mp-in { opacity: 1; transform: none; filter: none; }
+
+/* Glass cards + animated gradient border on hover */
+.impact-grid li, .value-process li, .project-item > a, .blog-post-item > a, .featured-work-card, .client-logo-card {
+  position: relative; transition: transform .45s var(--mp-ease), box-shadow .45s ease, border-color .35s ease;
+}
+.impact-grid li, .value-process li { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+@media (hover:hover) and (pointer:fine) {
+  .impact-grid li:hover, .value-process li:hover, .featured-work-card:hover, .client-logo-card:hover {
+    transform: translateY(-6px); border-color: hsla(45,100%,72%,.45);
+    box-shadow: 0 22px 50px rgba(0,0,0,.28), 0 0 0 1px hsla(45,100%,72%,.18), 0 0 40px var(--mp-gold-soft);
+  }
+  .project-item > a:hover, .blog-post-item > a:hover { transform: translateY(-5px); }
+  .mp-tilt { transform-style: preserve-3d; transition: transform .2s ease-out; }
+}
+.impact-grid li strong { background: linear-gradient(120deg, var(--mp-gold), hsl(30,100%,66%));
+  -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+
+/* Hero: shimmering accent words + soft float */
+.portfolio-hero h2 em { background: linear-gradient(100deg, var(--mp-gold) 20%, #fff 45%, hsl(30,100%,66%) 70%);
+  background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  -webkit-text-fill-color: transparent; animation: mp-shimmer 6s ease-in-out infinite; }
+body.light-mode .portfolio-hero h2 em { background-image: linear-gradient(100deg, hsl(36,90%,42%) 20%, hsl(20,90%,50%) 55%, hsl(36,90%,42%)); background-size: 220% 100%; }
+@keyframes mp-shimmer { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+.hero-btn-primary { position: relative; overflow: hidden; }
+.hero-btn-primary::after { content: ""; position: absolute; inset: 0; transform: translateX(-120%);
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.45) 50%, transparent 70%); transition: transform .8s var(--mp-ease); }
+@media (hover:hover) { .hero-btn-primary:hover::after { transform: translateX(120%); } }
+
+/* Experience timeline: glowing rail, pulsing "current" role */
+.timeline-item { transition: transform .4s var(--mp-ease); }
+@media (hover:hover) { .timeline-item:hover { transform: translateX(6px); } .timeline-item:hover .timeline-item-title { color: var(--mp-gold); } }
+.timeline-item-title { transition: color .3s ease; }
+.timeline-item::after { transition: box-shadow .4s ease, transform .4s var(--mp-ease); }
+.timeline-item:hover::after { transform: scale(1.25); box-shadow: 0 0 0 5px var(--mp-gold-soft), 0 0 18px hsla(45,100%,72%,.6); }
+.timeline-item--current > span::after {
+  content: "Hiện tại"; display: inline-block; margin-left: 10px; padding: 2px 10px; border-radius: 999px;
+  font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; vertical-align: 1px;
+  color: #1a1a1a; background: var(--mp-gold); animation: mp-pulse 2.4s ease-in-out infinite;
+}
+.timeline-item--current::after { animation: mp-dot 2.4s ease-in-out infinite; }
+@keyframes mp-pulse { 0%,100% { box-shadow: 0 0 0 0 hsla(45,100%,72%,.55); } 50% { box-shadow: 0 0 0 8px hsla(45,100%,72%,0); } }
+@keyframes mp-dot { 0%,100% { box-shadow: 0 0 0 0 hsla(45,100%,72%,.6); } 50% { box-shadow: 0 0 0 9px hsla(45,100%,72%,0); } }
+
+/* Navbar active indicator + page transition */
+.navbar-link { position: relative; }
+.navbar-link.active::after { content: ""; position: absolute; left: 50%; bottom: 4px; width: 18px; height: 2px; border-radius: 2px;
+  background: var(--mp-gold); transform: translateX(-50%); }
+article.active { animation: mp-page .6s var(--mp-ease) both; }
+@keyframes mp-page { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+/* Section titles get an animated underline */
+.article-title { position: relative; }
+.article-title::after { content: ""; display: block; width: 40px; height: 3px; border-radius: 3px; margin-top: 10px;
+  background: linear-gradient(90deg, var(--mp-gold), transparent); animation: mp-line 1s var(--mp-ease) both; }
+@keyframes mp-line { from { width: 0; } to { width: 56px; } }
+
+/* Buttons & links focus */
+a:focus-visible, button:focus-visible { outline: 2px solid var(--mp-gold); outline-offset: 3px; }
+
+/* Custom scrollbar */
+* { scrollbar-width: thin; scrollbar-color: hsla(45,100%,72%,.5) transparent; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mp-js .mp-reveal { opacity: 1; transform: none; filter: none; transition: none; }
+  .portfolio-hero h2 em, .timeline-item--current::after, .timeline-item--current > span::after, article.active, .article-title::after { animation: none; }
+  html { scroll-behavior: auto; }
+}
+@media (max-width: 767px) { .mp-js .mp-reveal { transform: translate3d(0,16px,0); filter: none; } }
