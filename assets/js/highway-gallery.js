@@ -1,1 +1,35 @@
-(()=>{const g=window.highwayGalleryGroups,w=document.getElementById("gallery-groups"),n=document.getElementById("gallery-dialog");if(!Array.isArray(g)||!w||!n)return;const A=n.querySelector(".gallery-image-stack"),i=[...A.querySelectorAll(".gallery-full-image")],u=n.querySelector(".gallery-thumbnails"),I=n.querySelector("#gallery-dialog-title"),N=n.querySelector(".gallery-position"),M=n.querySelector(".gallery-open-image"),k=n.querySelector(".gallery-prev"),q=n.querySelector(".gallery-next"),$=n.querySelector(".gallery-close"),C=window.matchMedia("(prefers-reduced-motion: reduce)");let E=0,o=0,y=0,f=0,v=null,x="";g.forEach((e,a)=>{const t=document.createElement("button");t.type="button",t.className="gallery-group";const l=e.id==="cover-story"?"\u1EA3nh b\xECa":"\u1EA3nh";t.setAttribute("aria-label",`M\u1EDF ${e.title}, ${e.images.length} ${l}`);const r=document.createElement("img");r.src=e.cover,r.alt="",r.loading="lazy",r.decoding="async";const s=document.createElement("span");s.className="gallery-group-copy";const c=document.createElement("span");c.className="gallery-group-number";const m=document.createElement("span");m.textContent=`B\u1ED9 ${String(a+1).padStart(2,"0")}`;const d=document.createElement("span");d.textContent=`${e.images.length} ${l}`,c.append(m,d);const p=document.createElement("strong");p.className="gallery-group-title",p.textContent=e.title;const S=document.createElement("span");S.className="gallery-group-description",S.textContent=e.description,s.append(c,p,S),t.append(r,s),t.addEventListener("click",()=>B(a,t)),w.append(t)});function T(e){const a=e.images.map((t,l)=>{const r=document.createElement("button");r.type="button",r.className="gallery-thumb",r.setAttribute("aria-label",`Xem \u1EA3nh ${l+1} trong b\u1ED9 ${e.title}`);const s=document.createElement("img");s.src=t,s.alt="",s.loading="lazy",s.decoding="async";const c=document.createElement("span");return c.textContent=String(l+1).padStart(2,"0"),r.append(s,c),r.addEventListener("click",()=>{if(l===o)return;const m=l>o?"next":"prev";o=l,L(!0,m)}),r});u.replaceChildren(...a)}function X(e,a){I.textContent=e.title,N.textContent=`${String(o+1).padStart(2,"0")} / ${String(e.images.length).padStart(2,"0")}`,M.href=a,k.disabled=o===0,q.disabled=o===e.images.length-1;const t=u.querySelectorAll(".gallery-thumb");t.forEach((r,s)=>{s===o?r.setAttribute("aria-current","true"):r.removeAttribute("aria-current")});const l=t[o];if(l&&u.clientWidth&&u.scrollTo({left:l.offsetLeft-u.offsetLeft-(u.clientWidth-l.clientWidth)/2,behavior:C.matches?"instant":"smooth"}),e.images[o+1]){const r=new Image;r.src=e.images[o+1]}}function L(e,a="next"){const t=g[E],l=t.images[o],r=`Highway Menswear \xB7 ${t.title} \xB7 \u1EA3nh ${o+1} tr\xEAn ${t.images.length}`;X(t,l);const s=++f;if(!e||C.matches){i.forEach(p=>p.classList.remove("is-active","is-leaving")),y=0,i[0].src=l,i[0].alt=r,i[0].classList.add("is-active"),i[1].removeAttribute("src");return}const c=i[y],m=1-y,d=i[m];A.dataset.direction=a,d.classList.remove("is-active","is-leaving"),d.src=l,d.alt=r,d.decode().catch(()=>{}).then(()=>{s!==f||!n.open||requestAnimationFrame(()=>{s!==f||!n.open||(c.classList.remove("is-active"),c.classList.add("is-leaving"),d.classList.add("is-active"),y=m)})})}function B(e,a){E=e,o=0,y=0,v=a,x=document.body.style.overflow,T(g[e]),L(!1),n.showModal(),document.body.style.overflow="hidden",$.focus()}function b(e){const a=o+e;a<0||a>=g[E].images.length||(o=a,L(!0,e>0?"next":"prev"))}k.addEventListener("click",()=>b(-1)),q.addEventListener("click",()=>b(1)),$.addEventListener("click",()=>n.close()),n.addEventListener("click",e=>{e.target===n&&n.close()}),n.addEventListener("keydown",e=>{(e.key==="ArrowLeft"||e.key==="ArrowRight")&&(e.preventDefault(),b(e.key==="ArrowRight"?1:-1))}),n.addEventListener("close",()=>{++f,document.body.style.overflow=x,i.forEach(e=>{e.classList.remove("is-active","is-leaving"),e.removeAttribute("src")}),u.replaceChildren(),v==null||v.focus()});let h=null;n.querySelector(".gallery-stage").addEventListener("touchstart",e=>{var a,t;h=(t=(a=e.changedTouches[0])==null?void 0:a.clientX)!=null?t:null},{passive:!0}),n.querySelector(".gallery-stage").addEventListener("touchend",e=>{var t,l;if(h===null)return;const a=((l=(t=e.changedTouches[0])==null?void 0:t.clientX)!=null?l:h)-h;Math.abs(a)>50&&b(a<0?1:-1),h=null},{passive:!0})})();
+/* Highway Menswear case study: group cards that open the immersive viewer. */
+(() => {
+  'use strict';
+  const groups = window.highwayGalleryGroups;
+  const wrap = document.getElementById('gallery-groups');
+  if (!Array.isArray(groups) || !wrap) return;
+
+  groups.forEach((g, gi) => {
+    const noun = g.id === 'cover-story' ? 'ảnh bìa' : 'ảnh';
+    const btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'gallery-group';
+    btn.setAttribute('aria-label', `Mở ${g.title}, ${g.images.length} ${noun}`);
+    const img = document.createElement('img');
+    img.src = g.cover; img.alt = ''; img.loading = 'lazy'; img.decoding = 'async';
+    const copy = document.createElement('span'); copy.className = 'gallery-group-copy';
+    const num = document.createElement('span'); num.className = 'gallery-group-number';
+    const a = document.createElement('span'); a.textContent = `Bộ ${String(gi + 1).padStart(2, '0')}`;
+    const b = document.createElement('span'); b.textContent = `${g.images.length} ${noun}`;
+    num.append(a, b);
+    const title = document.createElement('strong'); title.className = 'gallery-group-title'; title.textContent = g.title;
+    const desc = document.createElement('span'); desc.className = 'gallery-group-description'; desc.textContent = g.description;
+    copy.append(num, title, desc);
+    btn.append(img, copy);
+    btn.addEventListener('click', () => {
+      if (!window.MPViewer) return;
+      window.MPViewer.open({
+        kicker: 'Highway Menswear / Project archive',
+        title: g.title,
+        index: 0,
+        images: g.images.map((src, i) => ({ src, label: `Ảnh ${i + 1}/${g.images.length}`, caption: g.description, alt: `Highway Menswear · ${g.title} · ảnh ${i + 1} trên ${g.images.length}` })),
+      });
+    });
+    wrap.append(btn);
+  });
+})();
