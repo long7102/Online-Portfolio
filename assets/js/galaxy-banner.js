@@ -10,10 +10,14 @@
   const ctx = cv.getContext('2d');
   const dpr = Math.min(devicePixelRatio || 1, 2), TAU = Math.PI * 2, rnd = (a, b) => a + Math.random() * (b - a);
   let W = 0, H = 0, disk = [], big = [], dust = [], bg = [], visible = true, raf = 0;
+  /* 6 orbit rings, 11 planets: shaded spheres in warm tones; two have rings of their own */
   const rings = [
-    { k: .3, tilt: -.45, sp: .016, pl: [{ p: 0, sp: .12, s: 3, c: '45,100%,76%' }] },
-    { k: .5, tilt: .3, sp: -.012, pl: [{ p: 2.2, sp: -.08, s: 2.2, c: '40,100%,88%' }] },
-    { k: .72, tilt: -.1, sp: .008, pl: [{ p: 4, sp: .06, s: 2.6, c: '36,100%,70%' }] },
+    { k: .2, tilt: -.45, sp: .02, pl: [{ p: 0, sp: .16, s: 3.2, c: '45,100%,76%' }, { p: 3.4, sp: .16, s: 2, c: '30,80%,62%' }] },
+    { k: .32, tilt: .3, sp: -.014, pl: [{ p: 2.2, sp: -.11, s: 4.6, c: '38,90%,66%', ring: true }] },
+    { k: .46, tilt: -.1, sp: .01, pl: [{ p: 4, sp: .08, s: 3.4, c: '18,75%,58%' }, { p: 1, sp: .08, s: 2.2, c: '48,100%,86%' }] },
+    { k: .6, tilt: .55, sp: -.009, pl: [{ p: 5.2, sp: -.06, s: 5.6, c: '34,70%,60%', ring: true }] },
+    { k: .76, tilt: -.28, sp: .006, pl: [{ p: 2.8, sp: .05, s: 3, c: '44,100%,80%' }, { p: 0.2, sp: .05, s: 2.4, c: '24,80%,56%' }] },
+    { k: .92, tilt: .15, sp: -.005, pl: [{ p: 1.6, sp: -.04, s: 3.8, c: '40,60%,72%' }, { p: 4.6, sp: -.04, s: 1.8, c: '0,0%,94%' }] },
   ];
   const build = () => {
     const r = host.getBoundingClientRect(); W = Math.max(1, r.width); H = Math.max(1, r.height);
@@ -59,12 +63,20 @@
     for (const o of rings) {
       const rx = o.k * R, ry = rx * .42, ang = o.tilt + t * o.sp;
       ctx.strokeStyle = 'hsla(45,100%,74%,.3)'; ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, ang, 0, TAU); ctx.stroke();
-      for (const p of o.pl) {
+      for (const p0 of o.pl) {
+        const p = { ...p0, s: p0.s * 1.55 };
         const th = p.p + t * p.sp, ex = Math.cos(th) * rx, ey = Math.sin(th) * ry;
         const x = cx + ex * Math.cos(ang) - ey * Math.sin(ang), y = cy + ex * Math.sin(ang) + ey * Math.cos(ang);
         const g = ctx.createRadialGradient(x, y, 0, x, y, p.s * 5);
-        g.addColorStop(0, `hsla(${p.c},.9)`); g.addColorStop(1, 'transparent'); ctx.fillStyle = g; ctx.fillRect(x - p.s * 5, y - p.s * 5, p.s * 10, p.s * 10);
-        ctx.fillStyle = `hsl(${p.c})`; ctx.beginPath(); ctx.arc(x, y, p.s, 0, TAU); ctx.fill();
+        g.addColorStop(0, `hsla(${p.c},.55)`); g.addColorStop(1, 'transparent'); ctx.fillStyle = g; ctx.fillRect(x - p.s * 5, y - p.s * 5, p.s * 10, p.s * 10);
+        const lx = x + (cx - x) * .12, ly = y + (cy - y) * .12;      // lit from the galactic core
+        const sg = ctx.createRadialGradient(lx - p.s * .3, ly - p.s * .3, 0, x, y, p.s);
+        const [ph, ps, pl] = p.c.split(',').map(parseFloat);
+        sg.addColorStop(0, `hsl(${ph},${ps}%,${Math.min(95, pl + 24)}%)`); sg.addColorStop(1, `hsl(${ph},${ps}%,${Math.max(10, pl - 30)}%)`);
+        ctx.globalCompositeOperation = 'source-over';
+        if (p.ring) { ctx.strokeStyle = 'hsla(42,80%,78%,.55)'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.ellipse(x, y, p.s * 2.1, p.s * .7, ang - .35, 0, TAU); ctx.stroke(); }
+        ctx.fillStyle = sg; ctx.beginPath(); ctx.arc(x, y, p.s, 0, TAU); ctx.fill();
+        ctx.globalCompositeOperation = 'lighter'; ctx.lineWidth = 1;
       }
     }
     ctx.globalCompositeOperation = 'source-over';
