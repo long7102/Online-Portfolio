@@ -73,7 +73,7 @@
 
   /* ---------- Counters ---------- */
   /* every number in the text counts up from 0 to its exact value (keeps +, %, M, thousands dots) */
-  const counters = () => $$('.hero-card strong, .impact-grid strong, .hero-proof strong').forEach(el => {
+  const counters = () => $$('.hero-card strong').forEach(el => {
     if (el.dataset.mpCount) return;
     const src = el.textContent.trim();
     const nums = [...src.matchAll(/\d[\d.]*/g)];
