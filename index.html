@@ -17,14 +17,14 @@
   <meta property="og:locale" content="vi_VN">
   <meta property="og:site_name" content="Nguyễn Việt Long Portfolio">
   <meta property="og:url" content="https://vlong-online-portfolio.vercel.app/">
-  <meta property="og:image" content="https://vlong-online-portfolio.vercel.app/assets/images/og-portfolio.png">
+  <meta property="og:image" content="https://vlong-online-portfolio.vercel.app/assets/images/og-portfolio.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Portfolio Content Marketing của Nguyễn Việt Long">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Nguyễn Việt Long | Content Marketing Portfolio">
   <meta name="twitter:description" content="Chiến lược nội dung, storytelling, AI và các dự án truyền thông thực chiến.">
-  <meta name="twitter:image" content="https://vlong-online-portfolio.vercel.app/assets/images/og-portfolio.png">
+  <meta name="twitter:image" content="https://vlong-online-portfolio.vercel.app/assets/images/og-portfolio.jpg">
   <link rel="canonical" href="https://vlong-online-portfolio.vercel.app/">
   <title>Nguyễn Việt Long | Content Marketing Portfolio</title>
   <script type="application/ld+json">
@@ -34,7 +34,7 @@
       "name": "Nguyễn Việt Long",
       "jobTitle": "Content Marketer",
       "url": "https://vlong-online-portfolio.vercel.app/",
-      "image": "https://vlong-online-portfolio.vercel.app/assets/images/my-avatar.png",
+      "image": "https://vlong-online-portfolio.vercel.app/assets/images/my-avatar.webp",
       "email": "mailto:ngvietlong712002@gmail.com",
       "telephone": "+84859802360",
       "address": {"@type": "PostalAddress", "addressLocality": "Hà Nội", "addressCountry": "VN"},
@@ -53,33 +53,38 @@
   <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
 
   <!--
-    - custom css link
+    - custom css link (single minified bundle)
   -->
-  <link rel="stylesheet" href="./assets/css/style.css?v=20261021-1">
-  <link rel="stylesheet" href="./assets/css/enhancements.css?v=20261021-2">
-  <link rel="stylesheet" href="./assets/css/premium-motion.css?v=20261021-2">
-  <link rel="stylesheet" href="./assets/css/premium-portfolio.css?v=20261021-3">
-  <link rel="stylesheet" href="./assets/css/editorial-redesign.css?v=20261021-6">
+  <link rel="stylesheet" href="./assets/css/bundle.min.css?v=20261110-9">
 
   <!--
     - google font link
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="image" href="./assets/images/my-avatar.png" fetchpriority="high">
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preload" as="image" href="./assets/images/my-avatar.webp" fetchpriority="high">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z6F8L7M4TS"></script>
+<!-- Google tag (gtag.js): loaded after the page is idle to protect LCP/TBT -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
-
   gtag('config', 'G-Z6F8L7M4TS');
+  (function () {
+    var loaded = false;
+    function load() {
+      if (loaded) return; loaded = true;
+      var s = document.createElement('script');
+      s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=G-Z6F8L7M4TS';
+      document.head.appendChild(s);
+    }
+    ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (e) { addEventListener(e, load, { once: true, passive: true }); });
+    addEventListener('load', function () { if (window.requestIdleCallback) requestIdleCallback(load, { timeout: 4000 }); else setTimeout(load, 3500); });
+  })();
 </script>
-
 <body>
   <a class="skip-link" href="#main-content">Chuyển tới nội dung chính</a>
   <div class="page-loader" aria-hidden="true">
@@ -88,7 +93,7 @@
   </div>
   <div id="falling-letter" class="falling-letter">
     <div class="letter-content">
-      <img src="./assets/images/thank-you.gif" alt="Cảm ơn" class="letter-img">
+      <img src="./assets/images/thank-you.gif" alt="Cảm ơn" class="letter-img" loading="lazy" decoding="async">
       <h3>KHÓ VẬY MÀ CŨNG TÌM RA ĐƯỢC</h3>
       <p>Cảm ơn đã ghé thăm portfolio của mình và dành thời gian để tìm ra bí mật này. Hy vọng chúng ta sẽ sớm làm
         việc cùng nhau và có 1 quãng thời gian đáng nhớ bên nhau <3 </p>
@@ -111,7 +116,7 @@
       <div class="sidebar-info">
 
         <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.png" alt="Nguyễn Việt Long" width="120" height="120" fetchpriority="high" decoding="async">
+          <img src="./assets/images/my-avatar.webp" alt="Nguyễn Việt Long" width="120" height="120" fetchpriority="high" decoding="async">
         </figure>
 
         <div class="info-content">
@@ -346,7 +351,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg" alt="" width="40" aria-hidden="true">
+                <img src="./assets/images/icon-design.svg" alt="" width="40" aria-hidden="true" loading="lazy" decoding="async">
               </div>
 
               <div class="service-content-box">
@@ -361,7 +366,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/presentation.png" alt="" width="40" aria-hidden="true">
+                <img src="./assets/images/presentation.webp" alt="" width="40" aria-hidden="true" loading="lazy" decoding="async">
               </div>
 
               <div class="service-content-box">
@@ -376,7 +381,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/chatgpt.png" alt="" width="40" aria-hidden="true">
+                <img src="./assets/images/chatgpt.webp" alt="" width="40" aria-hidden="true" loading="lazy" decoding="async">
               </div>
 
               <div class="service-content-box">
@@ -392,7 +397,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/icon-photo.svg" alt="" width="40" aria-hidden="true">
+                <img src="./assets/images/icon-photo.svg" alt="" width="40" aria-hidden="true" loading="lazy" decoding="async">
               </div>
 
               <div class="service-content-box">
@@ -408,7 +413,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/video-editing.png" alt="" width="40" aria-hidden="true">
+                <img src="./assets/images/video-editing.webp" alt="" width="40" aria-hidden="true" loading="lazy" decoding="async">
               </div>
 
               <div class="service-content-box">
@@ -425,7 +430,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/social-media.png" alt="" width="40" aria-hidden="true">
+                <img src="./assets/images/social-media.webp" alt="" width="40" aria-hidden="true" loading="lazy" decoding="async">
               </div>
 
               <div class="service-content-box">
@@ -533,7 +538,7 @@
               <div class="content-card" data-testimonials-item>
 
                 <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-2.png" alt="Daniel lewis" width="60" height="60" data-testimonials-avatar>
+                  <img src="./assets/images/avatar-2.webp" alt="Daniel lewis" width="60" height="60" data-testimonials-avatar loading="lazy" decoding="async">
                 </figure>
 
                 <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
@@ -555,7 +560,7 @@
               <div class="content-card" data-testimonials-item>
 
                 <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
+                  <img src="./assets/images/avatar-2.webp" alt="Jessica miller" width="60" data-testimonials-avatar loading="lazy" decoding="async">
                 </figure>
 
                 <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica miller</h4>
@@ -577,7 +582,7 @@
               <div class="content-card" data-testimonials-item>
 
                 <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
+                  <img src="./assets/images/avatar-3.webp" alt="Emily evans" width="60" data-testimonials-avatar loading="lazy" decoding="async">
                 </figure>
 
                 <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily evans</h4>
@@ -599,7 +604,7 @@
               <div class="content-card" data-testimonials-item>
 
                 <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
+                  <img src="./assets/images/avatar-4.webp" alt="Henry william" width="60" data-testimonials-avatar loading="lazy" decoding="async">
                 </figure>
 
                 <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry william</h4>
@@ -638,10 +643,10 @@
 
             <div class="modal-img-wrapper">
               <figure class="modal-avatar-box">
-                <img src="./assets/images/avatar-2.png" alt="Daniel lewis" width="80" height="80" data-modal-img>
+                <img src="./assets/images/avatar-2.webp" alt="Daniel lewis" width="80" height="80" data-modal-img loading="lazy" decoding="async">
               </figure>
 
-              <img src="./assets/images/icon-quote.svg" alt="quote icon">
+              <img src="./assets/images/icon-quote.svg" alt="quote icon" loading="lazy" decoding="async">
             </div>
 
             <div class="modal-content">
@@ -679,43 +684,43 @@
 
             <li class="clients-item">
               <a href="https://www.facebook.com/highway.vn" target="_blank" rel="noopener noreferrer">
-                <img src="./assets/images/logo-1-transparent.png" alt="Highway Menswear">
+                <img src="./assets/images/logo-1-transparent.webp" alt="Highway Menswear" loading="lazy" decoding="async">
               </a>
             </li>
 
             <li class="clients-item">
               <a href="https://www.facebook.com/mincluevietnam" target="_blank" rel="noopener noreferrer">
-                <img src="./assets/images/logo-2-transparent.png" alt="Minclue Fitness">
+                <img src="./assets/images/logo-2-transparent.webp" alt="Minclue Fitness" loading="lazy" decoding="async">
               </a>
             </li>
 
             <li class="clients-item">
               <a href="https://www.facebook.com/beatvn.network" target="_blank" rel="noopener noreferrer">
-                <img src="./assets/images/logo-3-transparent.png" alt="BeatVN">
+                <img src="./assets/images/logo-3-transparent.webp" alt="BeatVN" loading="lazy" decoding="async">
               </a>
             </li>
 
             <li class="clients-item">
               <div class="client-logo-card" aria-label="P Global">
-                <img src="./assets/images/logo-4-transparent.png" alt="P Global">
+                <img src="./assets/images/logo-4-transparent.webp" alt="P Global" loading="lazy" decoding="async">
               </div>
             </li>
 
             <li class="clients-item">
               <a href="https://www.facebook.com/LemonadeCosmetics" target="_blank" rel="noopener noreferrer">
-                <img src="./assets/images/logo-5-transparent.png" alt="Lemonade Cosmetics">
+                <img src="./assets/images/logo-5-transparent.webp" alt="Lemonade Cosmetics" loading="lazy" decoding="async">
               </a>
             </li>
 
             <li class="clients-item">
               <a href="https://www.facebook.com/FanmenVN.Cosmetic" target="_blank" rel="noopener noreferrer">
-                <img src="./assets/images/logo-6-transparent.png" alt="Fanmen">
+                <img src="./assets/images/logo-6-transparent.webp" alt="Fanmen" loading="lazy" decoding="async">
               </a>
             </li>
 
             <li class="clients-item">
               <a class="client-logo-card" href="https://www.facebook.com/nongsantuantuhanoi" target="_blank" rel="noopener noreferrer" aria-label="Nông sản Tuấn Tú">
-                <img src="./assets/images/logo-tuan-tu-white.png" alt="Logo Nông sản Tuấn Tú">
+                <img src="./assets/images/logo-tuan-tu-white.webp" alt="Logo Nông sản Tuấn Tú" loading="lazy" decoding="async">
               </a>
             </li>
 
@@ -748,19 +753,19 @@
           <ul class="tiktok-viral-grid">
             <li>
               <a href="https://www.tiktok.com/@absolutely.vlong/video/7372544580555705618" target="_blank" rel="noopener noreferrer">
-                <figure><img src="./assets/images/tiktok-viral-1.jpg" alt="Thumbnail TikTok Mọi cố gắng đã được đền đáp ở tuổi 22" loading="lazy"><span><ion-icon name="play"></ion-icon></span></figure>
+                <figure><img src="./assets/images/tiktok-viral-1.webp" alt="Thumbnail TikTok Mọi cố gắng đã được đền đáp ở tuổi 22" loading="lazy"><span><ion-icon name="play"></ion-icon></span></figure>
                 <div class="tiktok-card-copy"><strong>Mọi cố gắng đã được đền đáp ở tuổi 22</strong><dl><div><dt>Like</dt><dd>50,5K</dd></div><div><dt>Comment</dt><dd>897</dd></div><div><dt>Share</dt><dd>10,2K</dd></div><div><dt>Repost</dt><dd>-</dd></div></dl></div>
               </a>
             </li>
             <li>
               <a href="https://www.tiktok.com/@absolutely.vlong/photo/7427301709958991111" target="_blank" rel="noopener noreferrer">
-                <figure><img src="./assets/images/tiktok-viral-2.jpg" alt="Thumbnail TikTok Đi shopping" loading="lazy"><span><ion-icon name="images-outline"></ion-icon></span></figure>
+                <figure><img src="./assets/images/tiktok-viral-2.webp" alt="Thumbnail TikTok Đi shopping" loading="lazy"><span><ion-icon name="images-outline"></ion-icon></span></figure>
                 <div class="tiktok-card-copy"><strong>Đi shopping</strong><dl><div><dt>Like</dt><dd>50K</dd></div><div><dt>Comment</dt><dd>667</dd></div><div><dt>Share</dt><dd>20,6K</dd></div><div><dt>Repost</dt><dd>-</dd></div></dl></div>
               </a>
             </li>
             <li>
               <a href="https://www.tiktok.com/@absolutely.vlong/video/7359556157494627592" target="_blank" rel="noopener noreferrer">
-                <figure><img src="./assets/images/tiktok-viral-3.jpg" alt="Thumbnail TikTok Hater sẽ không tin đây là sự thật" loading="lazy"><span><ion-icon name="play"></ion-icon></span></figure>
+                <figure><img src="./assets/images/tiktok-viral-3.webp" alt="Thumbnail TikTok Hater sẽ không tin đây là sự thật" loading="lazy"><span><ion-icon name="play"></ion-icon></span></figure>
                 <div class="tiktok-card-copy"><strong>Hater sẽ không tin đây là sự thật</strong><dl><div><dt>Like</dt><dd>24,7K</dd></div><div><dt>Comment</dt><dd>764</dd></div><div><dt>Share</dt><dd>8.670</dd></div><div><dt>Repost</dt><dd>-</dd></div></dl></div>
               </a>
             </li>
@@ -835,6 +840,20 @@
           </div>
 
           <ol class="timeline-list">
+
+            <li class="timeline-item timeline-item--current">
+
+              <h4 class="h4 timeline-item-title"><span class="tt-badge"><img src="./assets/images/logo-tuan-tu-white.webp" alt="Logo Nông sản Tuấn Tú" width="24" height="24" loading="lazy" decoding="async"></span>Content Marketing tại Nông sản Tuấn Tú
+              </h4>
+
+              <span>T6/2026 - Nay</span>
+
+              <p class="timeline-text">
+                Xây dựng và vận hành nội dung truyền thông cho thương hiệu nông sản: kể câu chuyện về nguồn gốc, chất
+                lượng sản phẩm và lên nội dung bán hàng đa kênh để tăng nhận diện, kết nối với khách hàng.
+              </p>
+
+            </li>
 
             <li class="timeline-item">
 
@@ -1704,11 +1723,11 @@
             </li>
 
             <li class="blog-post-item">
-              <a href="#" data-image-target="./assets/images/nguyen-viet-long-casting-profile-2026.jpg"
+              <a href="#" data-image-target="./assets/images/nguyen-viet-long-casting-profile-2026.webp"
                 class="blog-image-zoom-btn" aria-label="Xem hồ sơ diễn xuất mới nhất của Nguyễn Việt Long">
 
                 <figure class="blog-banner-box casting-profile-latest">
-                  <img src="./assets/images/nguyen-viet-long-casting-profile-2026.jpg"
+                  <img src="./assets/images/nguyen-viet-long-casting-profile-2026.webp"
                     alt="Hồ sơ diễn xuất mới nhất của Nguyễn Việt Long" loading="lazy">
                 </figure>
 
@@ -1923,19 +1942,24 @@
   <!--
     - custom js link
   -->
-  <script src="./assets/js/script.js?v=20261001-1" defer></script>
-  <script src="./assets/js/enhancements.js?v=20261001-5" defer></script>
-  <script src="./assets/js/premium-motion.js?v=20261021-1" defer></script>
-  <script src="./assets/js/premium-portfolio.js?v=20261021-1" defer></script>
-  <script src="./assets/js/editorial-redesign.js?v=20261021-1" defer></script>
-  <script src="./assets/js/features.js?v=20261021-1" defer></script>
+  <script src="./assets/js/script.js?v=20261110-9" defer></script>
+  <script src="./assets/js/enhancements.js?v=20261110-9" defer></script>
+  <script src="./assets/js/premium-motion.js?v=20261110-9" defer></script>
+  <script src="./assets/js/premium-portfolio.js?v=20261110-9" defer></script>
+  <script src="./assets/js/editorial-redesign.js?v=20261110-9" defer></script>
+  <script src="./assets/js/features.js?v=20261110-9" defer></script>
+  <script src="./assets/js/vendor/gsap.min.js?v=20261110-9" defer></script>
+  <script src="./assets/js/vendor/ScrollTrigger.min.js?v=20261110-9" defer></script>
+  <script src="./assets/js/vendor/motion.js?v=20261110-9" defer></script>
+  <script src="./assets/js/modern-polish.js?v=20261110-9" defer></script>
+  <script src="./assets/js/modern-motion.js?v=20261110-9" defer></script>
 
   <!--
     - ionicon link
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule defer src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <video id="global-fullscreen-video" style="display:none; width:100%; height:100%;" controls></video>
+  <video id="global-fullscreen-video" style="display:none; width:100%; height:100%;" controls preload="none" playsinline></video>
   <footer class="main-footer">
     <div class="footer-container">
       <div class="copyright-info">
