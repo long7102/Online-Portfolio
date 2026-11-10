@@ -56,4 +56,15 @@
     const t = document.querySelector('.contact-form-box');
     if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
+
+  /* theme: follow the system until the visitor chooses; expose switch state to screen readers */
+  (() => {
+    const btn = document.getElementById('theme-toggle'); if (!btn) return;
+    const KEY = 'portfolio-theme', mq = matchMedia('(prefers-color-scheme: light)');
+    const saved = () => { try { return localStorage.getItem(KEY); } catch (_) { return null; } };
+    const sync = () => { btn.setAttribute('role', 'switch'); btn.setAttribute('aria-checked', String(document.body.classList.contains('light-mode'))); };
+    sync();
+    new MutationObserver(sync).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    if (mq.addEventListener) mq.addEventListener('change', e => { if (!saved()) document.body.classList.toggle('light-mode', e.matches); });
+  })();
 })();
