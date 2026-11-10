@@ -37,25 +37,26 @@
     const R = Math.min(W * (W < 700 ? .7 : .52), H * 1.25), rot = t * .02;
     const tilt = -.4, ct = Math.cos(tilt), st = Math.sin(tilt), sq = .55;
     const at = (r, a) => { const px = Math.cos(a) * r, py = Math.sin(a) * r * sq; return [cx + px * ct - py * st, cy + px * st + py * ct]; };
-    const light = document.body.classList.contains('light-mode'), dl = light ? -46 : 0, BLEND = light ? 'multiply' : 'lighter';
+    const light = document.body.classList.contains('light-mode'), dl = light ? -44 : 0, BLEND = light ? 'source-over' : 'lighter';
     ctx.clearRect(0, 0, W, H);
     ctx.globalCompositeOperation = BLEND;
     for (const b of bg) { ctx.fillStyle = `hsla(40,70%,${light ? 40 : 90}%,${.25 + .35 * Math.sin(t * .7 + b.tw) ** 2})`; ctx.fillRect(b.x * W, b.y * H, b.s, b.s); }
-    for (const d of dust) {
+    for (const d of (light ? [] : dust)) {
       const [x, y] = at(d.r * R, d.a + rot * .5), s = d.s * R;
       const g = ctx.createRadialGradient(x, y, 0, x, y, s);
       g.addColorStop(0, 'hsla(38,95%,58%,.09)'); g.addColorStop(1, 'transparent'); ctx.fillStyle = g; ctx.fillRect(x - s, y - s, s * 2, s * 2);
     }
     const core = ctx.createRadialGradient(cx, cy, 0, cx, cy, R * .5);
-    core.addColorStop(0, light ? 'hsla(40,95%,55%,.55)' : 'hsla(46,100%,86%,.42)'); core.addColorStop(.2, light ? 'hsla(38,95%,60%,.25)' : 'hsla(40,100%,64%,.16)'); core.addColorStop(.6, 'hsla(32,90%,48%,.06)'); core.addColorStop(1, 'transparent');
+    core.addColorStop(0, light ? 'hsla(42,95%,62%,.38)' : 'hsla(46,100%,86%,.42)'); core.addColorStop(.35, light ? 'hsla(40,95%,66%,.14)' : 'hsla(40,100%,64%,.16)'); core.addColorStop(.7, light ? 'hsla(38,90%,70%,.04)' : 'hsla(32,90%,48%,.06)'); core.addColorStop(1, 'transparent');
     ctx.fillStyle = core; ctx.fillRect(0, 0, W, H);
     for (const s of disk) {
       const [x, y] = at(s.r * R, s.a + rot * (1.5 - s.r * .9));
       ctx.fillStyle = `hsla(${s.h},88%,${s.l + dl}%,${Math.max(.18, (.75 - s.r * .35) * (.6 + .4 * Math.sin(t * .8 + s.tw)))})`;
-      ctx.fillRect(x, y, s.s, s.s);
+      if (light) { ctx.beginPath(); ctx.arc(x + s.s / 2, y + s.s / 2, s.s * .45, 0, TAU); ctx.fill(); } else ctx.fillRect(x, y, s.s, s.s);
     }
     for (const s of big) {
       const [x, y] = at(s.r * R, s.a + rot * (1.5 - s.r * .9)), h = 6 + 4 * Math.sin(t * .7 + s.tw) ** 2;
+      if (light) { const a = .55 + .35 * Math.sin(t * .8 + s.tw); ctx.strokeStyle = `hsla(36,85%,40%,${a})`; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x - h * .7, y); ctx.lineTo(x + h * .7, y); ctx.moveTo(x, y - h * .7); ctx.lineTo(x, y + h * .7); ctx.stroke(); continue; }
       const g = ctx.createRadialGradient(x, y, 0, x, y, h * 2.4);
       g.addColorStop(0, light ? 'hsla(40,90%,45%,.8)' : 'hsla(48,100%,94%,.9)'); g.addColorStop(.3, light ? 'hsla(38,90%,50%,.25)' : 'hsla(44,100%,72%,.25)'); g.addColorStop(1, 'transparent');
       ctx.fillStyle = g; ctx.fillRect(x - h * 2.4, y - h * 2.4, h * 4.8, h * 4.8);
@@ -63,13 +64,12 @@
     ctx.lineWidth = 1;
     for (const o of rings) {
       const rx = o.k * R, ry = rx * .42, ang = o.tilt + t * o.sp;
-      ctx.strokeStyle = light ? 'hsla(36,80%,38%,.45)' : 'hsla(45,100%,74%,.3)'; ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, ang, 0, TAU); ctx.stroke();
+      ctx.strokeStyle = light ? 'hsla(36,70%,40%,.4)' : 'hsla(45,100%,74%,.3)'; ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, ang, 0, TAU); ctx.stroke();
       for (const p0 of o.pl) {
         const p = { ...p0, s: p0.s * 1.55 };
         const th = p.p + t * p.sp, ex = Math.cos(th) * rx, ey = Math.sin(th) * ry;
         const x = cx + ex * Math.cos(ang) - ey * Math.sin(ang), y = cy + ex * Math.sin(ang) + ey * Math.cos(ang);
-        const g = ctx.createRadialGradient(x, y, 0, x, y, p.s * 5);
-        g.addColorStop(0, light ? 'hsla(36,90%,50%,.3)' : `hsla(${p.c},.55)`); g.addColorStop(1, 'transparent'); ctx.fillStyle = g; ctx.fillRect(x - p.s * 5, y - p.s * 5, p.s * 10, p.s * 10);
+        if (!light) { const g = ctx.createRadialGradient(x, y, 0, x, y, p.s * 5); g.addColorStop(0, `hsla(${p.c},.55)`); g.addColorStop(1, 'transparent'); ctx.fillStyle = g; ctx.fillRect(x - p.s * 5, y - p.s * 5, p.s * 10, p.s * 10); }
         const lx = x + (cx - x) * .12, ly = y + (cy - y) * .12;      // lit from the galactic core
         const sg = ctx.createRadialGradient(lx - p.s * .3, ly - p.s * .3, 0, x, y, p.s);
         const [ph, ps, pl] = p.c.split(',').map(parseFloat);
@@ -77,6 +77,7 @@
         ctx.globalCompositeOperation = 'source-over';
         if (p.ring) { ctx.strokeStyle = 'hsla(42,80%,78%,.55)'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.ellipse(x, y, p.s * 2.1, p.s * .7, ang - .35, 0, TAU); ctx.stroke(); }
         ctx.fillStyle = sg; ctx.beginPath(); ctx.arc(x, y, p.s, 0, TAU); ctx.fill();
+        if (light) { ctx.strokeStyle = 'hsla(30,60%,30%,.35)'; ctx.lineWidth = .8; ctx.stroke(); }
         ctx.globalCompositeOperation = BLEND; ctx.lineWidth = 1;
       }
     }

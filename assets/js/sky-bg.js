@@ -25,20 +25,27 @@
     /* two big soft glows, fixed colours, slow breathing */
     const glows = [[.12, .1, .6, 'hsla(38,95%,52%,', .14], [.92, .78, .65, 'hsla(30,90%,48%,', .11], [.55, 1.02, .5, 'hsla(215,70%,45%,', .05]];
     glows.forEach(([gx, gy, gr, col, a], i) => {
-      const r = Math.max(W, H) * gr * (1 + .05 * Math.sin(t * .15 + i * 2)), x = gx * W + Math.sin(t * .05 + i) * 24, y = gy * H + Math.cos(t * .04 + i) * 18;
+      const r = Math.max(W, H) * gr * (1 + .09 * Math.sin(t * .2 + i * 2)), x = gx * W + Math.sin(t * .09 + i * 1.7) * W * .08, y = gy * H + Math.cos(t * .07 + i * 2.1) * H * .07;
       const g = ctx.createRadialGradient(x, y, 0, x, y, r);
       g.addColorStop(0, col + a * (light ? 1.6 : 1.45) * (.85 + .15 * Math.sin(t * .2 + i)) + ')'); g.addColorStop(1, 'transparent');
       ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
     });
     /* a faint, fixed milky-way band across the page */
-    if (!light) { ctx.save(); ctx.translate(W * .5, H * .5); ctx.rotate(-.5); const bg = ctx.createLinearGradient(0, -H * .22, 0, H * .22); bg.addColorStop(0, 'transparent'); bg.addColorStop(.5, `hsla(40,70%,70%,${.07 + .015 * Math.sin(t * .18)})`); bg.addColorStop(1, 'transparent'); ctx.fillStyle = bg; ctx.fillRect(-W, -H * .22, W * 2, H * .44); ctx.restore(); }
+    if (!light) { ctx.save(); ctx.translate(W * .5 + Math.sin(t * .06) * W * .06, H * .5 + Math.cos(t * .05) * H * .05); ctx.rotate(-.5 + Math.sin(t * .04) * .09); const bg = ctx.createLinearGradient(0, -H * .22, 0, H * .22); bg.addColorStop(0, 'transparent'); bg.addColorStop(.5, `hsla(40,70%,70%,${.07 + .015 * Math.sin(t * .18)})`); bg.addColorStop(1, 'transparent'); ctx.fillStyle = bg; ctx.fillRect(-W, -H * .22, W * 2, H * .44); ctx.restore(); }
     /* stars: very slow horizontal drift, gentle twinkle */
     for (const s of stars) {
-      const x = ((s.x * W + t * 2.2 * s.z) % W + W) % W;
-      const a = .22 + .5 * s.z * (.55 + .45 * Math.sin(t * s.sp + s.tw));
-      ctx.fillStyle = light ? `hsla(36,75%,42%,${a * .55})` : (s.warm ? `hsla(44,70%,88%,${a})` : `hsla(210,40%,92%,${a * .8})`);
-      ctx.fillRect(x, s.y * H, s.s, s.s);
-      if (!light && s.s > 1.5 && s.z > .8) { const g = ctx.createRadialGradient(x, s.y * H, 0, x, s.y * H, 7); g.addColorStop(0, `hsla(44,100%,85%,${a * .5})`); g.addColorStop(1, 'transparent'); ctx.fillStyle = g; ctx.fillRect(x - 7, s.y * H - 7, 14, 14); }
+      let x, y;
+      if (light) {                                   // golden motes floating gently upward
+        x = ((s.x * W + Math.sin(t * .25 * s.sp + s.tw) * 18 * s.z) % W + W) % W;
+        y = (((s.y * H - t * 7 * s.z) % H) + H) % H;
+      } else {                                       // stars drifting slowly sideways with depth parallax
+        x = ((s.x * W + t * 9 * s.z) % W + W) % W;
+        y = s.y * H + Math.sin(t * .2 * s.sp + s.tw) * 6 * s.z;
+      }
+      const a = .22 + .5 * s.z * (.55 + .45 * Math.sin(t * s.sp * .8 + s.tw));
+      ctx.fillStyle = light ? `hsla(36,75%,42%,${a * .6})` : (s.warm ? `hsla(44,70%,88%,${a})` : `hsla(210,40%,92%,${a * .8})`);
+      if (light) { ctx.beginPath(); ctx.arc(x, y, s.s * .7, 0, TAU); ctx.fill(); } else ctx.fillRect(x, y, s.s, s.s);
+      if (!light && s.s > 1.5 && s.z > .8) { const g = ctx.createRadialGradient(x, y, 0, x, y, 7); g.addColorStop(0, `hsla(44,100%,85%,${a * .5})`); g.addColorStop(1, 'transparent'); ctx.fillStyle = g; ctx.fillRect(x - 7, y - 7, 14, 14); }
     }
     /* rare shooting star */
     if (!reduced && !light) {
