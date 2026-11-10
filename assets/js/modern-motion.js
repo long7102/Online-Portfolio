@@ -114,6 +114,7 @@
     if (!e.target.closest('[data-nav-link],[data-jump-page]')) return;
     setTimeout(() => {
       const page = document.querySelector('article.active');
+      if (page) animate(page, { opacity: [0, 1], filter: ['blur(6px)', 'blur(0px)'], y: [18, 0] }, { duration: .55, easing: [.22, 1, .36, 1] });
       if (page) animate(page.querySelectorAll('header, .portfolio-hero, .timeline, .featured-work, .mapbox'), { opacity: [0, 1], y: [28, 0] }, { delay: stagger(.08), type: 'spring', stiffness: 120, damping: 18 });
       arm(); counters(); ScrollTrigger.refresh();
     }, 80);
