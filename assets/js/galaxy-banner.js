@@ -156,8 +156,8 @@
     raf = visible && !reduced ? requestAnimationFrame(frame) : 0;
     const t = now / 1000, dt = Math.min(.05, last ? t - last : .016); last = t;
     const light = document.body.classList.contains('light-mode'), dl = light ? -44 : 0, BLEND = light ? 'source-over' : 'lighter';
-    const m = W < 700, cx = W * (m ? .6 : .72), cy = H * (m ? .8 : .5);
-    const R = Math.min(W * (m ? .7 : .52), H * 1.25);
+    const m = W < 700, mid = host.hasAttribute('data-galaxy-center'), cx = W * (mid ? .5 : m ? .6 : .72), cy = H * (mid ? .5 : m ? .8 : .5);
+    const R = mid ? Math.min(W * .62, H * .95) : Math.min(W * (m ? .7 : .52), H * 1.25);
     const tilt = -.4, ct = Math.cos(tilt), st = Math.sin(tilt), sq = .55;
     const at = (r, a) => { const px = Math.cos(a) * r, py = Math.sin(a) * r * sq; return [cx + px * ct - py * st, cy + px * st + py * ct]; };
 

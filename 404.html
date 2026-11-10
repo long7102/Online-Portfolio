@@ -4,34 +4,45 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Không tìm thấy trang | Nguyễn Việt Long</title>
 <meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/case-study.css?v=20261114-1">
-<link rel="stylesheet" href="/assets/css/case-polish.css?v=20261114-2">
+<link rel="stylesheet" href="/assets/css/case-polish.css?v=20261114-3">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta name="theme-color" content="#f0a22f">
 <style>
-.nf{min-height:calc(100vh - 88px);display:grid;place-items:center;text-align:center;padding:40px 0}
-.nf-code{font-size:clamp(96px,22vw,260px);font-weight:800;line-height:1;letter-spacing:-.08em;background:linear-gradient(120deg,#ffe59a,#f0a22f);-webkit-background-clip:text;background-clip:text;color:transparent}
+body{font-family:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;overflow-x:hidden}
+.nf-stage{position:relative;min-height:100vh;display:grid;place-items:center;text-align:center;padding:40px 20px;overflow:hidden}
+.nf-stage::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(7,7,10,.72) 0,rgba(7,7,10,.35) 38%,transparent 70%)}
+body.light-mode .nf-stage::before{background:radial-gradient(ellipse at 50% 50%,rgba(244,240,230,.85) 0,rgba(244,240,230,.4) 38%,transparent 70%)}
+.nf{position:relative;z-index:2;pointer-events:none}
+.nf a{pointer-events:auto}
+.nf-code{font-size:clamp(96px,22vw,260px);font-weight:800;line-height:1;letter-spacing:-.08em;background:linear-gradient(120deg,#ffe59a,#f0a22f);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 10px 40px rgba(240,162,47,.35))}
 body.light-mode .nf-code{background:linear-gradient(120deg,#b87800,#8a5a00);-webkit-background-clip:text;background-clip:text}
-.nf h1{margin:6px auto 12px;font-size:clamp(26px,4vw,44px);letter-spacing:-.04em}
+.nf h1{margin:6px auto 12px;font-size:clamp(26px,4vw,44px);letter-spacing:-.04em;line-height:1.15}
 .nf p{max-width:46ch;margin:0 auto 26px;color:var(--muted);line-height:1.75}
+.nf-hint{display:block;margin-top:22px;font-size:12px;color:var(--muted);opacity:.8}
 .nf-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 .nf-actions .cta{margin:0}
-.nf-actions .alt{background:transparent;color:var(--text);border:1px solid var(--line)}
-body.light-mode .nf-actions .alt{color:#1d1b16}
+.nf-actions .alt{background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--line);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+body.light-mode .nf-actions .alt{background:rgba(255,255,255,.7);color:#1d1b16}
 </style>
 <script defer src="/assets/js/sky-bg.js?v=20261114-1"></script>
 <script defer src="/assets/js/analytics-events.js?v=20261114-1"></script>
-<script defer src="/assets/js/case-polish.js?v=20261114-1"></script>
+<script defer src="/assets/js/case-polish.js?v=20261114-3"></script>
+<script defer src="/assets/js/galaxy-banner.js?v=20261114-3"></script>
 </head>
 <body>
-<nav class="case-nav"><a href="/index.html">← Trang chủ</a><span>Nguyễn Việt Long</span></nav>
-<main class="case-main nf"><div>
-  <div class="nf-code" aria-hidden="true">404</div>
-  <h1>Trang này đã đi lạc vào vũ trụ.</h1>
-  <p>Đường dẫn bạn mở không tồn tại hoặc đã được chuyển đi. Quay về trang chủ hoặc xem các dự án nổi bật nhé.</p>
-  <div class="nf-actions">
-    <a class="cta" href="/index.html">Về trang chủ</a>
-    <a class="cta alt" href="/case-studies/highway-menswear.html">Xem case study</a>
+<main class="nf-stage featured-case-banner" data-galaxy-center>
+  <div class="nf">
+    <div class="nf-code" aria-hidden="true">404</div>
+    <h1>Trang này đã đi lạc vào vũ trụ.</h1>
+    <p>Đường dẫn bạn mở không tồn tại hoặc đã được chuyển đi. Quay về trang chủ hoặc xem các dự án nổi bật nhé.</p>
+    <div class="nf-actions">
+      <a class="cta" href="/index.html">Về trang chủ</a>
+      <a class="cta alt" href="/case-studies/highway-menswear.html">Xem case study</a>
+    </div>
+    <span class="nf-hint">Di chuột vào các hành tinh, hoặc bấm vào chúng để làm nổ.</span>
   </div>
-</div></main>
+</main>
 </body>
 </html>
