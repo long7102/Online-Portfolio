@@ -21,8 +21,10 @@
       .from('.hero-proof span', { y: 14, opacity: 0, duration: .6, stagger: .1 }, '-=.5')
       .from('.hero-card', { y: 40, opacity: 0, scale: .92, duration: 1, stagger: .12, ease: 'power3.out' }, .3);
     const sc = { trigger: hero, start: 'top top', end: 'bottom 15%', scrub: .7 };
+  if (innerWidth >= 1024) {
     gsap.to('.hero-copy', { yPercent: -14, opacity: .08, scale: .94, transformOrigin: '0 50%', ease: 'none', scrollTrigger: sc });
     gsap.to('.hero-cards', { yPercent: -10, opacity: .1, ease: 'none', scrollTrigger: sc });
+  }
   }
 
   /* ---------- Split-word headline reveal, scrubbed to scroll ---------- */
