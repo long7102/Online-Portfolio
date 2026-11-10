@@ -32,6 +32,46 @@
     { o: 3, p: 2.0, sp: -.06, s: 3.0, type: 'ringed', h: 180, name: 'Content' },
   ].map(p => ({ ...p, x: -999, y: -999, hov: 0, dead: false, born: 1, reviveAt: 0 }));
 
+  /* what each world stands for (all drawn from the work shown on this site) */
+  const info = {
+    Insight: ['Phân tích khách hàng', 'Tìm pain point, động lực và ngôn ngữ thật của khách hàng trước khi viết một chữ nào.', 'Hành tinh dung nham', ''],
+    Data: ['Đo lường & tối ưu', 'Đọc chỉ số tương tác để cải thiện vòng nội dung tiếp theo thay vì chỉ nhìn lượt xem.', 'Hành tinh đá có vệ tinh', ''],
+    Storytelling: ['Storytelling & trend', 'Biến insight và xu hướng thành câu chuyện đúng giọng thương hiệu, dễ nhớ và dễ chia sẻ.', 'Hành tinh có vành đai', '50,5K like · TikTok'],
+    Brand: ['Định vị thương hiệu', 'Giữ logo, màu sắc, typography và brand voice nhất quán trên mọi điểm chạm.', 'Hành tinh băng', ''],
+    Social: ['Vận hành đa kênh', 'Lên lịch, sản xuất và theo dõi nội dung mỗi ngày trên Facebook, TikTok, website.', 'Hành tinh đại dương', '+20% tương tác · Highway'],
+    Strategy: ['Lập kế hoạch nội dung', 'Từ mục tiêu kinh doanh đến thông điệp, định dạng và lịch triển khai đa nền tảng.', 'Khí khổng lồ', ''],
+    Growth: ['Tăng trưởng', 'Nội dung gắn với kết quả: doanh thu duy trì ổn định nhờ video bán hàng.', 'Sao lùn vàng', '30–50M/tháng · P Global'],
+    Design: ['Thiết kế & hình ảnh', 'Bài đăng, story, voucher và ảnh bìa cùng một hệ thống hình ảnh thống nhất.', 'Hành tinh đá', ''],
+    Video: ['Sản xuất video', 'Viết kịch bản, quay dựng và tối ưu nhịp xem cho video ngắn.', 'Hành tinh ngọc trai', '5.000 tương tác/bài · BeatVN'],
+    AI: ['AI trong công việc', 'Dùng AI để nghiên cứu, lên ý tưởng, biên tập và kiểm soát chất lượng đầu ra.', 'Sao lùn xanh', ''],
+    Content: ['Content Marketing', 'Nội dung có chiến lược, kể chuyện có kết quả: từ ý tưởng đến phân phối.', 'Hành tinh có vành đai', ''],
+  };
+  const card = document.createElement('div');
+  card.className = 'mp-planet-card'; card.setAttribute('aria-hidden', 'true');
+  card.innerHTML = '<div class="mp-pc-head"><i></i><strong></strong><em></em></div><p class="mp-pc-sub"></p><p class="mp-pc-desc"></p><p class="mp-pc-stat"></p><p class="mp-pc-hint">Bấm để làm nổ hành tinh</p>';
+  host.append(card);
+  const cEl = { dot: card.querySelector('i'), name: card.querySelector('strong'), kind: card.querySelector('em'), sub: card.querySelector('.mp-pc-sub'), desc: card.querySelector('.mp-pc-desc'), stat: card.querySelector('.mp-pc-stat') };
+  let shown = null;
+  const showCard = p => {
+    if (p !== shown) {
+      shown = p;
+      if (p) {
+        const d = info[p.name] || ['', '', '', ''];
+        cEl.name.textContent = p.name; cEl.sub.textContent = d[0]; cEl.desc.textContent = d[1]; cEl.kind.textContent = d[2];
+        cEl.stat.textContent = d[3]; cEl.stat.style.display = d[3] ? '' : 'none';
+        cEl.dot.style.background = `hsl(${p.h},90%,60%)`; cEl.dot.style.boxShadow = `0 0 10px hsl(${p.h},95%,60%)`;
+      }
+      card.classList.toggle('on', !!p);
+    }
+    if (p) {
+      const cw = card.offsetWidth, ch = card.offsetHeight, r = p.s * 1.55 * 1.5;
+      let x = p.x + r + 16, y = p.y - ch / 2;
+      if (x + cw > W - 8) x = p.x - r - 16 - cw;
+      x = Math.max(8, Math.min(W - cw - 8, x)); y = Math.max(8, Math.min(H - ch - 8, y));
+      card.style.transform = `translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0)`;
+    }
+  };
+
   let W = 0, H = 0, disk = [], big = [], dust = [], bg = [];
   let visible = true, raf = 0, last = 0, T = 0, boost = 1, flare = 0, shake = 0;
   const mouse = { x: -999, y: -999, inside: false };
@@ -203,16 +243,9 @@
       ctx.fillStyle = hsl(q.h, 100, light ? 42 : 78, Math.min(1, q.life / q.max * 1.4)); ctx.beginPath(); ctx.arc(q.x, q.y, q.s * (.5 + q.life / q.max), 0, TAU); ctx.fill();
     }
 
-    /* name tag on hover */
+    /* info card follows the hovered planet */
     ctx.globalCompositeOperation = 'source-over';
-    if (hoverP) {
-      const p = hoverP, txt = p.name; ctx.font = '600 11px "Be Vietnam Pro", system-ui, sans-serif';
-      const tw = ctx.measureText(txt).width + 18, th = 22, tx = Math.min(W - tw - 6, Math.max(6, p.x - tw / 2));
-      let ty = p.y - p.s * 1.55 * 2.1 - th - 4; if (ty < 4) ty = p.y + p.s * 4;
-      ctx.fillStyle = light ? 'rgba(255,250,240,.95)' : 'rgba(10,10,12,.85)'; ctx.strokeStyle = hsl(p.h, 90, light ? 40 : 70, .8); ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.roundRect(tx, ty, tw, th, 11); ctx.fill(); ctx.stroke();
-      ctx.fillStyle = light ? '#2a261d' : '#fff'; ctx.textBaseline = 'middle'; ctx.fillText(txt, tx + 9, ty + th / 2 + .5);
-    }
+    showCard(hoverP);
   };
 
   /* ---------- input ---------- */
