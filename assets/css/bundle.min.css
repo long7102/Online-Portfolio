@@ -29,3 +29,22 @@ body:not(.light-mode) .navbar{background:rgba(12,12,16,.62)}
 /* timeline: remove stray overlay rail */
 .mp-rail{display:none!important}
 .timeline-item--current .timeline-item-title{display:block}
+
+/* ===== Hero right: glass stat & role cards ===== */
+.about .hero-solar-system{display:none!important}
+.about .hero-visual{display:grid!important;place-items:center;overflow:visible!important;pointer-events:auto!important}
+.hero-cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px;width:min(100%,430px)}
+.hero-card{position:relative;padding:18px 18px 16px;border:1px solid rgba(255,255,255,.14);border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.025));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 18px 50px rgba(0,0,0,.35),inset 0 1px rgba(255,255,255,.12);animation:mp-float 9s ease-in-out infinite}
+.hero-card:nth-child(2){animation-delay:-2s;animation-duration:10s}
+.hero-card:nth-child(3){animation-delay:-4s;animation-duration:11s;transform:translateY(14px)}
+.hero-card:nth-child(4){animation-delay:-6s;animation-duration:12s}
+.hero-card:nth-child(5){animation-delay:-1s}
+.hero-card--role{grid-column:1/-1}
+.hero-card small{display:block;margin-bottom:6px;color:var(--orange-yellow-crayola,#ffd36b);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.hero-card strong{display:block;color:#fff;font-size:clamp(24px,2.6vw,34px);line-height:1.1;letter-spacing:-.03em;background:linear-gradient(120deg,#ffe9a8,#ffb84d);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-card--role strong{font-size:clamp(20px,2.1vw,26px)}
+.hero-card span{display:block;margin-top:6px;color:rgba(255,255,255,.72);font-size:12px;line-height:1.55}
+@keyframes mp-float{50%{translate:0 -9px}}
+body.light-mode .hero-card{background:rgba(255,255,255,.7);border-color:rgba(0,0,0,.08);box-shadow:0 14px 40px rgba(0,0,0,.1)}
+body.light-mode .hero-card span{color:#444}
+@media (max-width:767px){.hero-cards{width:100%}.hero-card--wide{display:none}}
