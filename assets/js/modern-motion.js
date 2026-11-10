@@ -70,13 +70,25 @@
   arm();
 
   /* ---------- Counters ---------- */
-  const counters = () => $$('.impact-grid strong, .hero-proof strong').forEach(el => {
+  /* every number in the text counts up from 0 to its exact value (keeps +, %, M, thousands dots) */
+  const counters = () => $$('.hero-card strong, .impact-grid strong, .hero-proof strong').forEach(el => {
     if (el.dataset.mpCount) return;
-    const m = el.textContent.trim().match(/^(\d+)(.*)$/);
-    if (!m) return;
+    const src = el.textContent.trim();
+    const nums = [...src.matchAll(/\d[\d.]*/g)];
+    if (!nums.length || nums.some(m => { const v = parseInt(m[0].replace(/\./g, ''), 10); return v >= 1900 && v <= 2100; })) return;
     el.dataset.mpCount = '1';
-    const end = +m[1], o = { v: 0 };
-    ScrollTrigger.create({ trigger: el, start: 'top 92%', once: true, onEnter: () => gsap.to(o, { v: end, duration: 1.4, ease: 'power2.out', onUpdate: () => { el.textContent = String(Math.round(o.v)).padStart(m[1].length, '0') + m[2]; } }) });
+    const fmt = (m, k) => {
+      const v = Math.round(parseInt(m[0].replace(/\./g, ''), 10) * k);
+      return m[0].includes('.') ? v.toLocaleString('de-DE') : String(v).padStart(m[0].length, '0');
+    };
+    const render = k => {
+      let out = '', last = 0;
+      nums.forEach(m => { out += src.slice(last, m.index) + fmt(m, k); last = m.index + m[0].length; });
+      el.textContent = out + src.slice(last);
+    };
+    render(0);
+    const o = { k: 0 };
+    ScrollTrigger.create({ trigger: el, start: 'top 95%', once: true, onEnter: () => gsap.to(o, { k: 1, duration: 2.2, delay: .4, ease: 'power2.out', onUpdate: () => render(o.k), onComplete: () => { el.textContent = src; } }) });
   });
   counters();
 
