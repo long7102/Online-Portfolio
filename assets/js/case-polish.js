@@ -19,6 +19,14 @@
     sw.innerHTML = '<i class="mp-theme-thumb"></i>';
     sw.addEventListener('click', () => { const light = !document.body.classList.contains('light-mode'); apply(light); try { localStorage.setItem(KEY, light ? 'light' : 'dark'); } catch (_) {} });
     nav.append(sw);
+  } else {
+    /* pages without a top bar: floating switch only */
+    const sw = document.createElement('button');
+    sw.type = 'button'; sw.className = 'mp-theme mp-theme--float'; sw.setAttribute('role', 'switch'); sw.setAttribute('aria-label', 'Chế độ sáng');
+    sw.setAttribute('aria-checked', String(document.body.classList.contains('light-mode')));
+    sw.innerHTML = '<i class="mp-theme-thumb"></i>';
+    sw.addEventListener('click', () => { const light = !document.body.classList.contains('light-mode'); apply(light); try { localStorage.setItem(KEY, light ? 'light' : 'dark'); } catch (_) {} });
+    document.body.append(sw);
   }
 
   /* reveal on scroll */
