@@ -89,3 +89,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--mp-gold); outli
   html { scroll-behavior: auto; }
 }
 @media (max-width: 767px) { .mp-js .mp-reveal { transform: translate3d(0,16px,0); filter: none; } }
+
+/* Galaxy canvas behind hero visual */
+.mp-galaxy { position: absolute; inset: -12%; width: 124%; height: 124%; z-index: 0; pointer-events: none; opacity: .95;
+  -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent 100%); mask-image: radial-gradient(closest-side, #000 55%, transparent 100%); }
