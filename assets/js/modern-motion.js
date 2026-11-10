@@ -17,7 +17,7 @@
       .from('.hero-eyebrow', { y: 20, opacity: 0, duration: .7 })
       .from('#hero-title > *', { yPercent: 60, opacity: 0, rotateX: -40, transformOrigin: '0 100%', duration: 1, stagger: .12 }, '-=.35')
       .from('.hero-summary', { y: 24, opacity: 0, duration: .8 }, '-=.6')
-      .from('.hero-actions .hero-btn', { y: 20, opacity: 0, scale: .94, duration: .7, stagger: .1 }, '-=.55')
+      .from('.hero-actions > *', { y: 20, opacity: 0, scale: .94, duration: .7, stagger: .1, clearProps: 'transform,opacity' }, '-=.55')
       .from('.hero-proof span', { y: 14, opacity: 0, duration: .6, stagger: .1 }, '-=.5')
       .from('.hero-card', { y: 40, opacity: 0, scale: .92, duration: 1, stagger: .12, ease: 'power3.out' }, .3);
     const sc = { trigger: hero, start: 'top top', end: 'bottom 15%', scrub: .7 };
