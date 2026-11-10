@@ -28,6 +28,26 @@
     cat.after(el);
   });
 
+  /* project images open in the immersive viewer (replaces the small lightbox) */
+  document.addEventListener('click', e => {
+    const a = e.target.closest('.project-list .project-item > a');
+    if (!a || !window.MPViewer) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    const items = $$('.project-list .project-item').filter(li => li.classList.contains('active') && !li.hidden && li.offsetParent !== null);
+    const me = a.parentElement;
+    const label = li => (li.querySelector('.project-category') || {}).textContent || '';
+    window.MPViewer.open({
+      kicker: 'Portfolio / ' + (label(me) || 'Dự án'),
+      title: (me.querySelector('.project-title') || {}).textContent || 'Dự án',
+      index: Math.max(0, items.indexOf(me)),
+      images: items.map(li => {
+        const im = li.querySelector('.project-img img'), t = (li.querySelector('.project-title') || {}).textContent || '';
+        const chip = li.querySelector('.project-result');
+        return { src: im.currentSrc || im.src, thumb: im.currentSrc || im.src, label: label(li), caption: t + (chip ? ' · ' + chip.textContent : ''), alt: im.alt };
+      }),
+    });
+  }, true);
+
   /* brief link scrolls smoothly to the form */
   document.addEventListener('click', e => {
     const a = e.target.closest('[data-scroll-brief]');
