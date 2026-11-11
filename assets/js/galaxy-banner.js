@@ -79,8 +79,10 @@
   const parts = [], waves = [];
   host.__mpPlanets = planets;
 
+  let boxW = 0, boxH = 0, started = false;
   const build = () => {
-    const r = host.getBoundingClientRect(); W = Math.max(1, r.width); H = Math.max(1, r.height);
+    if (!boxW) return;
+    W = Math.max(1, boxW); H = Math.max(1, boxH);
     cv.width = W * dpr; cv.height = H * dpr;
     const n = W < 600 ? 700 : 1700;
     disk = Array.from({ length: n }, (_, i) => {
@@ -261,10 +263,22 @@
     if (hit) explode(hit);
   });
 
-  build();
-  if (reduced) frame(performance.now()); else raf = requestAnimationFrame(frame);
-  let rz; const rebuild = () => { clearTimeout(rz); rz = setTimeout(build, 160); };
-  addEventListener('resize', rebuild);
-  new ResizeObserver(rebuild).observe(host);
-  new IntersectionObserver(en => { visible = en[0].isIntersecting; if (visible && !raf && !reduced) { last = 0; raf = requestAnimationFrame(frame); } }).observe(host);
+  /* start only when the banner is first near the viewport; sizes come from ResizeObserver */
+  let rz;
+  const start = () => {
+    if (started || !boxW) return;
+    started = true; build();
+    if (reduced) frame(performance.now()); else raf = requestAnimationFrame(frame);
+  };
+  new ResizeObserver(en => {
+    const c = en[0].contentRect; boxW = c.width; boxH = c.height;
+    if (!started) { if (nearView) start(); return; }
+    clearTimeout(rz); rz = setTimeout(build, 160);
+  }).observe(host);
+  let nearView = false;
+  new IntersectionObserver(en => {
+    visible = en[0].isIntersecting; nearView = nearView || visible;
+    if (visible && !started) start();
+    else if (visible && !raf && !reduced) { last = 0; raf = requestAnimationFrame(frame); }
+  }, { rootMargin: '200px' }).observe(host);
 })();

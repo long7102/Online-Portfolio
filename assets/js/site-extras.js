@@ -54,6 +54,15 @@
     if (/organic/i.test(c)) li.dataset.contentCategory = 'organic';
   });
 
+  /* easter-egg image loads only when the egg opens */
+  (() => {
+    const egg = document.getElementById('falling-letter'); if (!egg) return;
+    const img = egg.querySelector('img[data-src]'); if (!img) return;
+    const load = () => { if (img.dataset.src) { img.src = img.dataset.src; img.removeAttribute('data-src'); } };
+    if (egg.classList.contains('active')) load();
+    new MutationObserver(() => { if (egg.classList.contains('active')) load(); }).observe(egg, { attributes: true, attributeFilter: ['class'] });
+  })();
+
   /* brief link scrolls smoothly to the form */
   document.addEventListener('click', e => {
     const a = e.target.closest('[data-scroll-brief]');
