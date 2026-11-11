@@ -35,8 +35,9 @@
     el.setAttribute('aria-label', el.textContent.trim());
     el.innerHTML = words.map(w => `<span class="mp-w" aria-hidden="true"><span class="mp-wi">${w}</span></span>`).join(' ');
     gsap.fromTo(el.querySelectorAll('.mp-wi'), { yPercent: 115, rotate: 6, opacity: 0 },
-      { yPercent: 0, rotate: 0, opacity: 1, ease: 'power3.out', stagger: .08,
-        scrollTrigger: { trigger: el, start: 'top 92%', end: 'top 50%', scrub: .6 } });
+      { yPercent: 0, rotate: 0, opacity: 1, ease: 'power3.out', duration: .9, stagger: .07, clearProps: 'transform,opacity',
+        onComplete: () => el.classList.add('mp-done'),
+        scrollTrigger: { trigger: el, start: 'top 92%', once: true } });   // plays once, never reverses on the way back up
   };
 
   /* ---------- Scroll choreography for blocks ---------- */
@@ -50,8 +51,8 @@
     cards.forEach(el => {
       armed.add(el);
       gsap.fromTo(el, { y: 90, rotateX: 16, scale: .94, opacity: 0, transformPerspective: 1100, transformOrigin: '50% 100%' },
-        { y: 0, rotateX: 0, scale: 1, opacity: 1, ease: 'power2.out', clearProps: 'transform,opacity',
-          scrollTrigger: { trigger: el, start: 'top 97%', end: 'top 62%', scrub: .5 } });
+        { y: 0, rotateX: 0, scale: 1, opacity: 1, ease: 'power3.out', duration: .9, clearProps: 'transform,opacity',
+          scrollTrigger: { trigger: el, start: 'top 94%', once: true } });   // one-shot: content never fades out again
     });
 
     /* small items: batched, staggered */
