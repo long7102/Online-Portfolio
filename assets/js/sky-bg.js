@@ -17,6 +17,7 @@
   const frame = now => {
     if (!running) return;
     if (!reduced) requestAnimationFrame(frame);
+    if (document.documentElement.classList.contains('mp-calm')) return;
     const light = document.body.classList.contains('light-mode');
     cv.style.display = 'block';
     const t = now / 1000;
@@ -42,14 +43,14 @@
         x = ((s.x * W + t * 9 * s.z) % W + W) % W;
         y = s.y * H + Math.sin(t * .2 * s.sp + s.tw) * 6 * s.z;
       }
-      const a = .22 + .5 * s.z * (.55 + .45 * Math.sin(t * s.sp * .8 + s.tw));
+      const a = .18 + .38 * s.z * (.6 + .4 * Math.sin(t * s.sp * .8 + s.tw));
       ctx.fillStyle = light ? `hsla(36,75%,42%,${a * .6})` : (s.warm ? `hsla(44,70%,88%,${a})` : `hsla(210,40%,92%,${a * .8})`);
       if (light) { ctx.beginPath(); ctx.arc(x, y, s.s * .7, 0, TAU); ctx.fill(); } else ctx.fillRect(x, y, s.s, s.s);
       if (!light && s.s > 1.5 && s.z > .8) { const g = ctx.createRadialGradient(x, y, 0, x, y, 7); g.addColorStop(0, `hsla(44,100%,85%,${a * .5})`); g.addColorStop(1, 'transparent'); ctx.fillStyle = g; ctx.fillRect(x - 7, y - 7, 14, 14); }
     }
     /* rare shooting star */
     if (!reduced && !light) {
-      if (!shoot && t > nextShoot) { shoot = { x: rnd(W * .2, W), y: rnd(0, H * .4), vx: -rnd(5, 8), vy: rnd(2.2, 4), life: 1 }; nextShoot = t + rnd(16, 28); }
+      if (!shoot && t > nextShoot) { shoot = { x: rnd(W * .2, W), y: rnd(0, H * .4), vx: -rnd(5, 8), vy: rnd(2.2, 4), life: 1 }; nextShoot = t + rnd(40, 70); }
       if (shoot) {
         const g = ctx.createLinearGradient(shoot.x, shoot.y, shoot.x - shoot.vx * 14, shoot.y - shoot.vy * 14);
         g.addColorStop(0, `hsla(46,100%,90%,${shoot.life * .85})`); g.addColorStop(1, 'transparent');
