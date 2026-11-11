@@ -52,6 +52,8 @@
     ['p-global', 'P Global', 'Doanh thu duy trì 30–50M/tháng'],
     ['beatvn', 'BeatVN', '5.000 tương tác mỗi bài'],
     ['minclue-fitness', 'Minclue Fitness', 'Content & Social'],
+    ['busansan', 'Busansan Mỳ Cay', '33K lượt xem organic'],
+    ['nong-san-tuan-tu', 'Nông sản Tuấn Tú', 'Từ bó rau đến nỗi đau của bếp ăn'],
   ];
   const cur = location.pathname.split('/').pop().replace('.html', '');
   const main = document.querySelector('.case-main');
@@ -59,7 +61,7 @@
     const sec = document.createElement('section'); sec.className = 'case-more'; sec.setAttribute('aria-labelledby', 'case-more-title');
     sec.innerHTML = '<p class="eyebrow">Xem thêm</p><h2 id="case-more-title">Các dự án khác</h2><div class="case-more-grid"></div>';
     const grid = sec.querySelector('.case-more-grid');
-    cases.filter(c => c[0] !== cur).forEach(c => {
+    cases.filter(c => c[0] !== cur).slice(0, 3).forEach(c => {
       const a = document.createElement('a'); a.href = c[0] + '.html'; a.className = 'case-more-card';
       const img = document.createElement('img'); img.src = '/assets/images/og-' + c[0] + '.jpg'; img.alt = ''; img.loading = 'lazy'; img.width = 1200; img.height = 630;
       const b = document.createElement('strong'); b.textContent = c[1]; const s = document.createElement('span'); s.textContent = c[2];
