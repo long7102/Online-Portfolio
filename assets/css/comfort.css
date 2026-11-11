@@ -56,3 +56,14 @@ body.light-mode .calm-toggle--fab{background:rgba(255,252,244,.92)}
   .calm-toggle--fab{bottom:104px;right:10px;width:38px;height:38px;opacity:.9}
 }
 @media(max-width:420px){.navbar-link{padding-inline:3px!important;font-size:12px!important;letter-spacing:0!important}.theme-toggle-btn{width:46px;min-width:46px}body.light-mode .theme-toggle-btn::before{transform:translateX(12px)}}
+
+/* ===== Text wrapping: balanced headings, no orphans, nothing clipped ===== */
+h1,h2,h3,h4,.hero-card strong,.service-item-title,.project-title,.blog-item-title,.timeline-item-title{text-wrap:balance;overflow-wrap:break-word}
+p,li,.timeline-text,.blog-text,.service-item-text,.hero-summary,.project-result,.hero-card span,figcaption,dd,dt{text-wrap:balance;overflow-wrap:break-word}
+.mp-w{padding-bottom:.18em;margin-bottom:-.18em}
+.mp-done .mp-w{overflow:visible}
+.hero-copy{container-type:inline-size}
+.about .portfolio-hero h2{font-size:clamp(30px,12.4cqw,64px)!important}
+#hero-title>*{white-space:nowrap}
+
+.timeline-text,.blog-text{text-wrap:pretty}
