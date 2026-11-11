@@ -43,7 +43,7 @@
   const armed = new WeakSet();
   const visible = el => el.offsetParent !== null;
   const arm = () => {
-    $$('.article-title, .about-intro h3, .tiktok-showcase-head h3, .featured-case-content h3, .tiktok-viral-head h4, .project-library-heading h3').forEach(el => visible(el) && split(el));
+    $$('.article-title, .about-intro h3, .tiktok-showcase-head h3, .featured-case-content h3, .tiktok-viral-head h4, .project-library-heading h3').filter(visible).forEach(split);   // reads first, writes after: no layout thrash
 
     /* cards: 3D flip-up scrubbed */
     const cards = $$('.project-item, .featured-work-card, .blog-post-item, .tiktok-viral-grid li').filter(el => !armed.has(el) && visible(el));
