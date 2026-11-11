@@ -113,3 +113,25 @@ body.light-mode .case-shift-card.is-after small{color:#fff}
 body.light-mode .case-shift-card small{background:rgba(42,38,29,.08)}
 body.light-mode .case-video-tag{background:rgba(176,128,34,.14);color:#7a4f00}
 body.light-mode .cta.alt{color:#1d1b16}
+
+/* ===== Content plan block ===== */
+.case-plan{margin-top:72px;padding:34px clamp(22px,3vw,40px);border:1px solid rgba(255,211,107,.28);border-radius:26px;background:linear-gradient(145deg,rgba(255,211,107,.09),rgba(255,255,255,.02))}
+.case-plan h2{margin:6px 0 10px;font-size:clamp(26px,3.4vw,40px);letter-spacing:-.045em}
+.plan-lead{margin:0 0 24px;max-width:62ch;color:var(--muted);font-size:15px;line-height:1.75}
+.plan-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:24px}
+.plan-stats div{padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.04)}
+.plan-stats strong{display:block;color:var(--accent);font-size:clamp(24px,3vw,34px);letter-spacing:-.05em}
+.plan-stats span{display:block;margin-top:6px;color:var(--muted);font-size:13px;line-height:1.5}
+.plan-bars{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:10px}
+.plan-bars li{display:grid;grid-template-columns:150px 1fr 34px;align-items:center;gap:12px;font-size:13.5px}
+.plan-bars span{color:var(--text)}
+.plan-bars i{display:block;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--accent),rgba(255,211,107,.35));width:var(--w);min-width:12px}
+.plan-bars b{color:var(--accent);text-align:right;font-variant-numeric:tabular-nums}
+.plan-points{margin:0 0 26px;padding:0;list-style:none;display:grid;gap:10px}
+.plan-points li{position:relative;padding-left:26px;color:var(--muted);font-size:14.5px;line-height:1.7}
+.plan-points li::before{content:"";position:absolute;left:4px;top:.7em;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.case-plan .cta{margin:0}
+@media(max-width:700px){.plan-stats{grid-template-columns:1fr}.plan-bars li{grid-template-columns:110px 1fr 28px}}
+body.light-mode .case-plan{background:linear-gradient(145deg,#fff3d6,#fffaf0);border-color:rgba(176,128,34,.4)}
+body.light-mode .plan-stats div{background:#fff}
+body.light-mode .plan-bars i{background:linear-gradient(90deg,#b87800,rgba(184,120,0,.4))}

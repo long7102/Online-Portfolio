@@ -156,6 +156,7 @@
   /* ---------- main loop ---------- */
   const frame = now => {
     raf = visible && !reduced ? requestAnimationFrame(frame) : 0;
+    if (document.documentElement.classList.contains('mp-calm')) return;
     const t = now / 1000, dt = Math.min(.05, last ? t - last : .016); last = t;
     const light = document.body.classList.contains('light-mode'), dl = light ? -44 : 0, BLEND = light ? 'source-over' : 'lighter';
     const m = W < 700, mid = host.hasAttribute('data-galaxy-center'), cx = W * (mid ? .5 : m ? .6 : .72), cy = H * (mid ? .5 : m ? .8 : .5);

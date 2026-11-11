@@ -1,0 +1,58 @@
+/* ===== Comfort pass: softer contrast, calmer colour, steadier type, gentler motion, optional "dịu mắt" mode ===== */
+:root{
+  --white-1:#f1ede4;--white-2:#ebe7dd;
+  --light-gray:#d2cdc2;--light-gray-70:rgba(210,205,194,.86);
+  --fs-8:12px;--fs-7:13.5px;--fs-6:14.5px;--fs-5:15.5px;
+}
+body{line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body:not(.light-mode){background:#0e0e11}
+.timeline-text,.blog-text,.service-item-text,.about-intro p,.hero-summary,.card-description,.case-main .lead,.content p{max-width:68ch}
+
+/* tiny uppercase labels were 10-11px with wide tracking: lift them to a readable size */
+.section-kicker,.hero-eyebrow,.eyebrow,.project-category,.blog-category,.hero-card small,.case-video-tag,.view-chip,.competency-number,.featured-work-copy small{font-size:max(12px,.75rem)}
+.blog-meta time,.project-result,.impact-grid span,.value-process p,.competency-item p{font-size:max(13px,.8rem);line-height:1.6}
+
+/* large bright fills glare on a dark page: a slightly warmer, calmer gold */
+body:not(.light-mode) .hero-btn-primary,body:not(.light-mode) .cta{background:#efc968}
+body:not(.light-mode) .hero-btn-primary:hover,body:not(.light-mode) .cta:hover{background:#f5d684}
+
+/* motion: no constant shimmer or pulsing, slower and smaller floating */
+.portfolio-hero h2 em{animation:none;background-position:0 50%}
+.timeline-item--current>span::after,.timeline-item--current::after{animation:none}
+.hero-card{animation:mp-float-soft 16s ease-in-out infinite}
+@keyframes mp-float-soft{50%{translate:0 -4px}}
+
+/* keyboard focus stays obvious */
+:where(a,button,summary,[tabindex]):focus-visible{outline:2px solid #efc968;outline-offset:3px}
+
+/* ===== "Dịu mắt" switch ===== */
+.calm-toggle{display:inline-flex;align-items:center;justify-content:center;width:36px;height:34px;margin:0 2px;padding:0;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.08);color:var(--light-gray,#d2cdc2);cursor:pointer;transition:background .2s ease,border-color .2s ease,color .2s ease}
+.calm-toggle svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.calm-toggle:hover{border-color:rgba(239,201,104,.6)}
+.calm-toggle[aria-pressed="true"]{background:rgba(239,201,104,.2);border-color:rgba(239,201,104,.6);color:#efc968}
+body.light-mode .calm-toggle{border-color:rgba(176,128,34,.4);background:rgba(255,255,255,.6);color:#5a4a20}
+body.light-mode .calm-toggle[aria-pressed="true"]{background:rgba(240,162,47,.28);color:#7a4f00}
+.calm-toggle--float{position:fixed;top:18px;right:92px;z-index:50}
+.calm-toast{position:fixed;left:50%;bottom:90px;z-index:60;transform:translateX(-50%);padding:9px 16px;border-radius:999px;background:rgba(14,14,17,.9);border:1px solid rgba(239,201,104,.4);color:#f1ede4;font-size:13px;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.calm-toast.on{opacity:1}
+
+html.mp-calm *,html.mp-calm *::before,html.mp-calm *::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0s!important;scroll-behavior:auto!important}
+html.mp-calm #mp-sky,html.mp-calm .mp-banner-galaxy{display:none!important}
+html.mp-calm body:not(.light-mode){background:#131316!important;--bg:#131316}
+html.mp-calm body:not(.light-mode) .main-content,html.mp-calm body:not(.light-mode) .sidebar{background:#17171a!important}
+html.mp-calm .featured-case-banner{background:#17150f!important}
+html.mp-calm .hero-card,html.mp-calm .impact-grid li,html.mp-calm .metrics div,html.mp-calm .content div{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+html.mp-calm .hero-card strong,html.mp-calm .impact-grid strong{background:none!important;-webkit-text-fill-color:currentColor!important;color:#efc968!important}
+@media(max-width:767px){.calm-toggle{width:32px;height:32px}}
+.case-tools{display:flex;align-items:center;gap:8px}
+
+.calm-toggle--fab{position:fixed;right:12px;bottom:92px;z-index:50;width:40px;height:40px;background:rgba(20,20,24,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+body.light-mode .calm-toggle--fab{background:rgba(255,252,244,.92)}
+@media(max-width:767px){
+  .navbar-list{justify-content:space-between!important;gap:0!important;padding-inline:6px!important;overflow:visible!important}
+  .navbar-link{padding-inline:6px!important;font-size:13px!important}
+  .theme-toggle-btn{width:52px;min-width:52px;margin:0 2px}
+  body.light-mode .theme-toggle-btn::before{transform:translateX(18px)}
+  .calm-toggle--fab{bottom:104px;right:10px;width:38px;height:38px;opacity:.9}
+}
+@media(max-width:420px){.navbar-link{padding-inline:3px!important;font-size:12px!important;letter-spacing:0!important}.theme-toggle-btn{width:46px;min-width:46px}body.light-mode .theme-toggle-btn::before{transform:translateX(12px)}}
