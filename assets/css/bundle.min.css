@@ -243,3 +243,5 @@ body.light-mode .theme-toggle-btn::before{transform:translateX(32px);background:
 .clients-item .client-busansan{background:rgba(255,252,246,.94)!important}
 .clients-item .client-busansan img,body.light-mode .clients-item .client-busansan img{filter:none!important;opacity:1!important;max-width:190px;max-height:150px}
 @media(hover:hover){.clients-item .client-busansan:hover img{filter:none!important;transform:scale(1.08)}}
+.content-group-heading p a{display:inline!important;color:var(--orange-yellow-crayola,#ffd36b);text-decoration:underline;text-underline-offset:3px}
+body.light-mode .content-group-heading p a{color:#7a5200}

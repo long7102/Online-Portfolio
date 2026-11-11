@@ -48,6 +48,12 @@
     });
   }, true);
 
+  /* items tagged "organic" get their own filter category */
+  $$('article[data-page="blog"] .blog-post-item').forEach(li => {
+    const c = (li.querySelector('.blog-category') || {}).textContent || '';
+    if (/organic/i.test(c)) li.dataset.contentCategory = 'organic';
+  });
+
   /* brief link scrolls smoothly to the form */
   document.addEventListener('click', e => {
     const a = e.target.closest('[data-scroll-brief]');
