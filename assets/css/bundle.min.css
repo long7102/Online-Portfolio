@@ -238,3 +238,8 @@ body.light-mode .contact-cta .hero-btn-primary{background:#f2b73a;color:#1d1b16}
 body.light-mode .theme-toggle-btn{background:rgba(240,162,47,.25);border-color:rgba(176,128,34,.5)}
 body.light-mode .theme-toggle-btn::before{transform:translateX(32px);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c27a00' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='4.2' fill='%23f0a22f'/%3E%3Cpath d='M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8'/%3E%3C/svg%3E") center/17px no-repeat}
 @media(max-width:767px){.theme-toggle-btn{margin:0 4px;width:58px;min-width:58px}body.light-mode .theme-toggle-btn::before{transform:translateX(24px)}}
+
+/* Busansan logo keeps its brand colours on a light tile */
+.clients-item .client-busansan{background:rgba(255,252,246,.94)!important}
+.clients-item .client-busansan img,body.light-mode .clients-item .client-busansan img{filter:none!important;opacity:1!important;max-width:190px;max-height:150px}
+@media(hover:hover){.clients-item .client-busansan:hover img{filter:none!important;transform:scale(1.08)}}
