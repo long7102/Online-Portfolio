@@ -316,3 +316,6 @@ p,li,.timeline-text,.blog-text,.service-item-text,.hero-summary,.project-result,
 
 /* hero cards must clear the floating top nav (nav overlaps the hero's top edge on desktop) */
 @media(min-width:1024px){.about .hero-visual{padding-top:44px!important}}
+
+/* CV dropdown opens upward: the hero clips (overflow:hidden) anything that hangs below the buttons */
+@media(min-width:768px){.about .cv-menu-list{top:auto!important;bottom:calc(100% + 10px)}}
