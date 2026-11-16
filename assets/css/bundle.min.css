@@ -313,3 +313,6 @@ p,li,.timeline-text,.blog-text,.service-item-text,.hero-summary,.project-result,
 /* hidden video modal must never intercept clicks (its controls bar had pointer-events:all while invisible) */
 #video-modal-overlay:not([style*="opacity: 1"]) *{pointer-events:none!important}
 #image-modal-overlay:not([style*="opacity: 1"]) *{pointer-events:none!important}
+
+/* hero cards must clear the floating top nav (nav overlaps the hero's top edge on desktop) */
+@media(min-width:1024px){.about .hero-visual{padding-top:44px!important}}
