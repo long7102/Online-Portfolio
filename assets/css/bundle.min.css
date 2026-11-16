@@ -302,3 +302,10 @@ p,li,.timeline-text,.blog-text,.service-item-text,.hero-summary,.project-result,
 #hero-title>*{white-space:nowrap}
 
 .timeline-text,.blog-text{text-wrap:pretty}
+
+/* hero cards: never let a tall card spill over its neighbours */
+.hero-cards{grid-template-rows:none!important;grid-auto-rows:auto!important;align-items:stretch!important;height:auto!important;container-type:inline-size}
+.hero-card{position:relative!important;inset:auto!important;height:auto!important;min-width:0;min-height:0;overflow:hidden;margin:0!important;transform:none!important}
+.hero-card strong{white-space:nowrap!important;font-size:clamp(20px,11cqw,34px)}
+.hero-card--role strong{font-size:clamp(20px,7cqw,26px)}
+.hero-card span{overflow-wrap:anywhere}
