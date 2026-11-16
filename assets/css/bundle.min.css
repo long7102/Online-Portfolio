@@ -309,3 +309,7 @@ p,li,.timeline-text,.blog-text,.service-item-text,.hero-summary,.project-result,
 .hero-card strong{white-space:nowrap!important;font-size:clamp(20px,11cqw,34px)}
 .hero-card--role strong{font-size:clamp(20px,7cqw,26px)}
 .hero-card span{overflow-wrap:anywhere}
+
+/* hidden video modal must never intercept clicks (its controls bar had pointer-events:all while invisible) */
+#video-modal-overlay:not([style*="opacity: 1"]) *{pointer-events:none!important}
+#image-modal-overlay:not([style*="opacity: 1"]) *{pointer-events:none!important}
