@@ -302,3 +302,20 @@ p,li,.timeline-text,.blog-text,.service-item-text,.hero-summary,.project-result,
 #hero-title>*{white-space:nowrap}
 
 .timeline-text,.blog-text{text-wrap:pretty}
+
+/* hero cards: never let a tall card spill over its neighbours */
+.hero-cards{grid-template-rows:none!important;grid-auto-rows:auto!important;align-items:stretch!important;height:auto!important;container-type:inline-size}
+.hero-card{position:relative!important;inset:auto!important;height:auto!important;min-width:0;min-height:0;overflow:hidden;margin:0!important;transform:none!important}
+.hero-card strong{white-space:nowrap!important;font-size:clamp(20px,11cqw,34px)}
+.hero-card--role strong{font-size:clamp(20px,7cqw,26px)}
+.hero-card span{overflow-wrap:anywhere}
+
+/* hidden video modal must never intercept clicks (its controls bar had pointer-events:all while invisible) */
+#video-modal-overlay:not([style*="opacity: 1"]) *{pointer-events:none!important}
+#image-modal-overlay:not([style*="opacity: 1"]) *{pointer-events:none!important}
+
+/* hero cards must clear the floating top nav (nav overlaps the hero's top edge on desktop) */
+@media(min-width:1024px){.about .hero-visual{padding-top:44px!important}}
+
+/* CV dropdown opens upward: the hero clips (overflow:hidden) anything that hangs below the buttons */
+@media(min-width:768px){.about .cv-menu-list{top:auto!important;bottom:calc(100% + 10px)}}
