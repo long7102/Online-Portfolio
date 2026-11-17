@@ -319,3 +319,8 @@ p,li,.timeline-text,.blog-text,.service-item-text,.hero-summary,.project-result,
 
 /* CV dropdown opens upward: the hero clips (overflow:hidden) anything that hangs below the buttons */
 @media(min-width:768px){.about .cv-menu-list{top:auto!important;bottom:calc(100% + 10px)}}
+
+/* blog/video card meta: the date never breaks across lines; the category shrinks/wraps instead */
+.blog-meta time{white-space:nowrap;flex:none}
+.blog-meta .dot{flex:none}
+.blog-meta .blog-category{min-width:0;flex:0 1 auto}
